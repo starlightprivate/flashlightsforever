@@ -1,13 +1,12 @@
 {
-  "name": "larby is the man",
+  "name": "StarLightAds",
   "version": "0.1.9",
   "description": "Tactical Mastery Flashlights",
+  "license": "UNLICENSED",
   "dependencies": {
   },
   "homepage": "",
   "scripts": {
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect",
     "build": "gulp build",
     "test": "snyk test && gulp xsslint",
     "dev": "gulp"
@@ -38,5 +37,10 @@
     "run-sequence": "^1.2.2",
     "snyk": "^1.19.1",
     "xsslint": "^0.1.3"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/flashlightsforever/flashlightsforever.git"
   }
 }
