@@ -80,10 +80,12 @@ function err_field_fv(e, data) {
     tempData.Email = $('[name=email]').val();
     tempData.FirstName = $('[name=contactModalName]').val();
     tempData.MobilePhone = $('[name=phoneNumber]').val();
-    data.Email = xssFilters.inHTMLData(tempData.Email);
-    data.FirstName = xssFilters.inHTMLData(tempData.FirstName);
-    data.MobilePhone = xssFilters.inHTMLData(tempData.MobilePhone);
+
+    data.Email = filterXSS(tempData.Email);
+    data.FirstName = filterXSS(tempData.FirstName);
+    data.MobilePhone = filterXSS(tempData.MobilePhone);
     data.LastName = 'NA';
+
     localStorage.setItem('firstName', data.FirstName);
     localStorage.setItem('lastName', data.LastName);
     localStorage.setItem('emailAddress', data.Email);
@@ -121,7 +123,7 @@ function err_field_fv(e, data) {
     $.each(addressFormFields, function (index, value) {
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
-        var uVal = xssFilters.inHTMLData(dirty);
+        var uVal = filterXSS(dirty);
         localStorage.setItem(value, uVal);
         tmp[value] = uVal;
       }
