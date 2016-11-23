@@ -40,7 +40,7 @@
       } else {
         dirty = $('input[name=\'productId\']:checked', '#checkoutForm').val();
       }
-      uVal = xssFilters.inHTMLData(dirty);
+      uVal = filterXSS(dirty);
       orderDetails[key] = uVal;
     });
     orderDetails.cardMonth = $('[name=month]').val();
