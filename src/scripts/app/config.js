@@ -1,8 +1,6 @@
 /*
  * Config.js AppCodeStarted
- * remove duplicate slashes from url
  */
-var SanitizedLocName = window.location.pathname.replace(/\/+/g, "/");
 
 /*
  * used for api calls

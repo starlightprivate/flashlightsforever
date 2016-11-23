@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-  
   var upsellID = null;
   if (window.location.pathname.indexOf('us_batteryoffer') >= 0) {
     upsellID = 'battery';
