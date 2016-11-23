@@ -154,8 +154,8 @@ gulp.task("jscopy", function() {
                    "src/scripts/app/config.js" , 
                    "src/scripts/app/utils.js" , 
                    "src/scripts/vendor/addclear.js",
-                   "src/scripts/vendor/detect-card.js",
-                   "src/scripts/app/validate_form_fields.js"])
+                   "src/scripts/vendor/detect-card.js"
+                   ])
       .pipe(newer(config.dist + "/assets/js"))
       .pipe(gulp.dest(config.dist + "/assets/js"));
 });
