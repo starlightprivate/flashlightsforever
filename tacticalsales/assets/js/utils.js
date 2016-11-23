@@ -144,9 +144,7 @@ function custcareModal(e) {
 }
 function getQueryVariable(variable) {
   'use strict';
-  var query = window.location.search.substring(1);
-  var vars = query.split('&');
-  for (var i = 0; i < vars.length; i++) {
+  for (var i = 0; i < window.location.search.substring(1).split('&').length; i++) {
     var pair = vars[i].split('=');
     if (pair[0] === variable) {
       console.log('url check-------->', pair);

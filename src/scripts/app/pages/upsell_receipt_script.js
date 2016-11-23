@@ -1,10 +1,9 @@
 (function () {
   'use strict';
-  var SanitizedLocName = window.location.pathname;
   var pageType = null;
-  if (SanitizedLocName.indexOf('receipt') >= 0) {
+  if (window.location.pathname.indexOf('receipt') >= 0) {
     pageType = 'receipt';
-  } else if (SanitizedLocName.indexOf('us_batteryoffer') >= 0 || SanitizedLocName.indexOf('us_headlampoffer') >= 0) {
+  } else if (window.location.pathname.indexOf('us_batteryoffer') >= 0 || window.location.pathname.indexOf('us_headlampoffer') >= 0) {
     pageType = 'upsell';
   }
   if (pageType === null) {
