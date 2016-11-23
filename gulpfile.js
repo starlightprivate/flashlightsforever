@@ -2,25 +2,25 @@
 
 "use strict";
 
-var _ = require("lodash"),
-  gulp = require("gulp"),
-  sass = require("gulp-sass"),
-  cleanCSS = require("gulp-clean-css"),
-  jshint = require("gulp-jshint"),
-  uglify = require("gulp-uglify"),
-  rename = require("gulp-rename"),
-  del = require("del"),
-  concat = require("gulp-concat"),
-  cache = require("gulp-cache"),
-  size = require("gulp-size"),
-  plumber = require('gulp-plumber'),
-  purify = require("gulp-purifycss"),
-  newer = require("gulp-newer"),
-  connect = require('gulp-connect'),
-  glob = require("glob"),
+var _       = require("lodash"),
+  gulp      = require("gulp"),
+  sass      = require("gulp-sass"),
+  cleanCSS  = require("gulp-clean-css"),
+  jshint    = require("gulp-jshint"),
+  uglify    = require("gulp-uglify"),
+  rename    = require("gulp-rename"),
+  del       = require("del"),
+  concat    = require("gulp-concat"),
+  cache     = require("gulp-cache"),
+  size      = require("gulp-size"),
+  plumber   = require('gulp-plumber'),
+  purify    = require("gulp-purifycss"),
+  newer     = require("gulp-newer"),
+  connect   = require('gulp-connect'),
+  glob      = require("glob"),
   runSequence = require("run-sequence"),
-  addsrc = require("gulp-add-src"),
-  XSSLint = require("xsslint");
+  addsrc    = require("gulp-add-src"),
+  XSSLint   = require("xsslint");
 
 var config = {
   src: "src", // source directory
