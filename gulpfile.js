@@ -13,15 +13,15 @@ var _         = require("lodash"),
   concat      = require("gulp-concat"),
   cache       = require("gulp-cache"),
   size        = require("gulp-size"),
-  plumber     = require('gulp-plumber'),
+  plumber     = require("gulp-plumber"),
   purify      = require("gulp-purifycss"),
   newer       = require("gulp-newer"),
-  connect     = require('gulp-connect'),
+  connect     = require("gulp-connect"),
   glob        = require("glob"),
   runSequence = require("run-sequence"),
   addsrc      = require("gulp-add-src"),
   XSSLint     = require("xsslint"),
-  CSSfilter   = require('cssfilter');
+  CSSfilter   = require("cssfilter");
 
 var config = {
   src: "src", // source directory
@@ -29,15 +29,6 @@ var config = {
   port: 3000
 };
 
-// External scripts from jsdelivr.com
-var jsDelivrScripts = [
-  "src/scripts/jsdelivr/jquery.min.js",
-  "src/scripts/jsdelivr/jquery.lazyload.min.js",
-  "src/scripts/jsdelivr/jquery.mask.min.js",
-  "src/scripts/jsdelivr/tether.min.js",
-  "src/scripts/jsdelivr/mailcheck.min.js",
-  "src/scripts/jsdelivr/modernizr.min.js"
-];
 
 gulp.task("purifycss", function() {
   return gulp.src(config.dist + "/assets/temp/bundle.css")
@@ -74,11 +65,6 @@ gulp.task("styles", function() {
       .pipe(addsrc.append("src/styles/**/*.css"))
       .pipe(concat("bundle.css"))
       .pipe(gulp.dest(config.dist + "/assets/temp"))
-      // .pipe(rename({
-      //   suffix: ".min"
-      // }))
-      // .pipe(cleanCSS({compatibility: "ie8"}))
-      // .pipe(gulp.dest(config.dist + "/assets/css"))
       .pipe(size());
 });
 
@@ -92,23 +78,7 @@ gulp.task("fonts", function() {
 // Scripts
 gulp.task("scripts", function() {
   return gulp.src(_.flatten([
-            //jsDelivrScripts,
 
-            // bootstrap v4 alpha.4
-            //"src/scripts/bootstrap-4.0.0-alpha.4/dist/js/bootstrap.min.js",
-
-            // formValidation
-            // "src/scripts/formvalidation-v0.8.1/formValidation.js",
-            // "src/scripts/formvalidation-v0.8.1/bootstrap4.js",
-
-            // // Vendor
-            // "src/scripts/vendor/addclear.js"
-            //externalScripts,
-
-            // Custom scripts
-            // "src/scripts/app/config.js",
-            // "src/scripts/app/utils.js",
-            // "src/scripts/app/pages/*.js"
         ]))
         .pipe(plumber())
         .pipe(jshint(".jshintrc"))
@@ -141,7 +111,7 @@ gulp.task("libcopy", function() {
   return gulp.src([
                   "src/scripts/libs/**/*"
                   ], 
-                  { base: './src/scripts/libs' }
+                  { base: "./src/scripts/libs" }
                   )
       .pipe(newer(config.dist + "/assets/libs"))
       .pipe(gulp.dest(config.dist + "/assets/libs"));
@@ -199,9 +169,9 @@ gulp.task("build", ["clean-all"], function(done) {
   );
 });
 
-var stripCssComments = require('gulp-strip-css-comments');
+var stripCssComments = require("gulp-strip-css-comments");
  
-gulp.task('stripcss', function () {
+gulp.task("stripcss", function () {
     return gulp.src(config.dist + "/assets/temp/style.css")
         .pipe(stripCssComments())
         .pipe(gulp.dest(config.dist + "/assets/temp/"));
@@ -266,29 +236,11 @@ gulp.task("xsslint", function() {
 // });
 
 
-
-// Static Server + watching scss/html files
-// gulp.task("serve", ["build"], function() {
-//   gulp.src("tactical")
-//       .pipe(webserver({
-//         livereload: true,
-//         open: true
-//       }));
-//   gulp.watch("src/styles/**/*.scss", ["styles"]);
-//   gulp.watch("src/scripts/**/*.js", ["scripts"]);
-//   gulp.watch("src/images/**/*", ["images"]);
-//   gulp.watch("src/html/**/*.html", ["html"]);
-// });
-
 gulp.task("serve", ["new"], function() {
   connect.server({
-    root: 'tacticalsales',
+    root: "tacticalsales",
     port : 9000
   });
-  // gulp.watch("src/styles/**/*.scss", ["styles"]);
-  // gulp.watch("src/scripts/**/*.js", ["scripts"]);
-  // gulp.watch("src/images/**/*", ["images"]);
-  // gulp.watch("src/html/**/*.html", ["html"]);
 });
 
 // Default task
