@@ -6,16 +6,7 @@ function customWrapperForIsMobileDevice() {
   }
   return false;
 }
-function getJson(e) {
-  'use strict';
-  var json = {};
-  if (isJsonObj(e)) {
-    json = e;
-  } else if (isValidJson(e)) {
-    json = JSON.parse(e);
-  }
-  return json;
-}
+
 function isJsonObj(obj) {
   'use strict';
   return typeof obj === 'object';
@@ -33,6 +24,18 @@ function isValidJson(str) {
   }
   return true;
 }
+
+function getJson(e) {
+  'use strict';
+  var json = {};
+  if (isJsonObj(e)) {
+    json = e;
+  } else if (isValidJson(e)) {
+    json = JSON.parse(e);
+  }
+  return json;
+}
+
 // call API
 function callAPI(endpoint, data, method, callback) {
 
