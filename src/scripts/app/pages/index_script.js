@@ -1,13 +1,9 @@
 function init_field_fv(e, data) {
   'use strict';
   var field = data.field,
-    // Get the field name
     $field = data.element,
-    // Get the field element
     bv = data.fv;
-  // FormValidation instance
-  // Create a span element to show valid message
-  // and place it right before the field
+
   var $span = $('<small/>').addClass('help-block validMessage text-success').attr('data-field', field).insertAfter($field).hide();
   // Retrieve the valid message via getOptions()
   var message = bv.getOptions(field).validMessage;
@@ -18,19 +14,13 @@ function init_field_fv(e, data) {
 function success_field_fv(e, data) {
   'use strict';
   var field = data.field,
-    // Get the field name
     $field = data.element;
-  // Get the field element
-  // Show the valid message element
   $field.next('.validMessage[data-field=\'' + field + '\']').show();
 }
 function err_field_fv(e, data) {
   'use strict';
   var field = data.field,
-    // Get the field name
     $field = data.element;
-  // Get the field element
-  // Show the valid message element
   $field.next('.validMessage[data-field=\'' + field + '\']').hide();
 }
 (function () {
@@ -59,7 +49,6 @@ function err_field_fv(e, data) {
     });
   }
   function updateLead(data, cb) {
-    /* global callAPI:true */
     var crmLead = data;
     crmLead.orderId = MediaStorage.orderId;
     crmLead.firstName = MediaStorage.firstName;
@@ -93,10 +82,8 @@ function err_field_fv(e, data) {
     console.log('sbmtCntFrm---------->');
     $('div#js-div-loading-bar').show();
     callAPI('add-contact', data, 'POST', function (response) {
-      //var json = {};
       if (response.success) {
         createLead(data, function (success) {
-          // submittedContactForm = true;
           // In case of Mobile devices, show address modal and go to checkout page.
           if (customWrapperForIsMobileDevice()) {
             $('div#js-div-loading-bar').hide();
@@ -132,9 +119,7 @@ function err_field_fv(e, data) {
       window.location = 'checkout.html';
     });
   }
-  /*
-     * Contact Form Validator
-     */
+
   if ($('#form-contact').length > 0) {
     $('#form-contact').on('init.field.fv', init_field_fv).formValidation({
       framework: 'bootstrap4',
@@ -145,7 +130,6 @@ function err_field_fv(e, data) {
       },
       autoFocus: true,
       fields: {
-        // Name field
         contactModalName: {
           validMessage: 'Nice to meet you!',
           validators: {
@@ -156,7 +140,6 @@ function err_field_fv(e, data) {
             }
           }
         },
-        // Email field
         email: {
           validMessage: 'Great! We will send you a confirmation e-mail with tracking # after purchasing.',
           validators: {
@@ -169,14 +152,12 @@ function err_field_fv(e, data) {
             emailAddress: { message: 'The email address is not valid.' }
           }
         },
-        // phone number field
         phoneNumber: {
           validMessage: 'Success! We will only call if there\u2019s a problem shipping to your location.',
           validators: {
             notEmpty: { message: 'Please supply a phone number so we can call if there are any problems shipping your flashlight.' },
             stringLength: {
               min: 12,
-              // real that is "10" but that include 2 symbols "-"
               message: 'Not a valid 10-digit US phone number (must not include spaces or special characters).'
             }
           }
@@ -190,14 +171,12 @@ function err_field_fv(e, data) {
       e.preventDefault();
     }).on('success.field.fv', success_field_fv).on('err.field.fv', err_field_fv);
     $('#form-contact').submit(function (e) {
-      // submitContactForm();
       e.preventDefault();
     });
   }
   // Address Form Validator
   if ($('#form-address').length > 0) {
     $('#form-address').on('init.field.fv', init_field_fv).formValidation({
-      // excluded: [":disabled", ":hidden", ":not(:visible)"],
       framework: 'bootstrap4',
       icon: {
         valid: 'ss-check',
@@ -206,7 +185,6 @@ function err_field_fv(e, data) {
       },
       autoFocus: true,
       fields: {
-        // address1
         address1: {
           validMessage: 'Success! Free shipping confirmed.',
           validators: {
@@ -218,9 +196,7 @@ function err_field_fv(e, data) {
             notEmpty: { message: 'The address is required.' }
           }
         },
-        // state
         state: { validators: { notEmpty: { message: 'The State is required.' } } },
-        // city
         city: {
           validMessage: 'That was easy!',
           validators: {
@@ -231,7 +207,6 @@ function err_field_fv(e, data) {
             notEmpty: { message: 'The city is required.' }
           }
         },
-        // postalCode
         postalCode: {
           validators: {
             stringLength: {
@@ -257,16 +232,7 @@ function err_field_fv(e, data) {
   $('.footer-image').click(function () {
     $('.btn-buy-modal').click();
   });
-  // Hash detect BEGINS
-  /*window.onhashchange = function() {
-        if (window.location.hash === "#showcontactmodal") {
-            $(".btn-buy-modal").click();
-            window.location.hash = "";
-        }
-    };
-    window.onhashchange();
-    // Hash detect ENDS
-		*/
+  
   if ($('#modal-contact').length > 0) {
     $('#modal-contact').on('shown.bs.modal', function (event) {
     });

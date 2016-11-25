@@ -37,7 +37,7 @@ function isValidJson(str) {
 function callAPI(endpoint, data, method, callback) {
 
   'use strict';
-  var ApiUrl = GlobalConfig.ApiBaseUrl + endpoint + "/";//"https://localhost:4443/api/v2/"
+  var ApiUrl = GlobalConfig.ApiBaseUrl + endpoint + "/";
   method = method || 'POST';
   // if data is an array pass as post, otherwise the string is a simple get and needs to append to the end of the uri
   if (data && data.constructor !== Object) {
