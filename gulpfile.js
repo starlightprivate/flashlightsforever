@@ -39,13 +39,6 @@ var jsDelivrScripts = [
   "src/scripts/jsdelivr/modernizr.min.js"
 ];
 
-// External scripts - vendors unknown
-var externalScripts = [
-  "src/scripts/vendor/addclear.js",
-  "src/scripts/vendor/detect-card.js",
-  "src/scripts/vendor/autofill-event.js"
-];
-
 gulp.task("purifycss", function() {
   return gulp.src(config.dist + "/assets/temp/bundle.css")
     .pipe(purify(
@@ -159,8 +152,7 @@ gulp.task("jscopy", function() {
                    "src/scripts/app/config.js" , 
                    "src/scripts/app/utils.js" , 
                    "src/scripts/vendor/addclear.js",
-                   "src/scripts/vendor/xss.js",
-                   "src/scripts/vendor/detect-card.js"
+                   "src/scripts/vendor/xss.js"
                    ])
       .pipe(newer(config.dist + "/assets/js"))
       .pipe(gulp.dest(config.dist + "/assets/js"));
