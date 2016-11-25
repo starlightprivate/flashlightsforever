@@ -1653,6 +1653,35 @@ input#creditcard::-webkit-outer-spin-button {
     top:-7px;
 }
 
+
+/* Wistia */
+.wistia_responsive_padding_alt {
+    padding: 56.25% 0 0 0;
+    position: relative;
+}
+
+.wistia_responsive_wrapper_alt {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.wistia_embed_alt {
+    height: 100%;
+    width: 100%
+}
+
+
+.hide-element {
+    display: none;
+}
+
+
+/* Media Tag */
+
+
 @media screen and (min-width :544px){
     .hidden-sm-up {
         display:none!important;
