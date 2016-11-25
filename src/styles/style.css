@@ -741,7 +741,15 @@ img.resp {
     background-color:#540202;
     box-shadow:0 0 2px #c80000;
 }
-
+input#creditcard{
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
+input#creditcard::-webkit-inner-spin-button, 
+input#creditcard::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .pg-index .function {
     background-color:#FFF;
     border-radius:0 0 10px 10px;
