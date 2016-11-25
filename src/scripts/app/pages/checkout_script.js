@@ -134,9 +134,7 @@
   if ($('#checkoutForm').length > 0) {
     $('#checkoutForm').on('init.field.fv', function (e, data) {
       var field = data.field,
-        // Get the field name
         $field = data.element,
-        // Get the field element
         bv = data.fv;
       // FormValidation instance
       // Create a span element to show valid message
@@ -148,8 +146,6 @@
         $span.html(message);
       }
     }).formValidation({
-      // excluded: [":disabled", ":hidden", ":not(:visible)"],
-      //live: "submitted",
       framework: 'bootstrap4',
       icon: {
         valid: 'ss-check',
@@ -158,7 +154,6 @@
       },
       autoFocus: true,
       fields: {
-        // firstName
         firstName: {
           validMessage: 'Nice to meet you!',
           validators: {
@@ -170,7 +165,6 @@
             }
           }
         },
-        //Email Address
         emailAddress: {
           validMessage: 'Great! We will send you a confirmation e-mail with tracking # after purchasing.',
           validators: {
@@ -183,7 +177,6 @@
             emailAddress: { message: 'The email address is not valid.' }
           }
         },
-        // phoneNumber
         phoneNumber: {
           validMessage: 'Success! We will only call if there\u2019s a problem shipping to your location.',
           validators: {
@@ -195,7 +188,6 @@
             }
           }
         },
-        // address1
         address1: {
           validMessage: 'Success! Free shipping confirmed.',
           validators: {
@@ -207,9 +199,7 @@
             notEmpty: { message: 'The address is required.' }
           }
         },
-        // state
         state: { validators: { notEmpty: { message: 'The State is required.' } } },
-        // city
         city: {
           validMessage: 'That was easy!',
           validators: {
@@ -220,7 +210,6 @@
             notEmpty: { message: 'The city is required.' }
           }
         },
-        // postalCode
         postalCode: {
           validators: {
             stringLength: {
@@ -230,7 +219,6 @@
             notEmpty: { message: 'The zip code is required.' }
           }
         },
-        // cardNumber
         cardNumber: {
           validMessage: '',
           validators: {
@@ -262,7 +250,6 @@
         },
         // CSC
         cardSecurityCode: { validators: { notEmpty: { message: 'The Security Code is required.' } } },
-        // Month
         month: {
           validators: {
             notEmpty: { message: 'The Month is required.' },
@@ -300,7 +287,6 @@
             }
           }
         },
-        // Year
         year: {
           validators: {
             notEmpty: { message: 'The Year is required.' },
@@ -329,10 +315,7 @@
       }
     }).on('err.field.fv', function (e, data) {
       var field = data.field,
-        // Get the field name
         $field = data.element;
-      // Get the field element
-      // Show the valid message element
       $field.next('.validMessage[data-field=\'' + field + '\']').hide();
       var invalidFieldsCount = data.fv.getInvalidFields().length;
       checkoutButtonPulse(CheckoutFieldsReq, invalidFieldsCount);
@@ -340,9 +323,7 @@
       data.fv.disableSubmitButtons(false);
     }).on('success.field.fv', function (e, data) {
       var field = data.field,
-        // Get the field name
         $field = data.element;
-      // Get the field element
       if (data.fv.getSubmitButton()) {
         data.fv.disableSubmitButtons(false);
       }
@@ -371,7 +352,6 @@
     });
     // END Credit Card Behavior
     $('#checkoutForm').submit(function (e) {
-      // submitOrderForm("#checkoutForm");
       e.preventDefault();
     });
     //  Apply mask for checkout fields
