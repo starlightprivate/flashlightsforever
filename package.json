@@ -41,7 +41,6 @@
     "xsslint": "^0.1.3",
     "cssfilter": "^0.0.8"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/flashlightsforever/flashlightsforever.git"
