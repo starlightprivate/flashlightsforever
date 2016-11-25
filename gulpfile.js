@@ -145,7 +145,11 @@ gulp.task("html", function() {
 });
 
 gulp.task("libcopy", function() {
-  return gulp.src(["src/scripts/libs/formvalidation/**/*"], { base: './src/scripts/libs' })
+  return gulp.src([
+                  "src/scripts/libs/**/*"
+                  ], 
+                  { base: './src/scripts/libs' }
+                  )
       .pipe(newer(config.dist + "/assets/libs"))
       .pipe(gulp.dest(config.dist + "/assets/libs"));
 });
@@ -287,7 +291,7 @@ gulp.task("xsslint", function() {
 gulp.task("serve", ["new"], function() {
   connect.server({
     root: 'tacticalsales',
-    port : 8000
+    port : 9000
   });
   // gulp.watch("src/styles/**/*.scss", ["styles"]);
   // gulp.watch("src/scripts/**/*.js", ["scripts"]);
