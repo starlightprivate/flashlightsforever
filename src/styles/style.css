@@ -1807,8 +1807,14 @@ input#creditcard::-webkit-outer-spin-button {
         width:100%;
     }
 
+
     .pg-index .btn .btn-title {
-        font-size:36px;
+        font-size:26px;
+    }
+
+    .pg-index .btn.btn-red .btn-text {
+        font-size: 18px;
+        letter-spacing: 7px;
     }
 
     .pg-index .btn.btn-green {
@@ -1821,10 +1827,6 @@ input#creditcard::-webkit-outer-spin-button {
 
     .pg-index .btn.btn-red {
         padding:30px 0 15px 120px;
-    }
-
-    .pg-index .btn.btn-red .btn-text {
-        font-size:20px;
     }
 
     .pg-index .btn.btn-red .img-holder {
@@ -1935,6 +1937,10 @@ input#creditcard::-webkit-outer-spin-button {
     .pg-index .feature .feature-item .media p {
         font-size:13px;
     }
+
+    .pg-index .btn .btn-title {
+        font-size:36px;
+    }
 }
 
 @media screen and (max-width:543px){
@@ -1990,10 +1996,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width:991px){
-    .pg-index .btn .btn-title {
-        font-size:40px;
-    }
-
+    
     .pg-checkout .container {
         max-width:720px;
     }
@@ -2046,10 +2049,8 @@ input#creditcard::-webkit-outer-spin-button {
     }
 }
 
+
 @media screen and (max-width:675px){
-    .pg-index .btn .btn-title {
-        font-size:30px;
-    }
 
     .pg-index .btn.btn-green {
         padding:25px 10px;
@@ -2063,15 +2064,11 @@ input#creditcard::-webkit-outer-spin-button {
         margin-bottom:10px;
     }
 
-    .pg-index .btn.btn-red .btn-text {
-        font-size:18px;
-        letter-spacing:7px;
-    }
 }
 
 @media screen and (max-width:600px){
     .pg-index .btn .btn-title {
-        font-size:26px;
+        font-size:20px;
     }
 
     .pg-index .btn.btn-green {
@@ -2090,10 +2087,6 @@ input#creditcard::-webkit-outer-spin-button {
         margin-bottom:10px;
     }
 
-    .pg-index .btn.btn-red .btn-text {
-        font-size:18px;
-        letter-spacing:7px;
-    }
 }
 
 @media screen and (max-width:465px){
