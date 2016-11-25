@@ -1,4 +1,4 @@
-function numfield_keydown(e) {
+function numFieldKeyDown(e) {
   'use strict';
   e = e ? e : window.event;
   var charCode = e.which ? e.which : e.keyCode;
@@ -30,7 +30,7 @@ function numfield_keydown(e) {
   }
   return true;
 }
-function name_keydown(e) {
+function nameKeyDown(e) {
   'use strict';
   e = e ? e : window.event;
   var charCode = e.which ? e.which : e.keyCode;
@@ -73,10 +73,10 @@ function name_keydown(e) {
 function validate() {
   'use strict';
   if ($('input.numfield').length > 0) {
-    $('input.numfield').on('keydown', numfield_keydown);
+    $('input.numfield').on('keydown', numFieldKeyDown);
   }
   if ($('input#name').length > 0) {
-    $('input#name').on('keydown', name_keydown);
+    $('input#name').on('keydown', nameKeyDown);
   }
   if ($('input[type=tel]').length > 0) {
     $('input[type=tel]').on('keydown', function (e) {

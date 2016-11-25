@@ -21,7 +21,8 @@ var _         = require("lodash"),
   runSequence = require("run-sequence"),
   addsrc      = require("gulp-add-src"),
   XSSLint     = require("xsslint"),
-  CSSfilter   = require("cssfilter");
+  CSSfilter   = require("cssfilter"),
+  stripCssComments = require("gulp-strip-css-comments");
 
 var config = {
   src: "src", // source directory
@@ -30,67 +31,25 @@ var config = {
 };
 
 
-gulp.task("purifycss", function() {
-  return gulp.src(config.dist + "/assets/temp/bundle.css")
-    .pipe(purify(
-        [
-          "src/scripts/app/config.js",
-          "src/scripts/app/utils.js",
-          "src/scripts/app/pages/*.js",
-          "src/html/*.html"
-        ]
-      ))
-    
-    .pipe(gulp.dest(config.dist + "/assets/css"))
-    .pipe(rename({
-        suffix: ".min"
-     }))
-    .pipe(cleanCSS({compatibility: "ie8"}))
-    .pipe(gulp.dest(config.dist + "/assets/css"))
-    .pipe(size());
-});
 
-// Styles
-gulp.task("styles", function() {
-  return gulp.src("src/styles/bundle.scss")
-      .pipe(plumber())
-      // gulp-sass config
-      .pipe(sass({
-        outputStyle: "expanded",
-        precision: 10,
-        sourceComments: "none",
-        imagePath: "src/images"
-      }))
-      .pipe(addsrc.prepend("src/scripts/bootstrap-4.0.0-alpha.4/dist/css/bootstrap.min.css"))
-      .pipe(addsrc.append("src/styles/**/*.css"))
-      .pipe(concat("bundle.css"))
-      .pipe(gulp.dest(config.dist + "/assets/temp"))
-      .pipe(size());
-});
+// Stylish reporter for JSHint
+gulp.task('jshint', () =>
+    gulp.src([
+          "src/scripts/app/pages/*.js", 
+           "src/scripts/app/config.js" , 
+           "src/scripts/app/utils.js" , 
+           "src/scripts/vendor/addclear.js",
+           "src/scripts/vendor/xss.js"
+        ])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+);
 
 // Fonts
 gulp.task("fonts", function() {
   return gulp.src(_.flatten([config.src + "/fonts/**/*"]))
       .pipe(newer(config.dist + "/assets/fonts"))
       .pipe(gulp.dest(config.dist + "/assets/fonts"));
-});
-
-// Scripts
-gulp.task("scripts", function() {
-  return gulp.src(_.flatten([
-
-        ]))
-        .pipe(plumber())
-        .pipe(jshint(".jshintrc"))
-        .pipe(jshint.reporter("jshint-stylish"))
-        .pipe(concat("bundle.js"))
-        .pipe(gulp.dest(config.dist + "/assets/js"))
-        .pipe(rename({
-          suffix: ".min"
-        }))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.dist + "/assets/js"))
-        .pipe(size());
 });
 
 // Images
@@ -107,6 +66,7 @@ gulp.task("html", function() {
       .pipe(gulp.dest(config.dist));
 });
 
+// Copy JS libraries 
 gulp.task("libcopy", function() {
   return gulp.src([
                   "src/scripts/libs/**/*"
@@ -117,6 +77,7 @@ gulp.task("libcopy", function() {
       .pipe(gulp.dest(config.dist + "/assets/libs"));
 });
 
+// Copy Custom JS 
 gulp.task("jscopy", function() {
   return gulp.src(["src/scripts/app/pages/*.js", 
                    "src/scripts/app/config.js" , 
@@ -128,18 +89,13 @@ gulp.task("jscopy", function() {
       .pipe(gulp.dest(config.dist + "/assets/js"));
 });
 
+// Copy Css 
 gulp.task("csscopy", function() {
   return gulp.src(["src/styles/style.css"])
       .pipe(newer(config.dist + "/assets/temp"))
       .pipe(gulp.dest(config.dist + "/assets/temp"));
 });
 
-// Clean
-gulp.task("clean", function() {
-  del.sync([
-    config.dist + "/assets"
-  ]);
-});
 
 // Clean-all
 gulp.task("clean-all", function() {
@@ -147,36 +103,15 @@ gulp.task("clean-all", function() {
     config.dist
   ]);
 });
-
-gulp.task("cleantemp" , function () {
-  del.sync([config.dist + "/assets/temp"]);
-});
-
-// Build task
-gulp.task("build", ["clean-all"], function(done) {
-  runSequence(
-    "scripts",
-    "jscopy",
-    "fonts",
-    "images",
-    "html",
-    "styles",
-    "purifycss",
-    function() {
-      console.log("Build successful!");
-      done();
-    }
-  );
-});
-
-var stripCssComments = require("gulp-strip-css-comments");
  
+// Strip comments from CSS using strip-css-comments
 gulp.task("stripcss", function () {
     return gulp.src(config.dist + "/assets/temp/style.css")
         .pipe(stripCssComments())
         .pipe(gulp.dest(config.dist + "/assets/temp/"));
 });
 
+// Remove unnecessary css 
 gulp.task("csspurify", function() {
   return gulp.src(config.dist + "/assets/temp/style.css")
     .pipe(purify(
@@ -195,25 +130,12 @@ gulp.task("csspurify", function() {
     .pipe(size());
 });
 
-gulp.task("new", ["clean-all"], function(done) {
-  runSequence(
-    "libcopy",
-    "jscopy",
-    "fonts",
-    "images",
-    "html",
-    "csscopy",
-    "stripcss",
-    "csspurify",
-    "cleantemp",
-    function() {
-      console.log("Build successful!");
-      done();
-    }
-  );
+// Clean Temp Dir
+gulp.task("cleantemp" , function () {
+  del.sync([config.dist + "/assets/temp"]);
 });
 
-// XSSLint
+// XSSLint - Find potential XSS vulnerabilities
 gulp.task("xsslint", function() {
   var files = glob.sync("src/scripts/app/**/*.js");
   files.forEach(function(file) {
@@ -235,6 +157,26 @@ gulp.task("xsslint", function() {
 //   });
 // });
 
+// Build Task !
+gulp.task("new", ["clean-all"], function(done) {
+  runSequence(
+    "jshint",
+    "xsslint",
+    "libcopy",
+    "jscopy",
+    "fonts",
+    "images",
+    "html",
+    "csscopy",
+    "stripcss",
+    "csspurify",
+    "cleantemp",
+    function() {
+      console.log("Build successful!");
+      done();
+    }
+  );
+});
 
 gulp.task("serve", ["new"], function() {
   connect.server({
