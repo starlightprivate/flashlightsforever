@@ -20,7 +20,8 @@ var _         = require("lodash"),
   glob        = require("glob"),
   runSequence = require("run-sequence"),
   addsrc      = require("gulp-add-src"),
-  XSSLint     = require("xsslint");
+  XSSLint     = require("xsslint"),
+  CSSfilter   = require('cssfilter');
 
 var config = {
   src: "src", // source directory
@@ -256,6 +257,17 @@ gulp.task("xsslint", function() {
     });
   });
 });
+
+// CSSFilter
+// gulp.task("cssfilter", function() {
+//   var files = glob.sync("src/scripts/app/**/*.css");
+//   files.forEach(function(file) {
+//     var warnings = CSSFilter.run(file);
+//     warnings.forEach(function(warning) {
+//       console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` style");
+//     });
+//   });
+// });
 
 
 
