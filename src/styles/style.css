@@ -1103,12 +1103,13 @@ input#creditcard::-webkit-outer-spin-button {
     height:67px;
     display:table-cell;
     vertical-align:middle;
-    background-image:url(../images/icon-truck.jpg);
+    background-image:url(../images/icon-truck.png);
     background-repeat:no-repeat;
     background-position:center;
 }
 
 .pg-checkout .btn-complete .btn-img-part .btn-img-holder {
+    display: block;
     width:67px;
 }
 
