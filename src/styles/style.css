@@ -1689,7 +1689,7 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .pg-checkout .img-holder .img-desktop {
-        display:block!important;
+        display:block;
     }
 }
 
@@ -1857,7 +1857,7 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .pg-checkout .img-holder .img-mobile {
-        display:block!important;
+        display:block;
     }
 
     .pg-checkout .step .step-content {
