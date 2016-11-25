@@ -356,14 +356,7 @@
       e.preventDefault();
     });
     // Credit Card Behavior BEGIN
-    $('input#creditcard').detectCard({
-      supported: [
-        'american-express',
-        'visa',
-        'mastercard',
-        'discover'
-      ]
-    });
+    
     $('input#creditcard').on('keyup', function () {
       if ($(this).val() === '' || $(this).val() === undefined) {
         $(this).parents('.form-group').prev('.payment-icon').find('.cc-icon').removeClass('inactive active');

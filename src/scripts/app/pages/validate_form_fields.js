@@ -27,27 +27,27 @@
       });
     }
   }
-  function autoFillCheck() {
-    //validateFields($("#form-contact"), ["name", "email", "phoneNumber"]);
-    validateFields($('#form-address'), [
-      'address1',
-      'postalCode',
-      'city'
-    ]);
-    validateFields($('#checkoutForm'), [
-      'firstName',
-      'emailAddress',
-      'phoneNumber',
-      'address1',
-      'postalCode',
-      'city',
-      'cardNumber'
-    ]);
-    setTimeout(function () {
-      autoFillCheck();
-    }, 500);
-  }
-  setTimeout(function () {
-    autoFillCheck();
-  }, 500);
+  // function autoFillCheck() {
+  //   //validateFields($("#form-contact"), ["name", "email", "phoneNumber"]);
+  //   validateFields($('#form-address'), [
+  //     'address1',
+  //     'postalCode',
+  //     'city'
+  //   ]);
+  //   validateFields($('#checkoutForm'), [
+  //     'firstName',
+  //     'emailAddress',
+  //     'phoneNumber',
+  //     'address1',
+  //     'postalCode',
+  //     'city',
+  //     'cardNumber'
+  //   ]);
+  //   setTimeout(function () {
+  //     autoFillCheck();
+  //   }, 500);
+  // }
+  // setTimeout(function () {
+  //   autoFillCheck();
+  // }, 500);
 }());
