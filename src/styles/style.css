@@ -42,8 +42,8 @@ body > div {
 }
 
 #js-div-loading-bar .sk-circle {
-    left:calc(50%-30px);
-    top:calc(50%-30px);
+    left:calc(50% - 30px);
+    top:calc(50% - 30px);
     width:60px;
     height:60px;
     position:absolute;
@@ -201,13 +201,8 @@ body > div {
     animation-delay:.1s;
 }
 
-40% {
-    -webkit-transform:scale(1);
-    transform:scale(1);
-}
-
 @font-face {
-    src:local("Open Sans"), local(OpenSans), url(../fonts/Open-Sans/open-sans-v13-latin-regular.eot?#iefix) format(embedded-opentype), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff2) format(woff2), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff) format(woff), url(../fonts/Open-Sans/open-sans-v13-latin-regular.ttf) format(truetype), url(../fonts/Open-Sans/open-sans-v13-latin-regular.svg#OpenSans) format(svg);
+    src:local("Open Sans"), local(OpenSans), url(../fonts/Open-Sans/open-sans-v13-latin-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff2) format("woff2"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff) format("woff"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.ttf) format("truetype"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.svg#OpenSans) format("svg");
     font-family:'Open Sans', sans-serif;
     font-style:normal;
     font-weight:800;
@@ -217,7 +212,10 @@ html:hover [class^="ss-"] {
     -ms-zoom:1;
 }
 
-.ss-icon,[class^="ss-"]:before,[class*=" ss-"]:before,[class^="ss-"].right:after,[class*=" ss-"].right:after {
+.ss-icon,[class^="ss-"]:before,
+[class*=" ss-"]:before,
+[class^="ss-"].right:after,
+[class*=" ss-"].right:after {
     font-style:normal;
     text-decoration:none;
     text-rendering:optimizeLegibility;
@@ -421,7 +419,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal:hover svg {
-    fill:#F44336;
+    fill: #F44336;
 }
 
 .custom-modal .close-modal:focus,.custom-modal .close-modal:active {
@@ -429,7 +427,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal svg {
-    fill:#919191;
+    fill: #919191;
 }
 
 .custom-modal .btn-modal-confirm {
@@ -490,7 +488,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .modal-content .form-group .fv-control-feedback {
-    top:30px!important;
+    
     right:30px;
     font-size:14px;
     width:45px;
@@ -500,7 +498,6 @@ html:hover [class^="ss-"] {
 
 .custom-modal .modal-content .form-group .icon-field {
     position:absolute;
-    top:30px!important;
     font-size:20px;
     right:0;
     text-align:center;
@@ -611,7 +608,7 @@ img.resp {
     content:'';
     width:1px;
     height:100%;
-    background:linear-gradient(180deg,#5959590%,#b7b7b750%,#595959100%);
+    background:linear-gradient(180deg, #595959 0%, #b7b7b7 50%, #595959 100%);
     position:absolute;
     top:0;
     bottom:0;
@@ -627,10 +624,11 @@ img.resp {
 .pg-index .feature .feature-item .media h4 {
     font-size:22px;
     font-weight:600;
-    color:#000;
+    color:#fff;
     line-height:1;
     margin-top:18px;
     margin-bottom:7px;
+    text-align: center;
 }
 
 .pg-index .feature .feature-item .media p {
@@ -997,12 +995,6 @@ input#creditcard::-webkit-outer-spin-button {
     border:2px solid rgba(255,2,0,0.76);
 }
 
-.pg-checkout .payment .cc-sm.inactive {
-    opacity:0.3;
-    -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-}
-
 .pg-checkout .payment a:not(:last-of-type) .cc-sm {
     margin-right:14px;
 }
@@ -1048,7 +1040,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-checkout .btn-complete {
     display:table;
-    background:linear-gradient(180deg,#f82c290%,#e9292750%,#d5201e95%,#d3201d100%);
+    background:linear-gradient(180deg,#f82c29 0%,#e92927 50%,#d5201e 95%,#d3201d 100%);
     font-size:0;
     width:100%;
     text-shadow:1px -1px 1px rgba(132,5,5,0.66);
@@ -1060,7 +1052,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .btn-complete .btn-text {
-    background:linear-gradient(180deg,#ff4f4a0%,#f6484450%,#de333095%,#db2f2c100%);
+    background:linear-gradient(180deg,#ff4f4a 0%,#f64844 50%,#de3330 95%,#db2f2c 100%);
     width:100%;
     display:table-cell;
     font-size:14px;
@@ -1084,11 +1076,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .btn-complete:not(.pulse),.pg-checkout .btn-complete:hover {
-    background:linear-gradient(180deg,#cb39370%,#c1393650%,#ac2b2995%,#aa2927100%);
+    background:linear-gradient(180deg,#cb3937 0%,#c13936 50%,#ac2b29 95%,#aa2927 100%);
 }
 
 .pg-checkout .btn-complete:not(.pulse) .btn-text,.pg-checkout .btn-complete:hover .btn-text {
-    background:linear-gradient(180deg,#cd524f0%,#c54c4950%,#b1393795%,#ae3635100%);
+    background:linear-gradient(180deg,#cd524f 0%,#c54c49 50%,#b13937 95%,#ae3635 100%);
 }
 
 .pg-checkout .btn-complete:active,.pg-checkout .btn-complete:focus {
@@ -1156,22 +1148,6 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-checkout.mobile-mode #step-4 h2 {
     margin-top:0;
-}
-
-50% {
-    -o-transform:scale(0.9);
-    -moz-transform:scale(0.9);
-    -webkit-transform:scale(0.9);
-    -ms-transform:scale(0.9);
-    transform:scale(0.9);
-}
-
-100% {
-    -o-transform:scale(1);
-    -moz-transform:scale(1);
-    -webkit-transform:scale(1);
-    -ms-transform:scale(1);
-    transform:scale(1);
 }
 
 .pg-battery {
@@ -1533,7 +1509,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-tm3 .footer .footer-links .list-inline a {
-    font-size:em(14);
+    font-size:14px;
 }
 
 .pg-tm3 .footer .footer-links .list-inline > li {
@@ -1677,7 +1653,7 @@ input#creditcard::-webkit-outer-spin-button {
     top:-7px;
 }
 
-@media screen and (min-width 544px){
+@media screen and (min-width :544px){
     .hidden-sm-up {
         display:none!important;
     }
@@ -1769,6 +1745,10 @@ input#creditcard::-webkit-outer-spin-button {
         display:block;
         width:100%;
     }
+
+    .custom-modal .modal-content .form-group .icon-field {
+        top: 30px;
+    }
 }
 
 @media screen and (min-width:667px){
@@ -1788,11 +1768,11 @@ input#creditcard::-webkit-outer-spin-button {
     .custom-modal .form-control {
         padding-right:35px;
         float:right;
-        width:calc(100%-150px);
+        width:calc(100% - 150px);
     }
 
     .custom-modal .form-control#state {
-        width:calc(100%-100px);
+        width:calc(100% - 100px);
     }
 
     .custom-modal .validMessage,.custom-modal .form-control-feedback {
