@@ -273,7 +273,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="creditcard">Card Number *</label>
-                                                    <input type="number" class="form-control clearable required numfield" name="cardNumber" id="creditcard" pattern="[0-9]*" placeholder="•••• •••• •••• ••••"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeydown="if (this.value.length > 15) { return false; }" maxlength="16" autocomplete="cc-number" >
+                                                    <input class="form-control clearable required numfield" name="cardNumber" id="creditcard" placeholder="•••• •••• •••• ••••"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeydown="if (this.value.length > 15) { return false; }" autocomplete="cc-number" >
                                                 </div>
                                                 <label for="month">Expiration * <small>(MM/YY)</small></label>
                                                 <div class="row no-gutters exp-detail">
@@ -329,10 +329,10 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-danger btn-complete">
-                                    <p class="btn-text">Ship Me My Tactical Mastery Flashlight!</p>
-                                    <div class="btn-img-part">
-                                        <div class="btn-img-holder"></div>
-                                    </div>
+                                    <span class="btn-text">Ship Me My Tactical Mastery Flashlight!</span>
+                                    <span class="btn-img-part">
+                                        <span class="btn-img-holder"></span>
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -370,23 +370,6 @@
         </div>
         <!-- Loading Icons -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="tm-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
-                        </button>
-                        <h4 class="modal-title" id="my-modal-label">Modal title</h4>
-                    </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
         <div class="modal fade" id="tm-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

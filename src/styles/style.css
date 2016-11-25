@@ -1109,6 +1109,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .btn-complete .btn-img-part .btn-img-holder {
+    display: block;
     width:67px;
 }
 
