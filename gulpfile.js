@@ -39,7 +39,6 @@ gulp.task('jshint', () =>
            "src/scripts/app/config.js" , 
            "src/scripts/app/utils.js" , 
            "src/scripts/vendor/addclear.js",
-           "src/scripts/vendor/xss.js"
         ])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))

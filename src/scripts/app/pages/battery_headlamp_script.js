@@ -55,7 +55,7 @@
               } else {
                 for (var k in json.message) {
                   if (json.message.hasOwnProperty(k)) {
-                    messageOut += k + ':' + json.message[k] + '<br>';
+                    messageOut += k + ':' + json.message[k] + '&lt;br&gt;';
                   }
                 }
               }

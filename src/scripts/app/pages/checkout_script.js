@@ -76,7 +76,7 @@
             errHead = 'Payment validation failed:  Processor Declined.';
             resp.message += '<br><br>For security reasons, you must re-enter a new card number.<br><br>' + 'Tip: you may try another card or call <a href=\'tel:+18558807233\'>(855) 880-7233</a>.';
           }
-          errBody = '<span style=\'font-size:20px\'>' + resp.message + '</span>';
+          errBody = '&lt;span style=\'font-size:20px\'&gt;' + resp.message + '&lt;&#x2F;span&gt;';
           bootstrapModal(errBody, errHead);
         }
       }
@@ -143,7 +143,7 @@
       // Retrieve the valid message via getOptions()
       var message = bv.getOptions(field).validMessage;
       if (message) {
-        $span.html(message);
+        $span.text(message);
       }
     }).formValidation({
       framework: 'bootstrap4',

@@ -8,7 +8,7 @@ function init_field_fv(e, data) {
   // Retrieve the valid message via getOptions()
   var message = bv.getOptions(field).validMessage;
   if (message) {
-    $span.html(message);
+    $span.text(message);
   }
 }
 function success_field_fv(e, data) {

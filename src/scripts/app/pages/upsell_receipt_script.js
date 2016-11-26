@@ -24,15 +24,15 @@
     if ($.type(orderInfos) === 'array') {
       orderInfos = orderInfos[0];
     }
-    $('#orderNumber').html(orderInfos.orderId);
+    $('#orderNumber').text(orderInfos.orderId);
     callAPI('get-trans', orderInfos.orderId, 'GET', function (resp) {
       if (resp.success) {
         if (resp.data) {
           var firstRow = resp.data[0];
           if (firstRow && firstRow.merchant) {
-            $('#ccIdentity').html('<br>' + firstRow.merchant);
+            $('#ccIdentity').text('&lt;br&gt;' + firstRow.merchant);
           } else {
-            $('#ccIdentity').html('<br>Tactical Mastery');
+            $('#ccIdentity').text('&lt;br&gt;Tactical Mastery');
           }
         }
       }

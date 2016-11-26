@@ -132,7 +132,7 @@ function validate() {
         domains: domains,
         suggested: function (element, suggestion) {
           $('#email + small').show();
-          $('#email + small').html('Did you mean <a href=\'javascript:void(0)\'\'>' + suggestion.full + '</a>');
+          $('#email + small').text('Did you mean &lt;a href=\'javascript:void(0)\'\'&gt;' + suggestion.full + '&lt;&#x2F;a&gt;');
         },
         empty: function (element) {
         }
