@@ -19,7 +19,7 @@ html,body {
 }
 
 body {
-    padding-right:0!important;
+    padding-right:0;
 }
 
 body > div {
@@ -27,7 +27,7 @@ body > div {
 }
 
 .modal {
-    -webkit-overflow-scrolling:auto!important;
+    -webkit-overflow-scrolling:auto;
 }
 
 #js-div-loading-bar {
@@ -197,16 +197,10 @@ body > div {
 }
 
 #js-div-loading-bar .sk-circle .sk-circle12:before {
-    -webkit-animation-delay:.1s;
-    animation-delay:.1s;
+    -webkit-animation-delay:0.1s;
+    animation-delay:0.1s;
 }
 
-@font-face {
-    src:local("Open Sans"), local(OpenSans), url(../fonts/Open-Sans/open-sans-v13-latin-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff2) format("woff2"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff) format("woff"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.ttf) format("truetype"), url(../fonts/Open-Sans/open-sans-v13-latin-regular.svg#OpenSans) format("svg");
-    font-family:'Open Sans', sans-serif;
-    font-style:normal;
-    font-weight:800;
-}
 
 html:hover [class^="ss-"] {
     -ms-zoom:1;
@@ -396,7 +390,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal {
-    background-color:#FFF!important;
+    background-color:#FFF;
     position:absolute;
     border-radius:100%;
     top:-20px;
@@ -404,13 +398,13 @@ html:hover [class^="ss-"] {
     width:40px;
     height:40px;
     box-shadow:0 2px 5px rgba(0,0,0,0.1), 0 2px 3px rgba(0,0,0,0.15);
-    opacity:1!important;
+    opacity:1;
     transition:all .15s ease;
     line-height:0;
     font-size:34px;
     font-weight:300;
     color:#888;
-    padding:5px!important;
+    padding:5px;
 }
 
 .custom-modal .close-modal:hover {
@@ -423,7 +417,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal:focus,.custom-modal .close-modal:active {
-    outline:none!important;
+    outline:none;
 }
 
 .custom-modal .close-modal svg {
@@ -443,7 +437,7 @@ html:hover [class^="ss-"] {
 .custom-modal .btn-modal-confirm:hover,.custom-modal .btn-modal-confirm:focus,.custom-modal .btn-modal-confirm:active {
     background:#E53935;
     box-shadow:inset 0 32px 59px -18px rgba(255,255,255,0.59), inset 1px 1px 4px rgba(255,255,255,0.55);
-    outline:none!important;
+    outline:none;
     border-color:#E53935;
 }
 
@@ -451,7 +445,7 @@ html:hover [class^="ss-"] {
     color:#FFEBEE;
     background-color:#E53935;
     box-shadow:inset 0 20px 65px -23px rgba(0,0,0,0.64), inset 1px 1px 4px rgba(232,55,55,0.52);
-    outline:none!important;
+    outline:none;
     border-color:#E53935;
 }
 
@@ -528,13 +522,13 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal a[href='#clear'] {
-    top:40px!important;
-    right:70px!important;
+    top:40px;
+    right:70px;
     z-index:4;
 }
 
 img.resp {
-    max-width:100%!important;
+    max-width:100%;
 }
 
 .pg-index {
@@ -608,7 +602,7 @@ img.resp {
     content:'';
     width:1px;
     height:100%;
-    background:linear-gradient(180deg, #595959 0%, #b7b7b7 50%, #595959 100%);
+    background:linear-gradient(#595959 0%, #b7b7b7 50%, #595959 100%);
     position:absolute;
     top:0;
     bottom:0;
@@ -766,11 +760,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 #form-address .state-col .fv-control-feedback {
-    right:20px!important;
+    right:20px;
 }
 
 #form-address a[href="#clear"] {
-    right:40px!important;
+    right:40px;
 }
 
 .pg-checkout {
@@ -1085,7 +1079,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-checkout .btn-complete:active,.pg-checkout .btn-complete:focus {
     color:#fff;
-    outline:none!important;
+    outline:none;
     top:2px;
     border-color:transparent;
 }
@@ -1116,7 +1110,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .fv-control-feedback {
-    top:25px!important;
+    top:25px;
     font-size:14px;
 }
 
@@ -1126,7 +1120,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout #year ~ .fv-control-feedback,.pg-checkout #month ~ .fv-control-feedback {
-    top:0!important;
+    top:0;
     height:25px;
     line-height:28px;
     right:25px;
@@ -1143,7 +1137,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(1),.pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(2),.pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(3) {
-    display:block!important;
+    display:block;
 }
 
 .pg-checkout.mobile-mode #step-4 h2 {
@@ -1247,12 +1241,12 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-battery .upsell .btn:hover {
     box-shadow:inset 0 32px 59px -18px rgba(255,255,255,0.59), inset 1px 1px 4px rgba(255,255,255,0.55), 0 2px 10px rgba(0,0,0,0.16), 0 2px 15px rgba(0,0,0,0.1);
-    outline:none!important;
+    outline:none;
 }
 
 .pg-battery .upsell .btn:active:hover {
     box-shadow:inset 0 20px 65px -23px rgba(0,0,0,0.62), inset 1px 1px 4px #3aae00;
-    outline:none!important;
+    outline:none;
     border-color:#309200;
 }
 
@@ -1567,7 +1561,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .hidden-xs-up,.custom-modal .modal-content .has-warning #email ~ [data-fv-validator="emailAddress"] {
-    display:none!important;
+    display:none;
 }
 
 .custom-modal .address-2,.pg-index .feature .feature-bar,.pg-index .feature .feature-item:nth-child(5):after,.pg-checkout .light-info .info-middle br,.pg-checkout .step .step-content .label-mobile,.pg-checkout .img-shipping,.pg-checkout .radio-box input[type="radio"],.pg-checkout.mobile-mode #step-2,.pg-checkout.mobile-mode #step-3,.pg-checkout.mobile-mode #step-1 .step-content .radio-box,.fv-form [placeholder]::-ms-clear {
@@ -1684,13 +1678,13 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (min-width :544px){
     .hidden-sm-up {
-        display:none!important;
+        display:none;
     }
 }
 
 @media screen and (min-width :768px){
     .hidden-md-up {
-        display:none!important;
+        display:none;
     }
 
     .pg-checkout .img-holder .img-desktop {
@@ -1700,7 +1694,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (min-width:992px){
     .hidden-lg-up {
-        display:none!important;
+        display:none;
     }
 }
 
@@ -1717,24 +1711,24 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .custom-modal .modal-dialog .modal-content {
-        box-shadow:0 0 transparent!important;
+        box-shadow:0 0 transparent;
     }
 
     .custom-modal .modal-dialog .modal-header {
-        padding:20px 15px!important;
+        padding:20px 15px;
     }
 
     .custom-modal .modal-dialog .modal-body {
-        padding:15px 17px!important;
+        padding:15px 17px;
     }
 
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.4em!important;
+        font-size:1.4em;
     }
 
     .custom-modal .modal-dialog .close-modal {
-        box-shadow:0 0 transparent!important;
-        background:transparent!important;
+        box-shadow:0 0 transparent;
+        background:transparent;
         top:0;
         right:0;
         width:30px;
@@ -1760,7 +1754,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (max-width:370px){
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.2em!important;
+        font-size:1.2em;
     }
 
     .custom-modal .modal-dialog .btn-modal-confirm {
@@ -1782,11 +1776,11 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (min-width:667px){
     .custom-modal .modal-header {
-        padding:10px 15px!important;
+        padding:10px 15px;
     }
 
     .custom-modal a[href='#clear'] {
-        top:16px!important;
+        top:16px;
     }
 
     .custom-modal label {
@@ -1811,13 +1805,13 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .custom-modal .form-group .fv-control-feedback,.custom-modal .icon-field {
-        top:0!important;
+        top:0;
     }
 }
 
 @media screen and (min-width:315px) and (max-width:480px){
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.2em!important;
+        font-size:1.2em;
     }
 }
 
@@ -1903,7 +1897,7 @@ input#creditcard::-webkit-outer-spin-button {
 
     .pg-checkout .container {
         max-width:100%;
-        width:100%!important;
+        width:100%;
     }
 
     .pg-checkout .main-content {
@@ -2140,7 +2134,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (max-width:388px){
     .pg-index .btn .btn-title {
-        font-size:18px!important;
+        font-size:18px;
     }
 
     .pg-index .btn.btn-green .btn-text {
