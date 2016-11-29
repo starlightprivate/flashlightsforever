@@ -25,7 +25,7 @@ function err_field_fv(e, data) {
 }
 (function () {
   'use strict';
-  $('input[name=phoneNumber]').mask('000-000-0000', phoneNumberOptions);
+  $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
   var MediaStorage = {};
   // Lead create/update
   function createLead(data, callback) {
