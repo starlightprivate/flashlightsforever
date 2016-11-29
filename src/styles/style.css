@@ -1545,7 +1545,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
-    top:32px;
+    top:25px;
 }
 
 .fv-form-bootstrap4:not(.form-inline) .form-check~.fv-control-feedback {
