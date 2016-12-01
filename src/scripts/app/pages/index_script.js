@@ -73,6 +73,11 @@ function err_field_fv(e, data) {
     tempData.FirstName = $('[name=contactModalName]').val();
     tempData.MobilePhone = $('[name=phoneNumber]').val();
 
+    if(!safe(tempData.Email) || !safe(tempData.FirstName) || !safe(tempData.MobilePhone)){
+      // There is any evil RegEx in the User Input data
+      return;
+    }
+
     data.Email = filterXSS(tempData.Email);
     data.FirstName = filterXSS(tempData.FirstName);
     data.MobilePhone = filterXSS(tempData.MobilePhone);
