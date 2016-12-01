@@ -23,7 +23,8 @@ var _         = require("lodash"),
   XSSLint     = require("xsslint"),
   CSSfilter   = require("cssfilter"),
   validator   = require('validator'),
-  stripCssComments = require("gulp-strip-css-comments");
+  stripCssComments = require("gulp-strip-css-comments"),
+  safe        = require('safe-regex');
 
 var config = {
   src: "src", // source directory
@@ -153,6 +154,17 @@ gulp.task("validator", function() {
     console.log(validator.isEmail('foo@bar.com'));
 });
 
+gulp.task("safe-regex", function() {
+    var regexs = [
+            '/[0-9*]/', 
+            '((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}', 
+            '\(([0-9]{2}|0{1}((x|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}'
+        ];
+    regexs.forEach(function(regex) {
+        console.log(safe(regex));
+    });
+});
+
 // CSSFilter
 // gulp.task("cssfilter", function() {
 //   var files = glob.sync("src/scripts/app/**/*.css");
@@ -170,6 +182,7 @@ gulp.task("new", ["clean-all"], function(done) {
     "jshint",
     "xsslint",
     "validator",
+    "safe-regex",
     "libcopy",
     "jscopy",
     "fonts",
