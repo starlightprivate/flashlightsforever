@@ -64,6 +64,9 @@ function err_field_fv(e, data) {
   var submittedContactForm = false;
   // This switches between contact modal & address modal
   function submitContactForm() {
+
+    //console.log(safe('(x+x+)+y'));
+
     var data = {};
     var tempData = {};
     tempData.Email = $('[name=email]').val();
