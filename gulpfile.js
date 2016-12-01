@@ -22,6 +22,7 @@ var _         = require("lodash"),
   addsrc      = require("gulp-add-src"),
   XSSLint     = require("xsslint"),
   CSSfilter   = require("cssfilter"),
+  validator   = require('validator'),
   stripCssComments = require("gulp-strip-css-comments");
 
 var config = {
@@ -145,6 +146,13 @@ gulp.task("xsslint", function() {
   });
 });
 
+// String Validation and Sanitization
+// https://www.npmjs.com/package/validator
+
+gulp.task("validator", function() {
+    console.log(validator.isEmail('foo@bar.com'));
+});
+
 // CSSFilter
 // gulp.task("cssfilter", function() {
 //   var files = glob.sync("src/scripts/app/**/*.css");
@@ -161,6 +169,7 @@ gulp.task("new", ["clean-all"], function(done) {
   runSequence(
     "jshint",
     "xsslint",
+    "validator",
     "libcopy",
     "jscopy",
     "fonts",
