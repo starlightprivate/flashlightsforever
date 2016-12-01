@@ -35,10 +35,10 @@
             'campaignId',
             'productId'
         ];
-        var orderDetails = {};
+        var orderDetails = {}, evil = false;
         for (var index = 0; index < apiFields.length; index++) {
             var key = apiFields[index];
-            var uVal, dirty, evil = false;
+            var uVal, dirty;
             if (key !== 'productId') {
                 dirty = $('[name=' + key + ']').val();
             } else {
@@ -51,7 +51,7 @@
             }
             uVal = filterXSS(dirty);
             orderDetails[key] = uVal;
-        };
+        }
         if(evil) return;
         
         orderDetails.cardMonth = $('[name=month]').val();
