@@ -9,6 +9,7 @@ var _         = require("lodash"),
   jshint      = require("gulp-jshint"),
   uglify      = require("gulp-uglify"),
   rename      = require("gulp-rename"),
+  browserify  = require('gulp-browserify'),
   del         = require("del"),
   concat      = require("gulp-concat"),
   cache       = require("gulp-cache"),
@@ -76,6 +77,14 @@ gulp.task("libcopy", function() {
                   )
       .pipe(newer(config.dist + "/assets/libs"))
       .pipe(gulp.dest(config.dist + "/assets/libs"));
+});
+
+gulp.task('safe-regex-browserify', function() {
+    // Single entry point to browserify 
+    gulp.src('safe-regex-shell.js')
+        .pipe(browserify())
+        .pipe(rename('safe-regex.js'))
+        .pipe(gulp.dest(config.dist + "/assets/js"))
 });
 
 // Copy Custom JS 
@@ -165,6 +174,7 @@ gulp.task("safe-regex", function() {
     });
 });
 
+
 // CSSFilter
 // gulp.task("cssfilter", function() {
 //   var files = glob.sync("src/scripts/app/**/*.css");
@@ -181,10 +191,11 @@ gulp.task("new", ["clean-all"], function(done) {
   runSequence(
     "jshint",
     "xsslint",
-    "validator",
-    "safe-regex",
+    //"validator",
+    //"safe-regex",
     "libcopy",
     "jscopy",
+    "safe-regex-browserify",
     "fonts",
     "images",
     "html",
