@@ -84,7 +84,7 @@ gulp.task('safe-regex-browserify', function() {
     gulp.src('safe-regex-shell.js')
         .pipe(browserify())
         .pipe(rename('safe-regex.js'))
-        .pipe(gulp.dest(config.dist + "/assets/js"))
+        .pipe(gulp.dest(config.dist + "/assets/js"));
 });
 
 // Copy Custom JS 
