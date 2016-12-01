@@ -1545,11 +1545,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
-    top:25px;
+    top:27px;
 }
 
 .fv-form-bootstrap4:not(.form-inline) .form-check~.fv-control-feedback {
-    top:25px;
+    top:27px;
 }
 
 .fv-form-bootstrap4 .has-success label,.fv-form-bootstrap4 .has-success .fv-control-feedback {
@@ -1806,6 +1806,12 @@ input#creditcard::-webkit-outer-spin-button {
 
     .custom-modal .form-group .fv-control-feedback,.custom-modal .icon-field {
         top:0;
+    }
+    .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+        top:0;
+    }
+    .pg-checkout .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+        top: 27px;
     }
 }
 
