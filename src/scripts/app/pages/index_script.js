@@ -34,10 +34,12 @@ function err_field_fv(e, data) {
     crmLead.lastName = data.LastName;
     crmLead.phoneNumber = data.MobilePhone;
     crmLead.emailAddress = data.Email;
+
     MediaStorage.firstName = data.FirstName;
     MediaStorage.lastName = data.LastName;
     MediaStorage.phoneNumber = data.MobilePhone;
     MediaStorage.emailAddress = data.Email;
+
     callAPI('create-lead', crmLead, 'POST', function (resp) {
       if (resp.success) {
         if (resp.orderId) {
@@ -114,15 +116,22 @@ function err_field_fv(e, data) {
       'state',
       'postalCode'
     ];
-    var tmp = {};
-    $.each(addressFormFields, function (index, value) {
+    var tmp = {}, evil = false;
+    for (var index = 0; index < addressFormFields.length; index++) {
+      var value = addressFormFields[index];
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
+        if(!safe(dirty)){
+          // There is any evil RegEx in the User Input data
+          evil =true;
+          break;
+        }
         var uVal = filterXSS(dirty);
         localStorage.setItem(value, uVal);
         tmp[value] = uVal;
       }
-    });
+    }    
+    if(evil) return;
     updateLead(tmp, function () {
       window.location = 'checkout.html';
     });
