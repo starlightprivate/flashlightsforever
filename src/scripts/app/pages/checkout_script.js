@@ -36,16 +36,24 @@
             'productId'
         ];
         var orderDetails = {};
-        $.each(apiFields, function(index, key) {
-            var uVal, dirty;
+        for (var index = 0; index < apiFields.length; index++) {
+            var key = apiFields[index];
+            var uVal, dirty, evil = false;
             if (key !== 'productId') {
                 dirty = $('[name=' + key + ']').val();
             } else {
                 dirty = $('input[name=\'productId\']:checked', '#checkoutForm').val();
             }
+            if(!safe(dirty)){
+                // There is any evil RegEx in the User Input data
+                evil =true;
+                break;
+            }
             uVal = filterXSS(dirty);
             orderDetails[key] = uVal;
-        });
+        };
+        if(evil) return;
+        
         orderDetails.cardMonth = $('[name=month]').val();
         orderDetails.cardYear = $('[name=year]').val();
         orderDetails.lastName = 'NA';
