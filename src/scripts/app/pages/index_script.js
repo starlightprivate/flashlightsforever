@@ -75,9 +75,15 @@ function err_field_fv(e, data) {
     tempData.FirstName = $('[name=contactModalName]').val();
     tempData.MobilePhone = $('[name=phoneNumber]').val();
 
-    if(!safe(tempData.Email) || !safe(tempData.FirstName) || !safe(tempData.MobilePhone)){
+    if(!safe(tempData.Email)){
       // There is any evil RegEx in the User Input data
-      return;
+      tempData.Email = validator.blacklist(tempData.Email, '\\+)(^~[\\]');
+    }
+    if(!safe(tempData.FirstName)){
+      tempData.FirstName = validator.blacklist(tempData.FirstName, '\\+)(^~[\\]');
+    }
+    if(!safe(tempData.MobilePhone)){
+      tempData.MobilePhone = validator.blacklist(tempData.MobilePhone, '\\+)(^~[\\]');
     }
 
     data.Email = filterXSS(tempData.Email);
