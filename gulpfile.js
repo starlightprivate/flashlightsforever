@@ -33,7 +33,8 @@ var config = {
   port: 3000
 };
 
-
+// var aaa = validator.blacklist('(x+x+)+y^~', '\\+)(^~[\\]');
+// console.log(aaa);
 
 // Stylish reporter for JSHint
 gulp.task('jshint', () =>
@@ -93,7 +94,8 @@ gulp.task("jscopy", function() {
                    "src/scripts/app/config.js" , 
                    "src/scripts/app/utils.js" , 
                    "src/scripts/vendor/addclear.js",
-                   "src/scripts/vendor/xss.js"
+                   "src/scripts/vendor/xss.js",
+                   "node_modules/validator/validator.min.js"
                    ])
       .pipe(newer(config.dist + "/assets/js"))
       .pipe(gulp.dest(config.dist + "/assets/js"));
