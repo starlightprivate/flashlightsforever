@@ -75,9 +75,15 @@ function err_field_fv(e, data) {
     tempData.FirstName = $('[name=contactModalName]').val();
     tempData.MobilePhone = $('[name=phoneNumber]').val();
 
-    if(!safe(tempData.Email) || !safe(tempData.FirstName) || !safe(tempData.MobilePhone)){
+    if(!safe(tempData.Email)){
       // There is any evil RegEx in the User Input data
-      return;
+      tempData.Email = validator.blacklist(tempData.Email, '\\+)(^~{}[\\]');
+    }
+    if(!safe(tempData.FirstName)){
+      tempData.FirstName = validator.blacklist(tempData.FirstName, '\\+)(^~{}[\\]');
+    }
+    if(!safe(tempData.MobilePhone)){
+      tempData.MobilePhone = validator.blacklist(tempData.MobilePhone, '\\+)(^~{}[\\]');
     }
 
     data.Email = filterXSS(tempData.Email);
@@ -116,22 +122,22 @@ function err_field_fv(e, data) {
       'state',
       'postalCode'
     ];
-    var tmp = {}, evil = false;
+    var tmp = {};
     for (var index = 0; index < addressFormFields.length; index++) {
       var value = addressFormFields[index];
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
         if(!safe(dirty)){
           // There is any evil RegEx in the User Input data
-          evil =true;
-          break;
+          //evil =true;
+          dirty = validator.blacklist(dirty, '\\+)(^~{}[\\]');
         }
         var uVal = filterXSS(dirty);
         localStorage.setItem(value, uVal);
         tmp[value] = uVal;
       }
     }    
-    if(evil) return;
+    //if(evil) return;
     updateLead(tmp, function () {
       window.location = 'checkout.html';
     });

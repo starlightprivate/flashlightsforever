@@ -35,7 +35,7 @@
             'campaignId',
             'productId'
         ];
-        var orderDetails = {}, evil = false;
+        var orderDetails = {};
         for (var index = 0; index < apiFields.length; index++) {
             var key = apiFields[index];
             var uVal, dirty;
@@ -46,13 +46,14 @@
             }
             if(!safe(dirty)){
                 // There is any evil RegEx in the User Input data
-                evil =true;
+                //evil =true;
+                dirty = validator.blacklist(dirty, '\\+)(^~{}[\\]');
                 break;
             }
             uVal = filterXSS(dirty);
             orderDetails[key] = uVal;
         }
-        if(evil) return;
+        // if(evil) return;
         
         orderDetails.cardMonth = $('[name=month]').val();
         orderDetails.cardYear = $('[name=year]').val();
