@@ -39,8 +39,8 @@ Working with docker image
 
 ```shell
 
-docker build -t frontend .
-docker run frontend
+docker build -t tacticalmastery/frontend .
+docker run tacticalmastery/frontend
 
 ```
 
