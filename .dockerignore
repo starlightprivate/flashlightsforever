@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Node template
 # Logs
 logs
 *.log
@@ -31,9 +33,6 @@ build/Release
 node_modules
 jspm_packages
 
-# 
-tacticalsales
-
 # Optional npm cache directory
 .npm
 
@@ -49,5 +48,4 @@ tacticalsales
 # Yarn Integrity file
 .yarn-integrity
 
-#Webstorm
-.idea/
+.git
