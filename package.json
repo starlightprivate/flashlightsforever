@@ -9,6 +9,7 @@
     "dev": "gulp"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "safe-regex": "^1.1.0",
     "validator": "^6.2.0"
   },

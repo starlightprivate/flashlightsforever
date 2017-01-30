@@ -2,7 +2,8 @@
 
 "use strict";
 
-var gulp        = require("gulp"),
+var _         = require('lodash'), 
+  gulp        = require("gulp"),
   sass        = require("gulp-sass"),
   cleanCSS    = require("gulp-clean-css"),
   jshint      = require("gulp-jshint"),
