@@ -2,8 +2,7 @@
 
 "use strict";
 
-var _         = require("lodash"),
-  gulp        = require("gulp"),
+var gulp        = require("gulp"),
   sass        = require("gulp-sass"),
   cleanCSS    = require("gulp-clean-css"),
   jshint      = require("gulp-jshint"),
@@ -32,9 +31,6 @@ var config = {
   dist: "tacticalsales", // destination directory
   port: 3000
 };
-
-// var aaa = validator.blacklist('(x+x+)+y^~', '\\+)(^~[\\]');
-// console.log(aaa);
 
 // Stylish reporter for JSHint
 gulp.task('jshint', () =>
@@ -189,7 +185,7 @@ gulp.task("safe-regex", function() {
 // });
 
 // Build Task !
-gulp.task("new", ["clean-all"], function(done) {
+gulp.task("build", ["clean-all"], function(done) {
   runSequence(
     "jshint",
     "xsslint",
@@ -212,7 +208,7 @@ gulp.task("new", ["clean-all"], function(done) {
   );
 });
 
-gulp.task("serve", ["new"], function() {
+gulp.task("serve", ["build"], function() {
   connect.server({
     root: "tacticalsales",
     port : 9000
@@ -220,4 +216,4 @@ gulp.task("serve", ["new"], function() {
 });
 
 // Default task
-gulp.task("default", ["serve"]);
+gulp.task("default", ["build"]);

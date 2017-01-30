@@ -40,7 +40,7 @@ function getJson(e) {
 function callAPI(endpoint, data, method, callback) {
 
   'use strict';
-  var ApiUrl = 'https://api.tacticalmastery.com/api/v2/' + endpoint + "/";
+  var ApiUrl = '/api/v2/' + endpoint + "/";
   method = method || 'POST';
   // if data is an array pass as post, otherwise the string is a simple get and needs to append to the end of the uri
   if (data && data.constructor !== Object) {
@@ -50,7 +50,8 @@ function callAPI(endpoint, data, method, callback) {
   jQuery.ajax({
     method: method,
     url: ApiUrl,
-    data: data
+    data: data,
+    beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-Token', api_key);}
   }).done(function (msg) {
     if (typeof callback === 'function') {
       callback(msg);
