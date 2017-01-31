@@ -2,41 +2,38 @@
 
 "use strict";
 
-var _ = require("lodash"),
-  gulp = require("gulp"),
-  sass = require("gulp-sass"),
-  cleanCSS = require("gulp-clean-css"),
-  jshint = require("gulp-jshint"),
-  uglify = require("gulp-uglify"),
-  rename = require("gulp-rename"),
+var _         = require("lodash"),
+  gulp        = require("gulp"),
+  sass        = require("gulp-sass"),
+  cleanCSS    = require("gulp-clean-css"),
+  jshint      = require("gulp-jshint"),
+  uglify      = require("gulp-uglify"),
+  rename      = require("gulp-rename"),
   path = require('path'),
   bower = require('gulp-bower'),
-  browserify = require('gulp-browserify'),
-  del = require("del"),
-  concat = require("gulp-concat"),
-  cache = require("gulp-cache"),
-  size = require("gulp-size"),
-  plumber = require("gulp-plumber"),
-  purify = require("gulp-purifycss"),
-  newer = require("gulp-newer"),
-  connect = require("gulp-connect"),
-  glob = require("glob"),
+  browserify  = require('gulp-browserify'),
+  del         = require("del"),
+  concat      = require("gulp-concat"),
+  cache       = require("gulp-cache"),
+  size        = require("gulp-size"),
+  plumber     = require("gulp-plumber"),
+  purify      = require("gulp-purifycss"),
+  newer       = require("gulp-newer"),
+  connect     = require("gulp-connect"),
+  glob        = require("glob"),
   runSequence = require("run-sequence"),
-  addsrc = require("gulp-add-src"),
-  XSSLint = require("xsslint"),
-  CSSfilter = require("cssfilter"),
-  validator = require('validator'),
+  addsrc      = require("gulp-add-src"),
+  XSSLint     = require("xsslint"),
+  CSSfilter   = require("cssfilter"),
+  validator   = require('validator'),
   stripCssComments = require("gulp-strip-css-comments"),
-  safe = require('safe-regex');
+  safe        = require('safe-regex');
 
 var config = {
   src: "src", // source directory
   dist: "tacticalsales", // destination directory
   port: 3000
 };
-
-// var aaa = validator.blacklist('(x+x+)+y^~', '\\+)(^~[\\]');
-// console.log(aaa);
 
 // Stylish reporter for JSHint
 gulp.task('jshint', function () {
@@ -75,28 +72,28 @@ gulp.task('bower-concatenate-js', function () {
 
 
 // Fonts
-gulp.task("fonts", function () {
+gulp.task("fonts", function() {
   return gulp.src(_.flatten([config.src + "/fonts/**/*"]))
-    .pipe(newer(config.dist + "/assets/fonts"))
-    .pipe(gulp.dest(config.dist + "/assets/fonts"));
+      .pipe(newer(config.dist + "/assets/fonts"))
+      .pipe(gulp.dest(config.dist + "/assets/fonts"));
 });
 
 // Images
-gulp.task("images", function () {
+gulp.task("images", function() {
   return gulp.src(["src/images/**/*"])
     .pipe(gulp.dest(config.dist + "/assets/images"))
     .pipe(size());
 });
 
 // HTML
-gulp.task("html", function () {
+gulp.task("html", function() {
   return gulp.src(["src/html/**/*.html", "src/html/favicon.ico"])
-    .pipe(newer(config.dist, ".html"))
-    .pipe(gulp.dest(config.dist));
+      .pipe(newer(config.dist, ".html"))
+      .pipe(gulp.dest(config.dist));
 });
 
 // Copy JS libraries 
-gulp.task("libcopy", function () {
+gulp.task("libcopy", function() {
   return gulp.src([
       "src/scripts/libs/**/*"
     ],
@@ -169,16 +166,16 @@ gulp.task("csspurify", function () {
 });
 
 // Clean Temp Dir
-gulp.task("cleantemp", function () {
-  del.sync([config.dist + "/assets/temp"]);
+gulp.task("cleantemp", function (cb) {
+  return del([config.dist + "/assets/temp"], cb);
 });
 
 // XSSLint - Find potential XSS vulnerabilities
-gulp.task("xsslint", function () {
+gulp.task("xsslint", function() {
   var files = glob.sync("src/scripts/app/**/*.js");
-  files.forEach(function (file) {
+  files.forEach(function(file) {
     var warnings = XSSLint.run(file);
-    warnings.forEach(function (warning) {
+    warnings.forEach(function(warning) {
       console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` call");
     });
   });
@@ -215,7 +212,7 @@ gulp.task("safe-regex", function () {
 // });
 
 // Build Task !
-gulp.task("new", ["clean-all"], function (done) {
+gulp.task("build", ["clean-all"], function(done) {
   runSequence(
     "bower",
     "jshint",
@@ -239,12 +236,12 @@ gulp.task("new", ["clean-all"], function (done) {
   );
 });
 
-gulp.task("serve", ["new"], function () {
+gulp.task("serve", ["build"], function() {
   connect.server({
     root: "tacticalsales",
-    port: 9000
+    port : 9000
   });
 });
 
 // Default task
-gulp.task("default", ["serve"]);
+gulp.task("default", ["build"]);
