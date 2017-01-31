@@ -51,3 +51,6 @@ tacticalsales
 
 #Webstorm
 .idea/
+
+#Bower components
+bower_components/

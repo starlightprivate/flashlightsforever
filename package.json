@@ -5,23 +5,26 @@
   "private": true,
   "homepage": "",
   "engines": {
-    "node":"6.9.4"
+    "node": "6.9.4"
   },
   "scripts": {
     "build": "gulp new",
-    "start":"gulp serve",
+    "start": "gulp serve",
     "test": "snyk test && gulp xsslint",
-    "dev": "gulp"
+    "dev": "gulp",
+    "bower": "bower install"
   },
   "snyk": true,
   "dependencies": {
     "bithound": "^1.7.0",
-    "cssfilter": "^0.0.8",
+    "bower": "^1.8.0",
     "codacy-coverage": "^2.0.0",
+    "cssfilter": "^0.0.8",
     "del": "^2.2.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
+    "gulp-bower": "0.0.13",
     "gulp-browserify": "^0.5.1",
     "gulp-cache": "^0.4.5",
     "gulp-clean-css": "^2.0.13",

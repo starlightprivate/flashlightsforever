@@ -1,0 +1,22 @@
+{
+  "name": "starlightads",
+  "description": "Tactical Mastery Flashlights - frontend code",
+  "main": "",
+  "homepage": "https://github.com/starlightgroup/flashlightsforever",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "3.1.1",
+    "tether": "1.3.7",
+    "bootstrap": "4.0.0-alpha.5",
+    "jquery-mask-plugin": "1.14.9",
+    "mailcheck": "^1.1.2",
+    "mobile-detect": "^1.3.5"
+  }
+}

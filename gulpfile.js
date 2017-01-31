@@ -9,6 +9,8 @@ var _ = require("lodash"),
   jshint = require("gulp-jshint"),
   uglify = require("gulp-uglify"),
   rename = require("gulp-rename"),
+  path = require('path'),
+  bower = require('gulp-bower'),
   browserify = require('gulp-browserify'),
   del = require("del"),
   concat = require("gulp-concat"),
@@ -47,6 +49,30 @@ gulp.task('jshint', function () {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
 });
+
+gulp.task('bower', function () {
+  return bower();
+});
+
+//https://github.com/vodolaz095/hunt/blob/master/gulpfile.js#L27
+gulp.task('bower-concatenate-js', function () {
+  var bowerComponentsPath =path.join(__dirname, 'bower_components');
+
+  return gulp.src([
+    path.join(bowerComponentsPath,'bootstrap','dist','js','bootstrap.js'),
+    path.join(bowerComponentsPath,'jquery','dist','jquery.js'),
+    path.join(bowerComponentsPath,'jquery-mask-plugin','dist','jquery.mask.js'),
+    path.join(bowerComponentsPath,'mailcheck','src','mailcheck.js'),
+    path.join(bowerComponentsPath,'mobile-detect','mobile-detect.js'),
+    path.join(bowerComponentsPath,'tether','dist','js','tether.js'),
+  ])
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest(path.join(config.dist,'assets','vendorjs')))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.join(config.dist,'assets','vendorjs')));
+});
+
 
 // Fonts
 gulp.task("fonts", function () {
@@ -110,10 +136,10 @@ gulp.task("csscopy", function () {
 
 
 // Clean-all
-gulp.task("clean-all", function () {
-  del.sync([
+gulp.task("clean-all", function (cb) {
+  return del([
     config.dist
-  ]);
+  ], cb);
 });
 
 // Strip comments from CSS using strip-css-comments
@@ -191,6 +217,7 @@ gulp.task("safe-regex", function () {
 // Build Task !
 gulp.task("new", ["clean-all"], function (done) {
   runSequence(
+    "bower",
     "jshint",
     "xsslint",
     //"validator",
