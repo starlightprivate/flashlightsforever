@@ -2,32 +2,32 @@
 
 "use strict";
 
-var _         = require("lodash"),
-  gulp        = require("gulp"),
-  sass        = require("gulp-sass"),
-  cleanCSS    = require("gulp-clean-css"),
-  jshint      = require("gulp-jshint"),
-  uglify      = require("gulp-uglify"),
-  rename      = require("gulp-rename"),
+var _ = require('lodash'),
+  gulp = require('gulp'),
+  sass = require('gulp-sass'),
+  cleanCSS = require('gulp-clean-css'),
+  jshint = require('gulp-jshint'),
+  uglify = require('gulp-uglify'),
+  rename = require('gulp-rename'),
   path = require('path'),
   bower = require('gulp-bower'),
-  browserify  = require('gulp-browserify'),
-  del         = require("del"),
-  concat      = require("gulp-concat"),
-  cache       = require("gulp-cache"),
-  size        = require("gulp-size"),
-  plumber     = require("gulp-plumber"),
-  purify      = require("gulp-purifycss"),
-  newer       = require("gulp-newer"),
-  connect     = require("gulp-connect"),
-  glob        = require("glob"),
-  runSequence = require("run-sequence"),
-  addsrc      = require("gulp-add-src"),
-  XSSLint     = require("xsslint"),
-  CSSfilter   = require("cssfilter"),
-  validator   = require('validator'),
-  stripCssComments = require("gulp-strip-css-comments"),
-  safe        = require('safe-regex');
+  browserify = require('gulp-browserify'),
+  del = require('del'),
+  concat = require('gulp-concat'),
+  cache = require('gulp-cache'),
+  size = require('gulp-size'),
+  plumber = require('gulp-plumber'),
+  purify = require('gulp-purifycss'),
+  newer = require('gulp-newer'),
+  connect = require('gulp-connect'),
+  glob = require('glob'),
+  runSequence = require('run-sequence'),
+  addsrc = require('gulp-add-src'),
+  XSSLint = require('xsslint'),
+  CSSfilter = require('cssfilter'),
+  validator = require('validator'),
+  stripCssComments = require('gulp-strip-css-comments'),
+  safe = require('safe-regex');
 
 var config = {
   src: "src", // source directory
@@ -53,47 +53,47 @@ gulp.task('bower', function () {
 
 //https://github.com/vodolaz095/hunt/blob/master/gulpfile.js#L27
 gulp.task('bower-concatenate-js', function () {
-  var bowerComponentsPath =path.join(__dirname, 'bower_components');
+  var bowerComponentsPath = path.join(__dirname, 'bower_components');
 
   return gulp.src([
-    path.join(bowerComponentsPath,'bootstrap','dist','js','bootstrap.js'),
-    path.join(bowerComponentsPath,'jquery','dist','jquery.js'),
-    path.join(bowerComponentsPath,'jquery-mask-plugin','dist','jquery.mask.js'),
-    path.join(bowerComponentsPath,'mailcheck','src','mailcheck.js'),
-    path.join(bowerComponentsPath,'mobile-detect','mobile-detect.js'),
-    path.join(bowerComponentsPath,'tether','dist','js','tether.js'),
+    path.join(bowerComponentsPath, 'bootstrap', 'dist', 'js', 'bootstrap.js'),
+    path.join(bowerComponentsPath, 'jquery', 'dist', 'jquery.js'),
+    path.join(bowerComponentsPath, 'jquery-mask-plugin', 'dist', 'jquery.mask.js'),
+    path.join(bowerComponentsPath, 'mailcheck', 'src', 'mailcheck.js'),
+    path.join(bowerComponentsPath, 'mobile-detect', 'mobile-detect.js'),
+    path.join(bowerComponentsPath, 'tether', 'dist', 'js', 'tether.js'),
   ])
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest(path.join(config.dist,'assets','vendorjs')))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest(path.join(config.dist, 'assets', 'vendorjs')))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest(path.join(config.dist,'assets','vendorjs')));
+    .pipe(gulp.dest(path.join(config.dist, 'assets', 'vendorjs')));
 });
 
 
 // Fonts
-gulp.task("fonts", function() {
+gulp.task("fonts", function () {
   return gulp.src(_.flatten([config.src + "/fonts/**/*"]))
-      .pipe(newer(config.dist + "/assets/fonts"))
-      .pipe(gulp.dest(config.dist + "/assets/fonts"));
+    .pipe(newer(config.dist + "/assets/fonts"))
+    .pipe(gulp.dest(config.dist + "/assets/fonts"));
 });
 
 // Images
-gulp.task("images", function() {
+gulp.task("images", function () {
   return gulp.src(["src/images/**/*"])
     .pipe(gulp.dest(config.dist + "/assets/images"))
     .pipe(size());
 });
 
 // HTML
-gulp.task("html", function() {
+gulp.task("html", function () {
   return gulp.src(["src/html/**/*.html", "src/html/favicon.ico"])
-      .pipe(newer(config.dist, ".html"))
-      .pipe(gulp.dest(config.dist));
+    .pipe(newer(config.dist, ".html"))
+    .pipe(gulp.dest(config.dist));
 });
 
 // Copy JS libraries 
-gulp.task("libcopy", function() {
+gulp.task("libcopy", function () {
   return gulp.src([
       "src/scripts/libs/**/*"
     ],
@@ -171,11 +171,11 @@ gulp.task("cleantemp", function (cb) {
 });
 
 // XSSLint - Find potential XSS vulnerabilities
-gulp.task("xsslint", function() {
+gulp.task("xsslint", function () {
   var files = glob.sync("src/scripts/app/**/*.js");
-  files.forEach(function(file) {
+  files.forEach(function (file) {
     var warnings = XSSLint.run(file);
-    warnings.forEach(function(warning) {
+    warnings.forEach(function (warning) {
       console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` call");
     });
   });
@@ -212,7 +212,7 @@ gulp.task("safe-regex", function () {
 // });
 
 // Build Task !
-gulp.task("build", ["clean-all"], function(done) {
+gulp.task("build", ["clean-all"], function (done) {
   runSequence(
     "bower",
     "jshint",
@@ -236,10 +236,10 @@ gulp.task("build", ["clean-all"], function(done) {
   );
 });
 
-gulp.task("serve", ["build"], function() {
+gulp.task("serve", ["build"], function () {
   connect.server({
     root: "tacticalsales",
-    port : 9000
+    port: 9000
   });
 });
 
