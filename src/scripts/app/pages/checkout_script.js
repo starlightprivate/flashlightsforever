@@ -88,7 +88,7 @@
                         errHead = 'Payment validation failed:  Processor Declined.';
                         resp.message += '<br><br>For security reasons, you must re-enter a new card number.<br><br>' + 'Tip: you may try another card or call <a href=\'tel:+18558807233\'>(855) 880-7233</a>.';
                     }
-                    errBody = '<span style=\'font-size:20px\'>' + resp.message + '<span>';
+                    errBody = resp.message.toString();
                     bootstrapModal(errBody, errHead);
                 }
             }

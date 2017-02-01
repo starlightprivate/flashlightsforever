@@ -105,9 +105,18 @@ function isMobileSafari() {
 }
 function bootstrapModal(content, title) {
   'use strict';
-  var modal = $('#tm-modal');
+  var
+    modal = $('#tm-modal'),
+    modalContent = $(document.createElement('span'));
+
+  modalContent.css('font-size','20px');
+  modalContent.text(escape(content.toString()));
   // set content
-  modal.find('.modal-body').html(content);
+  modal
+    .find('.modal-body')
+    .innerHTML = modalContent.toString();
+
+
   if (title !== null) {
     modal.find('.modal-title').text(title);
   } else {
