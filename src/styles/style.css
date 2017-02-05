@@ -11,7 +11,7 @@
 
 
 .invisible {
-    visibility:hidden!important;
+    visibility:hidden;
 }
 
 html,body {
@@ -19,7 +19,7 @@ html,body {
 }
 
 body {
-    padding-right:0!important;
+    padding-right:0;
 }
 
 body > div {
@@ -27,7 +27,7 @@ body > div {
 }
 
 .modal {
-    -webkit-overflow-scrolling:auto!important;
+    -webkit-overflow-scrolling:auto;
 }
 
 #js-div-loading-bar {
@@ -42,8 +42,8 @@ body > div {
 }
 
 #js-div-loading-bar .sk-circle {
-    left:calc(50%-30px);
-    top:calc(50%-30px);
+    left:calc(50% - 30px);
+    top:calc(50% - 30px);
     width:60px;
     height:60px;
     position:absolute;
@@ -197,27 +197,19 @@ body > div {
 }
 
 #js-div-loading-bar .sk-circle .sk-circle12:before {
-    -webkit-animation-delay:.1s;
-    animation-delay:.1s;
+    -webkit-animation-delay:0.1s;
+    animation-delay:0.1s;
 }
 
-40% {
-    -webkit-transform:scale(1);
-    transform:scale(1);
-}
-
-@font-face {
-    src:local("Open Sans"), local(OpenSans), url(../fonts/Open-Sans/open-sans-v13-latin-regular.eot?#iefix) format(embedded-opentype), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff2) format(woff2), url(../fonts/Open-Sans/open-sans-v13-latin-regular.woff) format(woff), url(../fonts/Open-Sans/open-sans-v13-latin-regular.ttf) format(truetype), url(../fonts/Open-Sans/open-sans-v13-latin-regular.svg#OpenSans) format(svg);
-    font-family:'Open Sans', sans-serif;
-    font-style:normal;
-    font-weight:800;
-}
 
 html:hover [class^="ss-"] {
     -ms-zoom:1;
 }
 
-.ss-icon,[class^="ss-"]:before,[class*=" ss-"]:before,[class^="ss-"].right:after,[class*=" ss-"].right:after {
+.ss-icon,[class^="ss-"]:before,
+[class*=" ss-"]:before,
+[class^="ss-"].right:after,
+[class*=" ss-"].right:after {
     font-style:normal;
     text-decoration:none;
     text-rendering:optimizeLegibility;
@@ -398,7 +390,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal {
-    background-color:#FFF!important;
+    background-color:#FFF;
     position:absolute;
     border-radius:100%;
     top:-20px;
@@ -406,13 +398,13 @@ html:hover [class^="ss-"] {
     width:40px;
     height:40px;
     box-shadow:0 2px 5px rgba(0,0,0,0.1), 0 2px 3px rgba(0,0,0,0.15);
-    opacity:1!important;
+    opacity:1;
     transition:all .15s ease;
     line-height:0;
     font-size:34px;
     font-weight:300;
     color:#888;
-    padding:5px!important;
+    padding:5px;
 }
 
 .custom-modal .close-modal:hover {
@@ -421,15 +413,15 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .close-modal:hover svg {
-    fill:#F44336;
+    fill: #F44336;
 }
 
 .custom-modal .close-modal:focus,.custom-modal .close-modal:active {
-    outline:none!important;
+    outline:none;
 }
 
 .custom-modal .close-modal svg {
-    fill:#919191;
+    fill: #919191;
 }
 
 .custom-modal .btn-modal-confirm {
@@ -445,7 +437,7 @@ html:hover [class^="ss-"] {
 .custom-modal .btn-modal-confirm:hover,.custom-modal .btn-modal-confirm:focus,.custom-modal .btn-modal-confirm:active {
     background:#E53935;
     box-shadow:inset 0 32px 59px -18px rgba(255,255,255,0.59), inset 1px 1px 4px rgba(255,255,255,0.55);
-    outline:none!important;
+    outline:none;
     border-color:#E53935;
 }
 
@@ -453,7 +445,7 @@ html:hover [class^="ss-"] {
     color:#FFEBEE;
     background-color:#E53935;
     box-shadow:inset 0 20px 65px -23px rgba(0,0,0,0.64), inset 1px 1px 4px rgba(232,55,55,0.52);
-    outline:none!important;
+    outline:none;
     border-color:#E53935;
 }
 
@@ -490,7 +482,7 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal .modal-content .form-group .fv-control-feedback {
-    top:30px!important;
+    
     right:30px;
     font-size:14px;
     width:45px;
@@ -500,7 +492,6 @@ html:hover [class^="ss-"] {
 
 .custom-modal .modal-content .form-group .icon-field {
     position:absolute;
-    top:30px!important;
     font-size:20px;
     right:0;
     text-align:center;
@@ -531,13 +522,13 @@ html:hover [class^="ss-"] {
 }
 
 .custom-modal a[href='#clear'] {
-    top:40px!important;
-    right:70px!important;
+    top:40px;
+    right:70px;
     z-index:4;
 }
 
 img.resp {
-    max-width:100%!important;
+    max-width:100%;
 }
 
 .pg-index {
@@ -611,7 +602,7 @@ img.resp {
     content:'';
     width:1px;
     height:100%;
-    background:linear-gradient(180deg,#5959590%,#b7b7b750%,#595959100%);
+    background:linear-gradient(#595959 0%, #b7b7b7 50%, #595959 100%);
     position:absolute;
     top:0;
     bottom:0;
@@ -627,10 +618,11 @@ img.resp {
 .pg-index .feature .feature-item .media h4 {
     font-size:22px;
     font-weight:600;
-    color:#000;
+    color:#fff;
     line-height:1;
     margin-top:18px;
     margin-bottom:7px;
+    text-align: center;
 }
 
 .pg-index .feature .feature-item .media p {
@@ -768,11 +760,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 #form-address .state-col .fv-control-feedback {
-    right:20px!important;
+    right:20px;
 }
 
 #form-address a[href="#clear"] {
-    right:40px!important;
+    right:40px;
 }
 
 .pg-checkout {
@@ -997,12 +989,6 @@ input#creditcard::-webkit-outer-spin-button {
     border:2px solid rgba(255,2,0,0.76);
 }
 
-.pg-checkout .payment .cc-sm.inactive {
-    opacity:0.3;
-    -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-}
-
 .pg-checkout .payment a:not(:last-of-type) .cc-sm {
     margin-right:14px;
 }
@@ -1048,7 +1034,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-checkout .btn-complete {
     display:table;
-    background:linear-gradient(180deg,#f82c290%,#e9292750%,#d5201e95%,#d3201d100%);
+    background:linear-gradient(180deg,#f82c29 0%,#e92927 50%,#d5201e 95%,#d3201d 100%);
     font-size:0;
     width:100%;
     text-shadow:1px -1px 1px rgba(132,5,5,0.66);
@@ -1060,7 +1046,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .btn-complete .btn-text {
-    background:linear-gradient(180deg,#ff4f4a0%,#f6484450%,#de333095%,#db2f2c100%);
+    background:linear-gradient(180deg,#ff4f4a 0%,#f64844 50%,#de3330 95%,#db2f2c 100%);
     width:100%;
     display:table-cell;
     font-size:14px;
@@ -1084,16 +1070,16 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .btn-complete:not(.pulse),.pg-checkout .btn-complete:hover {
-    background:linear-gradient(180deg,#cb39370%,#c1393650%,#ac2b2995%,#aa2927100%);
+    background:linear-gradient(180deg,#cb3937 0%,#c13936 50%,#ac2b29 95%,#aa2927 100%);
 }
 
 .pg-checkout .btn-complete:not(.pulse) .btn-text,.pg-checkout .btn-complete:hover .btn-text {
-    background:linear-gradient(180deg,#cd524f0%,#c54c4950%,#b1393795%,#ae3635100%);
+    background:linear-gradient(180deg,#cd524f 0%,#c54c49 50%,#b13937 95%,#ae3635 100%);
 }
 
 .pg-checkout .btn-complete:active,.pg-checkout .btn-complete:focus {
     color:#fff;
-    outline:none!important;
+    outline:none;
     top:2px;
     border-color:transparent;
 }
@@ -1103,12 +1089,13 @@ input#creditcard::-webkit-outer-spin-button {
     height:67px;
     display:table-cell;
     vertical-align:middle;
-    background-image:url(../images/icon-truck.jpg);
+    background-image:url(../images/icon-truck.png);
     background-repeat:no-repeat;
     background-position:center;
 }
 
 .pg-checkout .btn-complete .btn-img-part .btn-img-holder {
+    display: block;
     width:67px;
 }
 
@@ -1123,7 +1110,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .fv-control-feedback {
-    top:25px!important;
+    top:25px;
     font-size:14px;
 }
 
@@ -1133,7 +1120,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout #year ~ .fv-control-feedback,.pg-checkout #month ~ .fv-control-feedback {
-    top:0!important;
+    top:0;
     height:25px;
     line-height:28px;
     right:25px;
@@ -1150,27 +1137,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(1),.pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(2),.pg-checkout.mobile-mode #step-1 .step-content .radio-box:nth-child(3) {
-    display:block!important;
+    display:block;
 }
 
 .pg-checkout.mobile-mode #step-4 h2 {
     margin-top:0;
-}
-
-50% {
-    -o-transform:scale(0.9);
-    -moz-transform:scale(0.9);
-    -webkit-transform:scale(0.9);
-    -ms-transform:scale(0.9);
-    transform:scale(0.9);
-}
-
-100% {
-    -o-transform:scale(1);
-    -moz-transform:scale(1);
-    -webkit-transform:scale(1);
-    -ms-transform:scale(1);
-    transform:scale(1);
 }
 
 .pg-battery {
@@ -1270,12 +1241,12 @@ input#creditcard::-webkit-outer-spin-button {
 
 .pg-battery .upsell .btn:hover {
     box-shadow:inset 0 32px 59px -18px rgba(255,255,255,0.59), inset 1px 1px 4px rgba(255,255,255,0.55), 0 2px 10px rgba(0,0,0,0.16), 0 2px 15px rgba(0,0,0,0.1);
-    outline:none!important;
+    outline:none;
 }
 
 .pg-battery .upsell .btn:active:hover {
     box-shadow:inset 0 20px 65px -23px rgba(0,0,0,0.62), inset 1px 1px 4px #3aae00;
-    outline:none!important;
+    outline:none;
     border-color:#309200;
 }
 
@@ -1532,7 +1503,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-tm3 .footer .footer-links .list-inline a {
-    font-size:em(14);
+    font-size:14px;
 }
 
 .pg-tm3 .footer .footer-links .list-inline > li {
@@ -1574,11 +1545,11 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
-    top:32px;
+    top:27px;
 }
 
 .fv-form-bootstrap4:not(.form-inline) .form-check~.fv-control-feedback {
-    top:25px;
+    top:27px;
 }
 
 .fv-form-bootstrap4 .has-success label,.fv-form-bootstrap4 .has-success .fv-control-feedback {
@@ -1590,7 +1561,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .hidden-xs-up,.custom-modal .modal-content .has-warning #email ~ [data-fv-validator="emailAddress"] {
-    display:none!important;
+    display:none;
 }
 
 .custom-modal .address-2,.pg-index .feature .feature-bar,.pg-index .feature .feature-item:nth-child(5):after,.pg-checkout .light-info .info-middle br,.pg-checkout .step .step-content .label-mobile,.pg-checkout .img-shipping,.pg-checkout .radio-box input[type="radio"],.pg-checkout.mobile-mode #step-2,.pg-checkout.mobile-mode #step-3,.pg-checkout.mobile-mode #step-1 .step-content .radio-box,.fv-form [placeholder]::-ms-clear {
@@ -1676,25 +1647,54 @@ input#creditcard::-webkit-outer-spin-button {
     top:-7px;
 }
 
-@media screen and (min-width 544px){
+
+/* Wistia */
+.wistia_responsive_padding_alt {
+    padding: 56.25% 0 0 0;
+    position: relative;
+}
+
+.wistia_responsive_wrapper_alt {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.wistia_embed_alt {
+    height: 100%;
+    width: 100%
+}
+
+
+.hide-element {
+    display: none;
+}
+
+
+/* Media Tag */
+
+
+@media screen and (min-width :544px){
     .hidden-sm-up {
-        display:none!important;
+        display:none;
     }
 }
 
 @media screen and (min-width :768px){
     .hidden-md-up {
-        display:none!important;
+        display:none;
     }
 
     .pg-checkout .img-holder .img-desktop {
-        display:block!important;
+        display:block;
     }
 }
 
 @media screen and (min-width:992px){
     .hidden-lg-up {
-        display:none!important;
+        display:none;
     }
 }
 
@@ -1711,24 +1711,24 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .custom-modal .modal-dialog .modal-content {
-        box-shadow:0 0 transparent!important;
+        box-shadow:0 0 transparent;
     }
 
     .custom-modal .modal-dialog .modal-header {
-        padding:20px 15px!important;
+        padding:20px 15px;
     }
 
     .custom-modal .modal-dialog .modal-body {
-        padding:15px 17px!important;
+        padding:15px 17px;
     }
 
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.4em!important;
+        font-size:1.4em;
     }
 
     .custom-modal .modal-dialog .close-modal {
-        box-shadow:0 0 transparent!important;
-        background:transparent!important;
+        box-shadow:0 0 transparent;
+        background:transparent;
         top:0;
         right:0;
         width:30px;
@@ -1754,7 +1754,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (max-width:370px){
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.2em!important;
+        font-size:1.2em;
     }
 
     .custom-modal .modal-dialog .btn-modal-confirm {
@@ -1768,15 +1768,19 @@ input#creditcard::-webkit-outer-spin-button {
         display:block;
         width:100%;
     }
+
+    .custom-modal .modal-content .form-group .icon-field {
+        top: 30px;
+    }
 }
 
 @media screen and (min-width:667px){
     .custom-modal .modal-header {
-        padding:10px 15px!important;
+        padding:10px 15px;
     }
 
     .custom-modal a[href='#clear'] {
-        top:16px!important;
+        top:16px;
     }
 
     .custom-modal label {
@@ -1787,11 +1791,11 @@ input#creditcard::-webkit-outer-spin-button {
     .custom-modal .form-control {
         padding-right:35px;
         float:right;
-        width:calc(100%-150px);
+        width:calc(100% - 150px);
     }
 
     .custom-modal .form-control#state {
-        width:calc(100%-100px);
+        width:calc(100% - 100px);
     }
 
     .custom-modal .validMessage,.custom-modal .form-control-feedback {
@@ -1801,13 +1805,19 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .custom-modal .form-group .fv-control-feedback,.custom-modal .icon-field {
-        top:0!important;
+        top:0;
+    }
+    .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+        top:0;
+    }
+    .pg-checkout .fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+        top: 27px;
     }
 }
 
 @media screen and (min-width:315px) and (max-width:480px){
     .custom-modal .modal-dialog h4.modal-title {
-        font-size:1.2em!important;
+        font-size:1.2em;
     }
 }
 
@@ -1826,8 +1836,14 @@ input#creditcard::-webkit-outer-spin-button {
         width:100%;
     }
 
+
     .pg-index .btn .btn-title {
-        font-size:36px;
+        font-size:26px;
+    }
+
+    .pg-index .btn.btn-red .btn-text {
+        font-size: 18px;
+        letter-spacing: 7px;
     }
 
     .pg-index .btn.btn-green {
@@ -1842,10 +1858,6 @@ input#creditcard::-webkit-outer-spin-button {
         padding:30px 0 15px 120px;
     }
 
-    .pg-index .btn.btn-red .btn-text {
-        font-size:20px;
-    }
-
     .pg-index .btn.btn-red .img-holder {
         width:120px;
         background-size:80px;
@@ -1856,7 +1868,7 @@ input#creditcard::-webkit-outer-spin-button {
     }
 
     .pg-checkout .img-holder .img-mobile {
-        display:block!important;
+        display:block;
     }
 
     .pg-checkout .step .step-content {
@@ -1891,7 +1903,7 @@ input#creditcard::-webkit-outer-spin-button {
 
     .pg-checkout .container {
         max-width:100%;
-        width:100%!important;
+        width:100%;
     }
 
     .pg-checkout .main-content {
@@ -1937,16 +1949,12 @@ input#creditcard::-webkit-outer-spin-button {
         font-size:28px;
     }
 
-    .pg-index .header .header-message,.pg-index .feature .feature-bar .img-mobile,.pg-checkout .light-info {
+    .pg-index .header .header-message,.pg-index .feature .feature-item,.pg-index .feature .feature-bar .img-mobile,.pg-checkout .light-info {
         display:none;
     }
 
     .pg-index .feature .feature-bar,.pg-index .feature .feature-bar .img-tablet,.pg-checkout .img-shipping {
         display:block;
-    }
-    .pg-index .feature .feature-item{
-        display: block;
-        width:100%!important;
     }
 }
 
@@ -1957,6 +1965,10 @@ input#creditcard::-webkit-outer-spin-button {
 
     .pg-index .feature .feature-item .media p {
         font-size:13px;
+    }
+
+    .pg-index .btn .btn-title {
+        font-size:36px;
     }
 }
 
@@ -2013,10 +2025,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width:991px){
-    .pg-index .btn .btn-title {
-        font-size:40px;
-    }
-
+    
     .pg-checkout .container {
         max-width:720px;
     }
@@ -2069,10 +2078,8 @@ input#creditcard::-webkit-outer-spin-button {
     }
 }
 
+
 @media screen and (max-width:675px){
-    .pg-index .btn .btn-title {
-        font-size:30px;
-    }
 
     .pg-index .btn.btn-green {
         padding:25px 10px;
@@ -2086,15 +2093,11 @@ input#creditcard::-webkit-outer-spin-button {
         margin-bottom:10px;
     }
 
-    .pg-index .btn.btn-red .btn-text {
-        font-size:18px;
-        letter-spacing:7px;
-    }
 }
 
 @media screen and (max-width:600px){
     .pg-index .btn .btn-title {
-        font-size:26px;
+        font-size:20px;
     }
 
     .pg-index .btn.btn-green {
@@ -2113,10 +2116,6 @@ input#creditcard::-webkit-outer-spin-button {
         margin-bottom:10px;
     }
 
-    .pg-index .btn.btn-red .btn-text {
-        font-size:18px;
-        letter-spacing:7px;
-    }
 }
 
 @media screen and (max-width:465px){
@@ -2141,7 +2140,7 @@ input#creditcard::-webkit-outer-spin-button {
 
 @media screen and (max-width:388px){
     .pg-index .btn .btn-title {
-        font-size:18px!important;
+        font-size:18px;
     }
 
     .pg-index .btn.btn-green .btn-text {
