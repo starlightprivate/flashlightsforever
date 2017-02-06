@@ -15,10 +15,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans%7COswald%7CRoboto:700" rel="stylesheet">
-        <script type="text/javascript" src="/api_key.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans%7COswald%7CRoboto:700" rel="stylesheet">             
+        
 
-       
     </head>
     <body>
      
@@ -77,5 +76,12 @@
         <script type="text/javascript" src="assets/js/safe-regex.js"></script>
         <script type="text/javascript" src="assets/js/utils.js"></script>
         <script type="text/javascript" src="assets/js/battery_headlamp_script.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.getScript("/api/api_key.js", function(data, textStatus, jqxhr){
+                    console.log(api_key)
+                });
+            });
+        </script>
     </body>
 </html>
