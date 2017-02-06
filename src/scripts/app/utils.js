@@ -47,6 +47,12 @@ function callAPI(endpoint, data, method, callback) {
     ApiUrl += data;
     data = null;
   }
+
+  //https://starlightgroup.atlassian.net/browse/SG-14
+  if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
+    data['_csrf'] = $.cookie('XSRF-TOKEN');
+  }
+
   jQuery.ajax({
     method: method,
     url: ApiUrl,
