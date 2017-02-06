@@ -44,12 +44,6 @@
             } else {
                 dirty = $('input[name=\'productId\']:checked', '#checkoutForm').val();
             }
-            if(!safe(dirty)){
-                // There is any evil RegEx in the User Input data
-                //evil =true;
-                dirty = validator.blacklist(dirty, '\\+)(^~{}[\\]');
-                break;
-            }
             uVal = filterXSS(dirty);
             orderDetails[key] = uVal;
         }

@@ -9,7 +9,6 @@ var _         = require('lodash'),
   jshint      = require("gulp-jshint"),
   uglify      = require("gulp-uglify"),
   rename      = require("gulp-rename"),
-  browserify  = require('gulp-browserify'),
   del         = require("del"),
   concat      = require("gulp-concat"),
   cache       = require("gulp-cache"),
@@ -25,13 +24,27 @@ var _         = require('lodash'),
   CSSfilter   = require("cssfilter"),
   validator   = require('validator'),
   stripCssComments = require("gulp-strip-css-comments"),
-  safe        = require('safe-regex');
+  safe        = require('safe-regex'),
+  eslint = require('gulp-eslint');
 
 var config = {
   src: "src", // source directory
   dist: "tacticalsales", // destination directory
   port: 3000
 };
+
+gulp.task('lint', () => {
+    return gulp.src(['src/scripts/**/*.js','!node_modules/**'])
+        .pipe(eslint({
+        rules: {
+            'no-evil-regex-rule': 1,
+        },
+        rulePaths:['./eslint-rules'],
+        envs: ["browser"]
+    }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
 
 // Stylish reporter for JSHint
 gulp.task('jshint', () =>
@@ -75,14 +88,6 @@ gulp.task("libcopy", function() {
                   )
       .pipe(newer(config.dist + "/assets/libs"))
       .pipe(gulp.dest(config.dist + "/assets/libs"));
-});
-
-gulp.task('safe-regex-browserify', function() {
-    // Single entry point to browserify 
-    gulp.src('safe-regex-shell.js')
-        .pipe(browserify())
-        .pipe(rename('safe-regex.js'))
-        .pipe(gulp.dest(config.dist + "/assets/js"));
 });
 
 // Copy Custom JS 
@@ -131,9 +136,7 @@ gulp.task("csspurify", function() {
           "src/html/*.html"
         ]
       ))
-    
     .pipe(gulp.dest(config.dist + "/assets/css"))
-
     .pipe(cleanCSS({compatibility: "ie8"}))
     .pipe(gulp.dest(config.dist + "/assets/css"))
     .pipe(size());
@@ -158,21 +161,6 @@ gulp.task("xsslint", function() {
 // String Validation and Sanitization
 // https://www.npmjs.com/package/validator
 
-gulp.task("validator", function() {
-    console.log(validator.isEmail('foo@bar.com'));
-});
-
-gulp.task("safe-regex", function() {
-    var regexs = [
-            '/[0-9*]/', 
-            '((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}', 
-            '\(([0-9]{2}|0{1}((x|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}'
-        ];
-    regexs.forEach(function(regex) {
-        console.log(safe(regex));
-    });
-});
-
 
 // CSSFilter
 // gulp.task("cssfilter", function() {
@@ -190,11 +178,8 @@ gulp.task("build", ["clean-all"], function(done) {
   runSequence(
     "jshint",
     "xsslint",
-    //"validator",
-    //"safe-regex",
     "libcopy",
     "jscopy",
-    "safe-regex-browserify",
     "fonts",
     "images",
     "html",
