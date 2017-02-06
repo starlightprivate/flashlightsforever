@@ -18,21 +18,11 @@
 
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans%7COswald%7CRoboto:700" rel="stylesheet">
-
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                                    })(window,document,'script','dataLayer','GTM-K7K7HF');</script>
-        <!-- End Google Tag Manager -->
+        
     </head>
 
     <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7K7HF"
-                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
+        
         <small class="validMessage"></small>
         <div class="pg-index">
             <div class="container">
@@ -356,7 +346,6 @@
 
         <script type="text/javascript" src="assets/js/xss.js"></script>
         <script type="text/javascript" src="assets/js/addclear.js"></script>
-        <script type="text/javascript" src="assets/js/safe-regex.js"></script>
         <script type="text/javascript" src="assets/js/validator.min.js"></script>
                 
         <script type="text/javascript" src="assets/js/utils.js"></script>
@@ -365,5 +354,13 @@
         <script type="text/javascript">
             window.wistiaDisableMux = true;
         </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.getScript("/api/api_key.js", function(data, textStatus, jqxhr){
+                    console.log(api_key)
+                });
+            });
+        </script>
+        
     </body>
 </html>

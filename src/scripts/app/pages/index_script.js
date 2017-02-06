@@ -66,25 +66,11 @@ function err_field_fv(e, data) {
   var submittedContactForm = false;
   // This switches between contact modal & address modal
   function submitContactForm() {
-
-    //console.log(safe('(x+x+)+y'));
-
     var data = {};
     var tempData = {};
     tempData.Email = $('[name=email]').val();
     tempData.FirstName = $('[name=contactModalName]').val();
     tempData.MobilePhone = $('[name=phoneNumber]').val();
-
-    if(!safe(tempData.Email)){
-      // There is any evil RegEx in the User Input data
-      tempData.Email = validator.blacklist(tempData.Email, '\\+)(^~{}[\\]');
-    }
-    if(!safe(tempData.FirstName)){
-      tempData.FirstName = validator.blacklist(tempData.FirstName, '\\+)(^~{}[\\]');
-    }
-    if(!safe(tempData.MobilePhone)){
-      tempData.MobilePhone = validator.blacklist(tempData.MobilePhone, '\\+)(^~{}[\\]');
-    }
 
     data.Email = filterXSS(tempData.Email);
     data.FirstName = filterXSS(tempData.FirstName);
@@ -95,7 +81,6 @@ function err_field_fv(e, data) {
     localStorage.setItem('lastName', data.LastName);
     localStorage.setItem('emailAddress', data.Email);
     localStorage.setItem('phoneNumber', data.MobilePhone);
-    console.log('sbmtCntFrm---------->');
     $('div#js-div-loading-bar').show();
     callAPI('add-contact', data, 'POST', function (response) {
       if (response.success) {
@@ -127,11 +112,6 @@ function err_field_fv(e, data) {
       var value = addressFormFields[index];
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
-        if(!safe(dirty)){
-          // There is any evil RegEx in the User Input data
-          //evil =true;
-          dirty = validator.blacklist(dirty, '\\+)(^~{}[\\]');
-        }
         var uVal = filterXSS(dirty);
         localStorage.setItem(value, uVal);
         tmp[value] = uVal;

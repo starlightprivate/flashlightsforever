@@ -44,12 +44,6 @@
             } else {
                 dirty = $('input[name=\'productId\']:checked', '#checkoutForm').val();
             }
-            if(!safe(dirty)){
-                // There is any evil RegEx in the User Input data
-                //evil =true;
-                dirty = validator.blacklist(dirty, '\\+)(^~{}[\\]');
-                break;
-            }
             uVal = filterXSS(dirty);
             orderDetails[key] = uVal;
         }
@@ -88,7 +82,7 @@
                         errHead = 'Payment validation failed:  Processor Declined.';
                         resp.message += '<br><br>For security reasons, you must re-enter a new card number.<br><br>' + 'Tip: you may try another card or call <a href=\'tel:+18558807233\'>(855) 880-7233</a>.';
                     }
-                    errBody = '&lt;span style=\'font-size:20px\'&gt;' + resp.message + '&lt;&#x2F;span&gt;';
+                    errBody = '<span style=\'font-size:20px\'>' + resp.message + '<span>';
                     bootstrapModal(errBody, errHead);
                 }
             }

@@ -2,28 +2,25 @@
   "name": "starlightads",
   "version": "0.1.9",
   "description": "Tactical Mastery Flashlights",
-  "dependencies": {
-    "codacy-coverage": "^2.0.0",
-    "mocha": "^3.2.0",
-    "mocha-lcov-reporter": "^1.2.0",
-    "safe-regex": "^1.1.0",
-    "validator": "^6.2.0"
-  },
   "homepage": "",
   "scripts": {
     "build": "gulp build",
     "test": "snyk test && gulp xsslint",
     "dev": "gulp"
   },
-  "snyk": true,
+  "dependencies": {
+    "gulp-eslint": "^3.0.1",
+    "jshint-stylish": "^2.2.1",
+    "lodash": "^4.17.4",
+    "safe-regex": "^1.1.0",
+    "validator": "^6.2.0"
+  },
   "devDependencies": {
-    "bithound": "^1.7.0",
-    "cssfilter": "^0.0.8",
+    "cssfilter": "^0.0.9",
     "del": "^2.2.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
-    "gulp-browserify": "^0.5.1",
     "gulp-cache": "^0.4.5",
     "gulp-clean-css": "^2.0.13",
     "gulp-concat": "^2.6.0",
@@ -38,8 +35,6 @@
     "gulp-strip-css-comments": "^1.2.0",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.4",
-    "jshint-stylish": "^2.2.1",
-    "lodash": "^4.15.0",
     "run-sequence": "^1.2.2",
     "snyk": "^1.19.1",
     "xsslint": "^0.1.3"
