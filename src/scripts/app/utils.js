@@ -56,8 +56,7 @@ function callAPI(endpoint, data, method, callback) {
   jQuery.ajax({
     method: method,
     url: ApiUrl,
-    data: data,
-    beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-Token', api_key);}
+    data: data
   }).done(function (msg) {
     if (typeof callback === 'function') {
       callback(msg);
