@@ -10,43 +10,24 @@ function validate() {
   if (!customWrapperForIsMobileDevice()) {
     $('input[type=number]').attr('type', 'text');
   }
-  // Image lazyload
-  $('img.lazy').lazyload({ skip_invisible: true });
-  // X symbol for input fields
-  if ($('.clearable').length > 0) {
-    $('.clearable').addClear({
-      closeSymbol: '&#10006;',
-      color: '#CCC',
-      top: '35px',
-      right: '38px',
-      returnFocus: true,
-      showOnLoad: true,
-      onClear: function ($input) {
-        var formValidation = $input.closest('form').data('formValidation');
-        if (formValidation) {
-          formValidation.revalidateField($input.attr('name'));
-        }
-      },
-      paddingRight: '55px',
-      lineHeight: '1',
-      display: 'block'
-    });
-  }
+  
   // Mailcheck Plugin Code here
   if ($('#email').length > 0) {
-    var domains = [
-      'hotmail.com',
-      'gmail.com',
-      'aol.com'
-    ];
-    $('#email').on('blur', function () {
+    var domains = ['hotmail.com', 'gmail.com', 'aol.com'];
+    var topLevelDomains = ["com", "net", "org"];
+    $('#email').on('blur', function (event) {
+      // console.log("event ", event);
+      // console.log("this ", $(this));
       $(this).mailcheck({
         domains: domains,
+        topLevelDomains: topLevelDomains,
         suggested: function (element, suggestion) {
+          // console.log("suggestion ", suggestion.full);
           $('#email + small').show();
-          $('#email + small').text('Did you mean &lt;a href=\'javascript:void(0)\'\'&gt;' + suggestion.full + '&lt;&#x2F;a&gt;');
+          $('#email + small').html('Did you mean <a href=\'javascript:void(0)\'>' + suggestion.full + '</a>');
         },
         empty: function (element) {
+          // console.log("suggestion ", "No suggestion");
         }
       });
     });
