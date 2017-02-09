@@ -63,6 +63,7 @@ function callAPI(endpoint, data, method, callback) {
     }
   }).fail(function () {
     console.log('error occured on api - ' + endpoint);
+    $('div#js-div-loading-bar').hide();
   });
 }
 // load state from zipcode
