@@ -211,3 +211,11 @@ function clearStorageItem(k) {
   'use strict';
   localStorage.removeItem(k);
 }
+document.querySelector("input#creditcard").addEventListener("keypress", function (evt) {
+    if (evt.which < 48 || evt.which > 57)
+    {
+        if(evt.which != 8){
+            evt.preventDefault();
+        }
+    }
+});
