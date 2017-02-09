@@ -48,3 +48,7 @@ tacticalsales
 
 # Yarn Integrity file
 .yarn-integrity
+
+
+bower_components/
+.idea/
