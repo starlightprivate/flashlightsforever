@@ -611,7 +611,7 @@ img.resp {
 
 .pg-index .feature .feature-item .media {
     text-transform:uppercase;
-    font-family:HeronSans, sans-serif;
+    font-family:sans-serif;
     font-weight:600;
 }
 
@@ -778,7 +778,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .light-info {
-    font-family:HeronSans, sans-serif;
+    font-family: sans-serif;
     background-color:#FFF;
     color:#424242;
     box-shadow:0 2px 2px 0 rgba(0,0,0,0.05), 0 1px 4px 0 rgba(0,0,0,0.08), 0 3px 1px -2px rgba(0,0,0,0.2);
@@ -1670,6 +1670,15 @@ input#creditcard::-webkit-outer-spin-button {
 
 .hide-element {
     display: none;
+}
+
+
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
 }
 
 

@@ -99,21 +99,21 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="name">Name *:</label>
-                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name"  autocomplete="on">
+                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name"  autocomplete="on" autocorrect="off">
                                             </div>
-                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA"  autocomplete="on">
+                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA"  autocomplete="on" autocorrect="off">
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="email">Email Address *:</label>
-                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"   autocomplete="on">
+                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"   autocomplete="on" autocapitalize="off" autocorrect="off">
                                                 <span class="email-suggestion"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="phonenumber">Phone Number *:</label>
-                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="on">
+                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="on" autocorrect="off" >
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -135,7 +135,7 @@
                                             <div class="col-sm-7 col-xs-7 zip-col">
                                                 <div class="form-group">
                                                     <label for="zipcode">ZIP Code *:</label>
-                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on">
+                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric" >
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-xs-5 state-col">
@@ -212,11 +212,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="city">City *:</label>
-                                            <input type="text" class="form-control clearable required" name="city" id="city" placeholder="Your City"  autocomplete="on" />
+                                            <input type="text" class="form-control clearable required" name="city" id="city" placeholder="Your City"  autocomplete="on" autocorrect="off" />
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Address *:</label>
-                                            <input type="text" class="form-control clearable required" name="address1" id="address" placeholder="2125 Chestnut St."  autocomplete="on" />
+                                            <input type="text" class="form-control clearable required" name="address1" id="address" placeholder="2125 Chestnut St."  autocomplete="on" autocorrect="off" />
                                         </div>
                                     </div>
                                 </div>
@@ -362,25 +362,22 @@
         <!-- Modal -->
         <!-- Modal -->
         <script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" integrity="sha384-tSi+YsgNwyohDGfW/VhY51IK3RKAPYDcj1sNXJ16oRAyDP++K0NCzSCUW78EMFmf" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/tether/1.3.7/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/jquery.mask/1.14.0/jquery.mask.min.js" integrity="sha256-O3ddbgsPXP+YrKTaqn8np8NnjznR9RhndrsUtjzC9iU=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/mailcheck/1.1/mailcheck.min.js" integrity="sha256-/MHDkTvvlnkb3zu73NceNEvx5ZcWvdKiCeCgK4rufyw=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/mobile-detect.js/1.3.4/mobile-detect.min.js" integrity="sha256-yG2ypuNeyeM1NUuGKOXhLfRWggyrEHgNlMgYtkokIsc=" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.rawgit.com/leizongmin/js-xss/master/dist/xss.min.js"></script>
+        <script src="https://cdn.rawgit.com/skorecky/Add-Clear/master/addclear.min.js"></script>
+
         <script type="text/javascript" src="assets/libs/formvalidation/js/formValidation.min.js"></script>
         <script type="text/javascript" src="assets/libs/formvalidation/js/framework/bootstrap4.js"></script>
-        <script type="text/javascript" src="assets/js/xss.js"></script>
-        <script type="text/javascript" src="assets/js/addclear.js"></script>
+
         <script type="text/javascript" src="assets/js/utils.js"></script>
         <script type="text/javascript" src="assets/js/validate_form_fields.js"></script>
         <script type="text/javascript" src="assets/js/checkout_script.js"></script>
-         <script type="text/javascript">
-            $(document).ready(function(){
-                $.getScript("/api/api_key.js", function(data, textStatus, jqxhr){
-                    console.log(api_key)
-                });
-            });
-        </script>
-       
+        <script type="text/javascript" src="assets/js/common_validators.js"></script>
     </body>
 </html>
