@@ -262,7 +262,7 @@
 
                         notEmpty: { message: 'Enter the card number.' },
                         stringLength: {
-                            min: 19,
+                            min: 18,
                             // real that is "16" but that include 3 spaces
                             message: 'The credit card can be 15 or 16 digits.'
                         }
