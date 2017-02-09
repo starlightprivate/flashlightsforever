@@ -99,21 +99,21 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="name">Name *:</label>
-                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name"  autocomplete="on">
+                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name" autocorrect="off" autocomplete="name">
                                             </div>
-                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA"  autocomplete="on">
+                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA" autocorrect="off" autocomplete="name">
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="email">Email Address *:</label>
-                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"   autocomplete="on">
+                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"  autocapitalize="off" autocorrect="off" autocomplete="email">
                                                 <span class="email-suggestion"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="phonenumber">Phone Number *:</label>
-                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="on">
+                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="tel" autocorrect="off">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -246,7 +246,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="creditcard">Card Number *</label>
-                                                    <input class="form-control clearable required numfield" name="cardNumber" id="creditcard" placeholder="•••• •••• •••• ••••" onkeydown="if (this.value.length > 15) { return false; }" autocomplete="cc-number" >
+                                                    <input class="form-control clearable required numfield" name="cardNumber" id="creditcard" placeholder="•••• •••• •••• ••••"  autocomplete="cc-number" >
                                                 </div>
                                                 <label for="month">Expiration * <small>(MM/YY)</small></label>
                                                 <div class="row no-gutters exp-detail">
