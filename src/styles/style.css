@@ -1673,6 +1673,15 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+
 /* Media Tag */
 
 
