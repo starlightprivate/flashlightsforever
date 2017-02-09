@@ -262,7 +262,8 @@
 
                         notEmpty: { message: 'Enter the card number.' },
                         stringLength: {
-                            min: 15,
+                            min: 19,
+                            // real that is "16" but that include 3 spaces
                             message: 'The credit card can be 15 or 16 digits.'
                         }
                     }
@@ -373,7 +374,7 @@
             e.preventDefault();
         });
         //  Apply mask for checkout fields
-        $('input[name=cardNumber]').mask('0000000000000000', { 'translation': { 0: { pattern: /[0-9]/ } } });
+        $('input[name=cardNumber]').mask('0000 0000 0000 0000', { 'translation': { 0: { pattern: /[0-9]/ } } });
         $('input[name=postalCode]').mask('00000', { 'translation': { 0: { pattern: /[0-9]/ } } });
         var checkoutFields = [
             'firstName',
