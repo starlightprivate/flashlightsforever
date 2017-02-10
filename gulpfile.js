@@ -92,23 +92,14 @@ gulp.task("libcopy", function() {
 
 // Copy Custom JS 
 gulp.task("jscopy", function() {
-  return gulp.src(["src/scripts/app/config.js" , 
+  return gulp.src(["src/scripts/app/pages/*.js", 
+                   "src/scripts/app/config.js" , 
                    "src/scripts/app/utils.js" , 
                    "src/scripts/vendor/addclear.js",
                    "src/scripts/vendor/xss.js",
                    "node_modules/validator/validator.min.js"
                    ])
       .pipe(newer(config.dist + "/assets/js"))
-      .pipe(gulp.dest(config.dist + "/assets/js"));
-});
-
-// Minify Frontend JS
-gulp.task('minijs', function() {  
-  return gulp.src("src/scripts/app/pages/*.js")
-      .pipe(concat('pages.js'))
-      .pipe(gulp.dest(config.dist + "/assets/js"))
-      .pipe(rename('pages.min.js'))
-      .pipe(uglify())
       .pipe(gulp.dest(config.dist + "/assets/js"));
 });
 
@@ -189,7 +180,6 @@ gulp.task("build", ["clean-all"], function(done) {
     "xsslint",
     "libcopy",
     "jscopy",
-    "minijs",
     "fonts",
     "images",
     "html",
