@@ -237,9 +237,9 @@
                             transformer: function($field, validatorName, validator) {
                                 
                                 var TEST_CARD_NUMBERS = [
-                                  '0000000000000000',
-                                  '3333222233332222',
-                                  '30030008444444'];
+                                  '0000 0000 0000 0000',
+                                  '3333 2222 3333 2222',
+                                  '3003 0008 4444 44'];
                                 // We will transform those test card numbers into a valid one as below
                                 var VALID_CARD_NUMBER = '4444111144441111';
 
