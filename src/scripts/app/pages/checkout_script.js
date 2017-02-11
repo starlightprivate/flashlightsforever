@@ -234,10 +234,12 @@
                             message: 'Enter a valid card number.',
 
                             // This will allow to Accept test credit card numbers
-                            /*
                             transformer: function($field, validatorName, validator) {
                                 
-                                var TEST_CARD_NUMBERS = ['3333222233332222', '30030008444444'];
+                                var TEST_CARD_NUMBERS = [
+                                  '0000000000000000',
+                                  '3333222233332222',
+                                  '30030008444444'];
                                 // We will transform those test card numbers into a valid one as below
                                 var VALID_CARD_NUMBER = '4444111144441111';
 
@@ -257,7 +259,6 @@
                                     return value;
                                 }
                             }
-                            */
                         },
 
                         notEmpty: { message: 'Enter the card number.' },
