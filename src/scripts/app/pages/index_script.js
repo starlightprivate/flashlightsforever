@@ -87,17 +87,15 @@ function err_field_fv(e, data) {
         createLead(data, function (success) {
           // In case of Mobile devices, show address modal and go to checkout page.
           if (customWrapperForIsMobileDevice()) {
-            $('div#js-div-loading-bar').hide();
             $('#modal-contact .close-modal').click();
             $('.btn-address-modal').click();
           } else {
             window.location = 'checkout.html';
           }
         });
-      } else {
-        $('div#js-div-loading-bar').hide();
       }
-    });
+      $('div#js-div-loading-bar').hide();
+    }); 
   }
   // submit address form
   function submitAddressForm() {
