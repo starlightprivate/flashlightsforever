@@ -37,7 +37,7 @@ function getJson(e) {
 }
 
 // call API
-function callAPI(endpoint, data, method, callback, err = null) {
+function callAPI(endpoint, data, method, callback, err) {
 
   'use strict';
   var ApiUrl = '/api/v2/' + endpoint + "/";
