@@ -199,7 +199,7 @@
                                 <div class="col-sm-7 col-xs-7  zip-col">
                                     <div class="form-group clearfix">
                                         <label for="zipcode">ZIP Code *:</label>
-                                        <input type="text" class="form-control scrollFix clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric">
+                                        <input type="text" class="form-control scrollFix clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric" onkeyup=loadStateFromZip()>
                                     </div>
                                 </div>
 
