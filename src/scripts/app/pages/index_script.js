@@ -28,7 +28,7 @@ function err_field_fv(e, data) {
   $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
   var MediaStorage = {};
   // Lead create/update
-  function createLead(data, callback, err = null) {
+  function createLead(data, callback, err) {
     var crmLead = {};
     crmLead.firstName = data.FirstName;
     crmLead.lastName = data.LastName;
@@ -64,6 +64,8 @@ function err_field_fv(e, data) {
     callAPI('create-lead', crmLead, 'POST', function (e) {
       console.log(e);
       cb();
+    }, function (textStatus) {
+
     });
   }
   // Forms submit
@@ -90,8 +92,12 @@ function err_field_fv(e, data) {
       callAPI('add-contact', data, 'POST', function (response) {
         if (response.success) {
           createLead(data, function (success) {
+          }, function (textStatus) {
+
           });
         }
+      }, function (textStatus) {
+        
       });
 
       $('#modal-contact .close-modal').click();
