@@ -28,7 +28,7 @@ function err_field_fv(e, data) {
   $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
   var MediaStorage = {};
   // Lead create/update
-  function createLead(data, callback) {
+  function createLead(data, callback, err = null) {
     var crmLead = {};
     crmLead.firstName = data.FirstName;
     crmLead.lastName = data.LastName;
@@ -48,6 +48,10 @@ function err_field_fv(e, data) {
         }
       }
       callback(resp.success);
+    }, function (textStatus) {
+      if (typeof err === 'function') {
+        err(textStatus);
+      }
     });
   }
   function updateLead(data, cb) {
@@ -81,23 +85,35 @@ function err_field_fv(e, data) {
     localStorage.setItem('lastName', data.LastName);
     localStorage.setItem('emailAddress', data.Email);
     localStorage.setItem('phoneNumber', data.MobilePhone);
-    $('div#js-div-loading-bar').show();
-    callAPI('add-contact', data, 'POST', function (response) {
-      if (response.success) {
-        createLead(data, function (success) {
-          // In case of Mobile devices, show address modal and go to checkout page.
-          if (customWrapperForIsMobileDevice()) {
-            $('div#js-div-loading-bar').hide();
-            $('#modal-contact .close-modal').click();
-            $('.btn-address-modal').click();
-          } else {
+
+    if (customWrapperForIsMobileDevice()) {
+      callAPI('add-contact', data, 'POST', function (response) {
+        if (response.success) {
+          createLead(data, function (success) {
+          });
+        }
+      });
+
+      $('#modal-contact .close-modal').click();
+      $('.btn-address-modal').click();
+    } else {
+      $('div#js-div-loading-bar').show();
+
+      callAPI('add-contact', data, 'POST', function (response) {
+        if (response.success) {
+          createLead(data, function (success) {
+            // In case of Mobile devices, show address modal and go to checkout page.
             window.location = 'checkout.html';
-          }
-        });
-      } else {
+          }, function (textStatus) {
+            $('div#js-div-loading-bar').hide();
+          });
+        } else {
+          $('div#js-div-loading-bar').hide();
+        }
+      }, function (textStatus) {
         $('div#js-div-loading-bar').hide();
-      }
-    });
+      });
+    }
   }
   // submit address form
   function submitAddressForm() {

@@ -37,7 +37,7 @@ function getJson(e) {
 }
 
 // call API
-function callAPI(endpoint, data, method, callback) {
+function callAPI(endpoint, data, method, callback, err = null) {
 
   'use strict';
   var ApiUrl = '/api/v2/' + endpoint + "/";
@@ -61,8 +61,12 @@ function callAPI(endpoint, data, method, callback) {
     if (typeof callback === 'function') {
       callback(msg);
     }
-  }).fail(function () {
+  }).fail(function (jqXHR, textStatus) {
+    if (typeof err === 'function') {
+      err(textStatus);
+    }
     console.log('error occured on api - ' + endpoint);
+    console.log('error - ' + textStatus);
   });
 }
 // load state from zipcode
