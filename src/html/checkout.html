@@ -138,7 +138,7 @@
                                             <div class="col-sm-7 col-xs-7 zip-col">
                                                 <div class="form-group">
                                                     <label for="zipcode">ZIP Code *:</label>
-                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric" >
+                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric" onkeyup=loadStateFromZip()>
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-xs-5 state-col">
