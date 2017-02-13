@@ -1819,8 +1819,8 @@ input::-webkit-contacts-auto-fill-button {
 
     .custom-modal .validMessage,.custom-modal .form-control-feedback {
         margin-top:4px;
-        float:left;
-        width:100%;
+        float:right;
+        width:calc(100% - 150px);
     }
 
     .custom-modal .form-group .fv-control-feedback,.custom-modal .icon-field {
