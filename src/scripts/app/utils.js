@@ -81,8 +81,8 @@ function loadStateFromZip() {
     callAPI('state/' + fZipVal, params, 'GET', function (resp) {
       var jData = resp.data;
       if (resp.success) {
-        if (jData.primary_city !== undefined && jData.primary_city !== '' && jData.primary_city !== null) {
-          $('#city').val(jData.primary_city);
+        if (jData.city !== undefined && jData.city !== '' && jData.city !== null) {
+          $('#city').val(jData.city);
         }
         if (jData.state !== undefined && jData.state !== '' && jData.state !== null) {
           $('#state').val(jData.state).trigger('change');
