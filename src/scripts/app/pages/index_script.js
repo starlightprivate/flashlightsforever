@@ -44,7 +44,11 @@ function err_field_fv(e, data) {
       if (resp.success) {
         if (resp.orderId) {
           MediaStorage.orderId = resp.orderId;
-          localStorage.setItem('orderId', resp.orderId);
+          try {
+            localStorage.setItem('orderId', resp.orderId);
+          } catch (e) {
+            console.log("Your browser does not support local storage.");
+          } 
         }
       }
       callback(resp.success);
@@ -83,10 +87,26 @@ function err_field_fv(e, data) {
     data.MobilePhone = filterXSS(tempData.MobilePhone);
     data.LastName = 'NA';
 
-    localStorage.setItem('firstName', data.FirstName);
-    localStorage.setItem('lastName', data.LastName);
-    localStorage.setItem('emailAddress', data.Email);
-    localStorage.setItem('phoneNumber', data.MobilePhone);
+    try {
+      localStorage.setItem('firstName', data.FirstName);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('lastName', data.LastName);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('emailAddress', data.Email);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('phoneNumber', data.MobilePhone);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
 
     if (customWrapperForIsMobileDevice()) {
       callAPI('add-contact', data, 'POST', function (response) {
@@ -135,7 +155,11 @@ function err_field_fv(e, data) {
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
         var uVal = filterXSS(dirty);
-        localStorage.setItem(value, uVal);
+        try {
+          localStorage.setItem(value, uVal);
+        } catch (e) {
+          console.log("Your browser does not support local storage.");
+        }
         tmp[value] = uVal;
       }
     }    
