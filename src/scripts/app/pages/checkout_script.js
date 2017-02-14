@@ -1,9 +1,5 @@
 (function() {
     'use strict';
-    if (customWrapperForIsMobileDevice()) {
-        $('#checkout-wrapper').addClass('mobile-mode');
-        $('#step-4 .step-title span').html('Step #2 :');
-    }
     $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
     var MediaStorage = getOrderData();
 

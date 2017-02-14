@@ -865,6 +865,11 @@ input#creditcard::-webkit-outer-spin-button {
     background-image:linear-gradient(0deg,#000,#212121,#616161);
 }
 
+.pg-checkout .step .step-title.step-title-4 span.label-mobile {
+    background-image:linear-gradient(0deg,#000,#212121,#616161);
+    display: none;
+}
+
 .pg-checkout .step .step-content {
     padding-left:15px;
 }
@@ -2049,11 +2054,14 @@ input::-webkit-contacts-auto-fill-button {
         max-width:720px;
     }
 
-    .pg-checkout .step .step-content .label-desktop {
+    .pg-checkout .step .step-content .label-desktop,
+    .pg-checkout .step .step-title-4 .label-desktop,
+    #step-2, #step-3 {
         display:none;
     }
 
-    .pg-checkout .step .step-content .label-mobile {
+    .pg-checkout .step .label-mobile,
+    .pg-checkout .step .step-title.step-title-4 span.label-mobile {
         display:inline-block;
     }
 
