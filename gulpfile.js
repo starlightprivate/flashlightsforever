@@ -95,6 +95,7 @@ gulp.task("jscopy", function() {
   return gulp.src(["src/scripts/app/pages/*.js", 
                    "src/scripts/app/config.js" , 
                    "src/scripts/app/utils.js" , 
+                   "src/scripts/libs/xss.js" , 
                    "src/scripts/vendor/addclear.js",
                    "src/scripts/vendor/xss.js",
                    "node_modules/validator/validator.min.js"

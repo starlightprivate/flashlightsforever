@@ -37,7 +37,7 @@ function getJson(e) {
 }
 
 // call API
-function callAPI(endpoint, data, method, callback) {
+function callAPI(endpoint, data, method, callback, err) {
 
   'use strict';
   var ApiUrl = '/api/v2/' + endpoint + "/";
@@ -61,8 +61,12 @@ function callAPI(endpoint, data, method, callback) {
     if (typeof callback === 'function') {
       callback(msg);
     }
-  }).fail(function () {
+  }).fail(function (jqXHR, textStatus) {
+    if (typeof err === 'function') {
+      err(textStatus);
+    }
     console.log('error occured on api - ' + endpoint);
+    console.log('error - ' + textStatus);
   });
 }
 // load state from zipcode
@@ -81,8 +85,8 @@ function loadStateFromZip() {
     callAPI('state/' + fZipVal, params, 'GET', function (resp) {
       var jData = resp.data;
       if (resp.success) {
-        if (jData.primary_city !== undefined && jData.primary_city !== '' && jData.primary_city !== null) {
-          $('#city').val(jData.primary_city);
+        if (jData.city !== undefined && jData.city !== '' && jData.city !== null) {
+          $('#city').val(jData.city);
         }
         if (jData.state !== undefined && jData.state !== '' && jData.state !== null) {
           $('#state').val(jData.state).trigger('change');

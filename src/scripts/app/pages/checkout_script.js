@@ -7,6 +7,8 @@
     $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
     var MediaStorage = getOrderData();
 
+    $("input[name=cardNumber]").attr("maxlength", "19");
+    
     function submitOrderForm(orderForm) {
         $('div#js-div-loading-bar').show();
         var year = $('select[name=year]').val(),
@@ -69,7 +71,11 @@
             if (resp.success) {
                 $('#checkoutForm .btn-complete').removeClass('pulse');
                 if (resp.orderId) {
-                    localStorage.setItem('orderId', resp.orderId);
+                    try {
+                        localStorage.setItem('orderId', resp.orderId);
+                    } catch (e) {
+                        console.log("Your browser does not support local storage.");
+                    }
                 }
                 // window.location = GlobalConfig.BasePagePath + "us_batteryoffer.html?orderId=" + MediaStorage.orderId + "&pId=" + orderDetails.productId;
                 window.location = 'us_batteryoffer.html?orderId=' + MediaStorage.orderId + '&pId=' + orderDetails.productId;
@@ -228,16 +234,16 @@
                     }
                 },
                 cardNumber: {
-                    validMessage: '',
                     validators: {
+                        notEmpty: { message: 'Enter the card number.' },
                         creditCard: {
                             message: 'Enter a valid card number.',
-
                             // This will allow to Accept test credit card numbers
-                            /*
                             transformer: function($field, validatorName, validator) {
-                                
-                                var TEST_CARD_NUMBERS = ['3333222233332222', '30030008444444'];
+                                var TEST_CARD_NUMBERS = [
+                                  '0000 0000 0000 0000',
+                                  '3333 2222 3333 2222',
+                                  '3003 0008 4444 44'];
                                 // We will transform those test card numbers into a valid one as below
                                 var VALID_CARD_NUMBER = '4444111144441111';
 
@@ -257,13 +263,6 @@
                                     return value;
                                 }
                             }
-                            */
-                        },
-
-                        notEmpty: { message: 'Enter the card number.' },
-                        stringLength: {
-                            min: 15,
-                            message: 'The credit card can be 15 or 16 digits.'
                         }
                     }
                 },
@@ -327,10 +326,33 @@
                 }
             }
         }).on('success.validator.fv', function(e, data) {
-            if (data.field === 'cardNumber' && data.validator === 'creditCard') {
-                var $icon = data.element.data('fv.icon');
-                $('.cc-logos ul>li img').removeClass('active');
-                $('.cc-logos ul>li img[data-value=\'' + data.result.type + '\']').addClass('active');
+            if (data.field === 'cardNumber') {
+                if (data.validator === 'creditCard'){
+                    switch(data.result.type){
+                        case 'VISA':
+                            $('.payment-icon .cc-icon.cc-visa').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
+                            $('.payment-icon .cc-icon.cc-visa').removeClass('inactive').addClass('active');
+                            break;
+                        case 'MASTERCARD':
+                            $('.payment-icon .cc-icon.cc-mastercard').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
+                            $('.payment-icon .cc-icon.cc-mastercard').removeClass('inactive').addClass('active');
+                            break;
+                        case 'AMERICAN_EXPRESS':
+                            $('.payment-icon .cc-icon.cc-american-express').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
+                            $('.payment-icon .cc-icon.cc-american-express').removeClass('inactive').addClass('active');
+                            break;
+                        case 'DISCOVER':
+                            $('.payment-icon .cc-icon.cc-discover').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
+                            $('.payment-icon .cc-icon.cc-discover').removeClass('inactive').addClass('active');
+                            break;
+                        default:
+                            $('.payment-icon .cc-icon').removeClass('inactive active');
+                            break;
+                    }
+                }else{
+                    if (data.validator !== 'stringLength')
+                        $('.payment-icon .cc-icon').removeClass('inactive active');
+                }
             }
         }).on('err.field.fv', function(e, data) {
             var field = data.field,
@@ -354,26 +376,11 @@
             submitOrderForm('#checkoutForm');
             e.preventDefault();
         });
-        // Credit Card Behavior BEGIN
-
-        $('input#creditcard').on('keyup', function() {
-            if ($(this).val() === '' || $(this).val() === undefined) {
-                $(this).parents('.form-group').prev('.payment-icon').find('.cc-icon').removeClass('inactive active');
-            }
-        }).on('cardChange', function(e, card) {
-            if (card.supported) {
-                $('.payment-icon .cc-icon.cc-' + card.type).parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                $('.payment-icon .cc-icon.cc-' + card.type).removeClass('inactive').addClass('active');
-            } else {
-                $('.payment-icon .cc-icon').removeClass('inactive active');
-            }
-        });
-        // END Credit Card Behavior
         $('#checkoutForm').submit(function(e) {
             e.preventDefault();
         });
         //  Apply mask for checkout fields
-        $('input[name=cardNumber]').mask('0000000000000000', { 'translation': { 0: { pattern: /[0-9]/ } } });
+        $('input[name=cardNumber]').mask('0000 0000 0000 0000', { 'translation': { 0: { pattern: /[0-9]/ } } });
         $('input[name=postalCode]').mask('00000', { 'translation': { 0: { pattern: /[0-9]/ } } });
         var checkoutFields = [
             'firstName',
@@ -406,7 +413,11 @@
                 if (value !== 'cardNumber' && value !== 'year' && value !== 'month') {
                     if ($('[name=' + value + ']').length > 0) {
                         var uVal = $('[name=' + value + ']').val();
-                        localStorage.setItem(value, uVal);
+                        try {
+                            localStorage.setItem(value, uVal);
+                        } catch (e) {
+                            console.log("Your browser does not support local storage.");
+                        }
                     }
                 }
             });

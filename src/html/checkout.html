@@ -11,12 +11,15 @@
         <meta property="og:type" content="website">
         <meta property="og:title" content="Tactical Mastery Flashlights - Video page">
         <link rel="icon" href="favicon.ico">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/5.0.0/normalize.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/g/normalize@5.0.0,bootstrap@4.0.0-alpha.5(css/bootstrap.min.css),fontawesome@4.7.0(css/font-awesome.min.css)">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans%7COswald%7CRoboto:700" rel="stylesheet">
-        
+        <script type="text/javascript">
+          !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+          analytics.load("7FMBWsjMCbyWvbx4UuGCovr1SYyokQYd");
+          analytics.page();
+          }}();
+        </script>
     </head>
     <body>
         
@@ -99,26 +102,26 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="name">Name *:</label>
-                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name"  autocomplete="on">
+                                                <input type="text" class="form-control clearable required" name="firstName" id="name" data-fv-field="firstName" placeholder="Your Name"  autocomplete="on" autocorrect="off">
                                             </div>
-                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA"  autocomplete="on">
+                                            <input type="hidden" class="form-control" name="lastName" id="lastName" value="NA"  autocomplete="on" autocorrect="off">
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="email">Email Address *:</label>
-                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"   autocomplete="on">
+                                                <input type="email" class="form-control clearable required" name="emailAddress" id="email" placeholder="email@example.com"   autocomplete="on" autocapitalize="off" autocorrect="off">
                                                 <span class="email-suggestion"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="phonenumber">Phone Number *:</label>
-                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="on">
+                                                <input type="tel" class="form-control clearable required" name="phoneNumber" id="phonenumber" placeholder="888-888-8888"  autocomplete="on" autocorrect="off" >
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="img-holder img-shipping">
-                                                <img src="assets/images/img-free-shipping.jpg" alt="Free Shipping">
+                                                <img src="assets/images/img-free-shipping.png" alt="Free Shipping">
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +138,7 @@
                                             <div class="col-sm-7 col-xs-7 zip-col">
                                                 <div class="form-group">
                                                     <label for="zipcode">ZIP Code *:</label>
-                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on">
+                                                    <input type="text" class="form-control clearable required numfield" name="postalCode" id="zipcode" placeholder="5 Digits" pattern="\d*"  autocomplete="on" inputmode="numeric" onkeyup=loadStateFromZip()>
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-xs-5 state-col">
@@ -212,11 +215,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="city">City *:</label>
-                                            <input type="text" class="form-control clearable required" name="city" id="city" placeholder="Your City"  autocomplete="on" />
+                                            <input type="text" class="form-control clearable required" name="city" id="city" placeholder="Your City"  autocomplete="on" autocorrect="off" />
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Address *:</label>
-                                            <input type="text" class="form-control clearable required" name="address1" id="address" placeholder="2125 Chestnut St."  autocomplete="on" />
+                                            <input type="text" class="form-control clearable required" name="address1" id="address" placeholder="2125 Chestnut St."  autocomplete="on" autocorrect="off" />
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +229,7 @@
                                     <div class="payment-holder">
                                         <div class="payment">
                                             <div class="payment-title">
-                                                <img src="assets/images/icon-lock.jpg" class="lock-icon" alt="Lock">
+                                                <img src="assets/images/icon-lock.png" class="lock-icon" alt="Lock">
                                                 <h5>This is a secure 256-bit SSL encrypted payment. </h5>
                                             </div>
                                             <div class="payment-content">
@@ -246,7 +249,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="creditcard">Card Number *</label>
-                                                    <input class="form-control clearable required numfield" name="cardNumber" id="creditcard" placeholder="•••• •••• •••• ••••" onkeydown="if (this.value.length > 15) { return false; }" autocomplete="cc-number" >
+                                                    <input class="form-control clearable required numfield" name="cardNumber" id="creditcard" placeholder="•••• •••• •••• ••••"  autocomplete="cc-number" >
                                                 </div>
                                                 <label for="month">Expiration * <small>(MM/YY)</small></label>
                                                 <div class="row no-gutters exp-detail">
@@ -292,7 +295,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-4 img-secure">
-                                                        <img src="assets/images/img-digicert-secure.jpg" alt="Secure">
+                                                        <img src="assets/images/img-digicert-secure.png" alt="Secure">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="cardSecurityCode" class="form-control" id="cardCSC" value="100">
@@ -361,17 +364,7 @@
         </div>
         <!-- Modal -->
         <!-- Modal -->
-        <script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" integrity="sha384-tSi+YsgNwyohDGfW/VhY51IK3RKAPYDcj1sNXJ16oRAyDP++K0NCzSCUW78EMFmf" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/tether/1.3.7/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/jquery.mask/1.14.0/jquery.mask.min.js" integrity="sha256-O3ddbgsPXP+YrKTaqn8np8NnjznR9RhndrsUtjzC9iU=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/mailcheck/1.1/mailcheck.min.js" integrity="sha256-/MHDkTvvlnkb3zu73NceNEvx5ZcWvdKiCeCgK4rufyw=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/mobile-detect.js/1.3.4/mobile-detect.min.js" integrity="sha256-yG2ypuNeyeM1NUuGKOXhLfRWggyrEHgNlMgYtkokIsc=" crossorigin="anonymous"></script>
-
-        <script src="https://cdn.rawgit.com/leizongmin/js-xss/master/dist/xss.min.js"></script>
-        <script src="https://cdn.rawgit.com/skorecky/Add-Clear/master/addclear.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/g/jquery@3.1.1,jquery.cookie@1.4.1,tether@1.3.7,bootstrap@4.0.0-alpha.5,jquery.mask@1.14.0,mailcheck@1.1,mobile-detect.js@1.3.4"></script>
         <script type="text/javascript" src="assets/libs/formvalidation/js/formValidation.min.js"></script>
         <script type="text/javascript" src="assets/libs/formvalidation/js/framework/bootstrap4.js"></script>
 
@@ -379,5 +372,7 @@
         <script type="text/javascript" src="assets/js/validate_form_fields.js"></script>
         <script type="text/javascript" src="assets/js/checkout_script.js"></script>
         <script type="text/javascript" src="assets/js/common_validators.js"></script>
+        <script type="text/javascript" src="assets/js/xss.js">
+        
     </body>
 </html>

@@ -28,7 +28,7 @@ function err_field_fv(e, data) {
   $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
   var MediaStorage = {};
   // Lead create/update
-  function createLead(data, callback) {
+  function createLead(data, callback, err) {
     var crmLead = {};
     crmLead.firstName = data.FirstName;
     crmLead.lastName = data.LastName;
@@ -44,10 +44,18 @@ function err_field_fv(e, data) {
       if (resp.success) {
         if (resp.orderId) {
           MediaStorage.orderId = resp.orderId;
-          localStorage.setItem('orderId', resp.orderId);
+          try {
+            localStorage.setItem('orderId', resp.orderId);
+          } catch (e) {
+            console.log("Your browser does not support local storage.");
+          } 
         }
       }
       callback(resp.success);
+    }, function (textStatus) {
+      if (typeof err === 'function') {
+        err(textStatus);
+      }
     });
   }
   function updateLead(data, cb) {
@@ -60,6 +68,8 @@ function err_field_fv(e, data) {
     callAPI('create-lead', crmLead, 'POST', function (e) {
       console.log(e);
       cb();
+    }, function (textStatus) {
+
     });
   }
   // Forms submit
@@ -77,27 +87,59 @@ function err_field_fv(e, data) {
     data.MobilePhone = filterXSS(tempData.MobilePhone);
     data.LastName = 'NA';
 
-    localStorage.setItem('firstName', data.FirstName);
-    localStorage.setItem('lastName', data.LastName);
-    localStorage.setItem('emailAddress', data.Email);
-    localStorage.setItem('phoneNumber', data.MobilePhone);
-    $('div#js-div-loading-bar').show();
-    callAPI('add-contact', data, 'POST', function (response) {
-      if (response.success) {
-        createLead(data, function (success) {
-          // In case of Mobile devices, show address modal and go to checkout page.
-          if (customWrapperForIsMobileDevice()) {
-            $('div#js-div-loading-bar').hide();
-            $('#modal-contact .close-modal').click();
-            $('.btn-address-modal').click();
-          } else {
+    try {
+      localStorage.setItem('firstName', data.FirstName);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('lastName', data.LastName);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('emailAddress', data.Email);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+    try {
+      localStorage.setItem('phoneNumber', data.MobilePhone);
+    } catch (e) {
+      console.log("Your browser does not support local storage.");
+    }
+
+    if (customWrapperForIsMobileDevice()) {
+      callAPI('add-contact', data, 'POST', function (response) {
+        if (response.success) {
+          createLead(data, function (success) {
+          }, function (textStatus) {
+
+          });
+        }
+      }, function (textStatus) {
+        
+      });
+
+      $('#modal-contact .close-modal').click();
+      $('.btn-address-modal').click();
+    } else {
+      $('div#js-div-loading-bar').show();
+
+      callAPI('add-contact', data, 'POST', function (response) {
+        if (response.success) {
+          createLead(data, function (success) {
+            // In case of Mobile devices, show address modal and go to checkout page.
             window.location = 'checkout.html';
-          }
-        });
-      } else {
+          }, function (textStatus) {
+            $('div#js-div-loading-bar').hide();
+          });
+        } else {
+          $('div#js-div-loading-bar').hide();
+        }
+      }, function (textStatus) {
         $('div#js-div-loading-bar').hide();
-      }
-    });
+      });
+    }
   }
   // submit address form
   function submitAddressForm() {
@@ -113,7 +155,11 @@ function err_field_fv(e, data) {
       if ($('[name=' + value + ']').length > 0) {
         var dirty = $('[name=' + value + ']').val();
         var uVal = filterXSS(dirty);
-        localStorage.setItem(value, uVal);
+        try {
+          localStorage.setItem(value, uVal);
+        } catch (e) {
+          console.log("Your browser does not support local storage.");
+        }
         tmp[value] = uVal;
       }
     }    
