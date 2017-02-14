@@ -1574,9 +1574,14 @@ input#creditcard::-webkit-outer-spin-button {
     display:none;
 }
 
-.custom-modal .address-2,.pg-index .feature .feature-bar,.pg-index .feature .feature-item:nth-child(5):after,.pg-checkout .light-info .info-middle br,.pg-checkout .step .step-content .label-mobile,.pg-checkout .img-shipping,.pg-checkout .radio-box input[type="radio"],.pg-checkout.mobile-mode #step-2,.pg-checkout.mobile-mode #step-3,.pg-checkout.mobile-mode #step-1 .step-content .radio-box,.fv-form [placeholder]::-ms-clear {
+.custom-modal .address-2,.pg-index .feature .feature-bar,.pg-index .feature .feature-item:nth-child(5):after,.pg-checkout .light-info .info-middle br,.pg-checkout .step .step-content .label-mobile,.pg-checkout .img-shipping,.pg-checkout .radio-box input[type="radio"],.pg-checkout.mobile-mode #step-2,.pg-checkout.mobile-mode #step-3,.pg-checkout.mobile-mode #step-1 .step-content .radio-box {
     display:none;
 }
+
+.fv-form [placeholder]::-ms-clear {
+    display:none;
+}
+
 .pg-checkout .radio-box input[type="radio"]{
     display: none;
 }
