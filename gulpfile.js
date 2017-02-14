@@ -33,7 +33,7 @@ var config = {
   port: 3000
 };
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
     return gulp.src(['src/scripts/**/*.js','!node_modules/**'])
         .pipe(eslint({
         rules: {
@@ -47,16 +47,15 @@ gulp.task('lint', function() {
 });
 
 // Stylish reporter for JSHint
-gulp.task('jshint', function () {
-   return gulp.src([
-      "src/scripts/app/pages/*.js",
-      "src/scripts/app/config.js",
-      "src/scripts/app/utils.js",
-      "src/scripts/vendor/addclear.js",
-    ])
-      .pipe(jshint())
-      .pipe(jshint.reporter('jshint-stylish'));
-  }
+gulp.task('jshint', () =>
+    gulp.src([
+          "src/scripts/app/pages/*.js", 
+           "src/scripts/app/config.js" , 
+           "src/scripts/app/utils.js" , 
+           "src/scripts/vendor/addclear.js",
+        ])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
 );
 
 // Fonts
@@ -113,10 +112,10 @@ gulp.task("csscopy", function() {
 
 
 // Clean-all
-gulp.task("clean-all", function(cb) {
-  return del([
+gulp.task("clean-all", function() {
+  del.sync([
     config.dist
-  ],cb);
+  ]);
 });
  
 // Strip comments from CSS using strip-css-comments
@@ -144,8 +143,8 @@ gulp.task("csspurify", function() {
 });
 
 // Clean Temp Dir
-gulp.task("cleantemp" , function (cb) {
-  return del([config.dist + "/assets/temp"],cb);
+gulp.task("cleantemp" , function () {
+  del.sync([config.dist + "/assets/temp"]);
 });
 
 // XSSLint - Find potential XSS vulnerabilities
