@@ -67,7 +67,11 @@
             if (resp.success) {
                 $('#checkoutForm .btn-complete').removeClass('pulse');
                 if (resp.orderId) {
-                    localStorage.setItem('orderId', resp.orderId);
+                    try {
+                        localStorage.setItem('orderId', resp.orderId);
+                    } catch (e) {
+                        console.log("Your browser does not support local storage.");
+                    }
                 }
                 // window.location = GlobalConfig.BasePagePath + "us_batteryoffer.html?orderId=" + MediaStorage.orderId + "&pId=" + orderDetails.productId;
                 window.location = 'us_batteryoffer.html?orderId=' + MediaStorage.orderId + '&pId=' + orderDetails.productId;
@@ -405,7 +409,11 @@
                 if (value !== 'cardNumber' && value !== 'year' && value !== 'month') {
                     if ($('[name=' + value + ']').length > 0) {
                         var uVal = $('[name=' + value + ']').val();
-                        localStorage.setItem(value, uVal);
+                        try {
+                            localStorage.setItem(value, uVal);
+                        } catch (e) {
+                            console.log("Your browser does not support local storage.");
+                        }
                     }
                 }
             });
