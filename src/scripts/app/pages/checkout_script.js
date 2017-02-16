@@ -385,6 +385,7 @@
                     .formValidation('revalidateField', 'cardNumber');
             }
         }).detectCard({ supported: ['visa', 'mastercard', 'american-express', 'discover']});
+
         // END Credit Card Behavior
         $('#checkoutForm').submit(function(e) {
             e.preventDefault();
