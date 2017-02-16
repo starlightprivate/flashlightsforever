@@ -241,18 +241,12 @@
                             transformer: function($field, validatorName, validator) {
                                 
                                 var TEST_CARD_NUMBERS = [
-                                  '0000 0000 0000 0000',
-                                  '3333 2222 3333 2222',
-                                  '3003 0008 4444 44'];
+                                  '0000 0000 0000 0000'];
                                 // We will transform those test card numbers into a valid one as below
                                 var VALID_CARD_NUMBER = '4444111144441111';
 
                                 // Get the number pr by user
                                 var value = $field.val();
-                                var CountOfChars = parseInt($field.val().length);
-                                if (CountOfChars === 17) {
-                                    value = value.substr(0, CountOfChars - 1);
-                                }
 
                                 // Check if it"s one of test card numbers
                                 if (value !== '' && $.inArray(value, TEST_CARD_NUMBERS) !== -1) {
@@ -370,10 +364,27 @@
             if (card.supported) {
                 $('.payment-icon .cc-icon.cc-' + card.type).parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
                 $('.payment-icon .cc-icon.cc-' + card.type).removeClass('inactive').addClass('active');
+
+                if (card.type === 'american-express') {
+                    $('#checkoutForm')
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 18)
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 15 digits.')
+                        .formValidation('revalidateField', 'cardNumber');
+                } else {
+                    $('#checkoutForm')
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 19)
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 16 digits.')
+                        .formValidation('revalidateField', 'cardNumber');
+                }
             } else {
                 $('.payment-icon .cc-icon').removeClass('inactive active');
+
+                $('#checkoutForm')
+                    .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 18)
+                    .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 15 or 16 digits.')
+                    .formValidation('revalidateField', 'cardNumber');
             }
-        });
+        }).detectCard({ supported: ['visa', 'mastercard', 'american-express', 'discover']});
         // END Credit Card Behavior
         $('#checkoutForm').submit(function(e) {
             e.preventDefault();
