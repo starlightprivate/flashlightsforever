@@ -40,7 +40,6 @@ body > div {
     left:0;
     right:0;
     bottom:0;
-    background:rgba(0,0,0,0.7);
     z-index:999999;
     display:none;
     animation:spin 4s linear infinite;
@@ -995,8 +994,12 @@ input#creditcard::-webkit-outer-spin-button {
     background-size:100%;
 }
 
+.pg-checkout .payment .cc-icon {
+    padding: 2px;
+}
+
 .pg-checkout .payment .cc-icon.active {
-    border:2px solid rgba(255,2,0,0.76);
+    border:3px solid rgba(255,2,0,0.76);
 }
 
 .pg-checkout .payment a:not(:last-of-type) .cc-sm {
