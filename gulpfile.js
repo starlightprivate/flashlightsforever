@@ -33,30 +33,30 @@ var config = {
   port: 3000
 };
 
-gulp.task('lint', () => {
-    return gulp.src(['src/scripts/**/*.js','!node_modules/**'])
-        .pipe(eslint({
-        rules: {
-            'no-evil-regex-rule': 1,
-        },
-        rulePaths:['./eslint-rules'],
-        envs: ["browser"]
+gulp.task('lint', function () {
+  return gulp.src(['src/scripts/**/*.js', '!node_modules/**'])
+    .pipe(eslint({
+      rules: {
+        'no-evil-regex-rule': 1,
+      },
+      rulePaths: ['./eslint-rules'],
+      envs: ["browser"]
     }))
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 // Stylish reporter for JSHint
-gulp.task('jshint', () =>
-    gulp.src([
-          "src/scripts/app/pages/*.js", 
-           "src/scripts/app/config.js" , 
-           "src/scripts/app/utils.js" , 
-           "src/scripts/vendor/addclear.js",
-        ])
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-);
+gulp.task('jshint', function () {
+  return gulp.src([
+    "src/scripts/app/pages/*.js",
+    "src/scripts/app/config.js",
+    "src/scripts/app/utils.js",
+    "src/scripts/vendor/addclear.js"
+  ])
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 // Fonts
 gulp.task("fonts", function() {
@@ -113,10 +113,10 @@ gulp.task("csscopy", function() {
 
 
 // Clean-all
-gulp.task("clean-all", function() {
-  del.sync([
+gulp.task("clean-all", function(cb) {
+  return del([
     config.dist
-  ]);
+  ],cb);
 });
  
 // Strip comments from CSS using strip-css-comments
@@ -144,8 +144,8 @@ gulp.task("csspurify", function() {
 });
 
 // Clean Temp Dir
-gulp.task("cleantemp" , function () {
-  del.sync([config.dist + "/assets/temp"]);
+gulp.task("cleantemp", function (cb) {
+  return del([config.dist + "/assets/temp"], cb);
 });
 
 // XSSLint - Find potential XSS vulnerabilities
@@ -157,6 +157,12 @@ gulp.task("xsslint", function() {
       console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` call");
     });
   });
+});
+
+gulp.task('robots', function () {
+  return gulp
+    .src('src/robots.txt')
+    .pipe(gulp.dest(config.dist));
 });
 
 // String Validation and Sanitization
@@ -187,6 +193,7 @@ gulp.task("build", ["clean-all"], function(done) {
     "csscopy",
     "stripcss",
     "csspurify",
+    "robots",
     "cleantemp",
     function() {
       console.log("Build successful!");
