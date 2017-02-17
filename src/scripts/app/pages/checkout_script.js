@@ -7,8 +7,6 @@
     $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
     var MediaStorage = getOrderData();
 
-    $("input[name=cardNumber]").attr("maxlength", "19");
-    
     function submitOrderForm(orderForm) {
         $('div#js-div-loading-bar').show();
         var year = $('select[name=year]').val(),
@@ -234,35 +232,40 @@
                     }
                 },
                 cardNumber: {
+                    validMessage: '',
                     validators: {
-                        notEmpty: { message: 'Enter the card number.' },
                         creditCard: {
                             message: 'Enter a valid card number.',
+
                             // This will allow to Accept test credit card numbers
                             transformer: function($field, validatorName, validator) {
+                                
                                 var TEST_CARD_NUMBERS = [
-                                  '0000 0000 0000 0000',
-                                  '3333 2222 3333 2222',
-                                  '3003 0008 4444 44'];
+                                  '0000 0000 0000 0000'];
                                 // We will transform those test card numbers into a valid one as below
                                 var VALID_CARD_NUMBER = '4444111144441111';
 
                                 // Get the number pr by user
                                 var value = $field.val();
-                                var CountOfChars = parseInt($field.val().length);
-                                if (CountOfChars === 17) {
-                                    value = value.substr(0, CountOfChars - 1);
-                                }
-
                                 // Check if it"s one of test card numbers
                                 if (value !== '' && $.inArray(value, TEST_CARD_NUMBERS) !== -1) {
                                     // then turn it to be a valid one defined by VALID_CARD_NUMBER
                                     return VALID_CARD_NUMBER;
                                 } else {
                                     // Otherwise, just return the initial value
+                                    if (value.length>=20)
+                                        value = value.slice(0, -1);
+
                                     return value;
                                 }
                             }
+                        },
+
+                        notEmpty: { message: 'Enter the card number.' },
+                        stringLength: {
+                            min: 18,
+                            // real that is "16" but that include 3 spaces
+                            message: 'The credit card can be 15 or 16 digits.'
                         }
                     }
                 },
@@ -326,33 +329,10 @@
                 }
             }
         }).on('success.validator.fv', function(e, data) {
-            if (data.field === 'cardNumber') {
-                if (data.validator === 'creditCard'){
-                    switch(data.result.type){
-                        case 'VISA':
-                            $('.payment-icon .cc-icon.cc-visa').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-visa').removeClass('inactive').addClass('active');
-                            break;
-                        case 'MASTERCARD':
-                            $('.payment-icon .cc-icon.cc-mastercard').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-mastercard').removeClass('inactive').addClass('active');
-                            break;
-                        case 'AMERICAN_EXPRESS':
-                            $('.payment-icon .cc-icon.cc-american-express').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-american-express').removeClass('inactive').addClass('active');
-                            break;
-                        case 'DISCOVER':
-                            $('.payment-icon .cc-icon.cc-discover').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-discover').removeClass('inactive').addClass('active');
-                            break;
-                        default:
-                            $('.payment-icon .cc-icon').removeClass('inactive active');
-                            break;
-                    }
-                }else{
-                    if (data.validator !== 'stringLength')
-                        $('.payment-icon .cc-icon').removeClass('inactive active');
-                }
+            if (data.field === 'cardNumber' && data.validator === 'creditCard') {
+                var $icon = data.element.data('fv.icon');
+                $('.cc-logos ul>li img').removeClass('active');
+                $('.cc-logos ul>li img[data-value=\'' + data.result.type + '\']').addClass('active');
             }
         }).on('err.field.fv', function(e, data) {
             var field = data.field,
@@ -376,6 +356,39 @@
             submitOrderForm('#checkoutForm');
             e.preventDefault();
         });
+        // Credit Card Behavior BEGIN
+
+        $('input#creditcard').on('keyup', function() {
+            if ($(this).val() === '' || $(this).val() === undefined) {
+                $(this).parents('.form-group').prev('.payment-icon').find('.cc-icon').removeClass('inactive active');
+            }
+        }).on('cardChange', function(e, card) {
+            if (card.supported) {
+                $('.payment-icon .cc-icon.cc-' + card.type).parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
+                $('.payment-icon .cc-icon.cc-' + card.type).removeClass('inactive').addClass('active');
+
+                if (card.type === 'american-express') {
+                    $('#checkoutForm')
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 18)
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 15 digits.')
+                        .formValidation('revalidateField', 'cardNumber');
+                } else {
+                    $('#checkoutForm')
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 19)
+                        .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 16 digits.')
+                        .formValidation('revalidateField', 'cardNumber');
+                }
+            } else {
+                $('.payment-icon .cc-icon').removeClass('inactive active');
+
+                $('#checkoutForm')
+                    .formValidation('updateOption', 'cardNumber', 'stringLength', 'min', 18)
+                    .formValidation('updateOption', 'cardNumber', 'stringLength', 'message', 'The credit card can be 15 or 16 digits.')
+                    .formValidation('revalidateField', 'cardNumber');
+            }
+        }).detectCard({ supported: ['visa', 'mastercard', 'american-express', 'discover']});
+
+        // END Credit Card Behavior
         $('#checkoutForm').submit(function(e) {
             e.preventDefault();
         });
