@@ -247,13 +247,15 @@
 
                                 // Get the number pr by user
                                 var value = $field.val();
-
                                 // Check if it"s one of test card numbers
                                 if (value !== '' && $.inArray(value, TEST_CARD_NUMBERS) !== -1) {
                                     // then turn it to be a valid one defined by VALID_CARD_NUMBER
                                     return VALID_CARD_NUMBER;
                                 } else {
                                     // Otherwise, just return the initial value
+                                    if (value.length>=20)
+                                        value = value.slice(0, -1);
+
                                     return value;
                                 }
                             }
