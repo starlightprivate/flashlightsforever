@@ -1,3 +1,5 @@
+/*global window, $, jQuery*/
+
 var md = new MobileDetect(window.navigator.userAgent);
 function customWrapperForIsMobileDevice() {
   'use strict';
@@ -36,11 +38,49 @@ function getJson(e) {
   return json;
 }
 
+
+//http://stackoverflow.com/a/8112653/1885921
+function areCookiesEnabled() {
+  'use strict';
+  var cookieEnabled = window.navigator.cookieEnabled;
+  if (typeof window.navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+    document.cookie = "testcookie";
+    cookieEnabled = document.cookie.indexOf("testcookie") != -1;
+  }
+  return cookieEnabled;
+}
+
+var
+  cookielessSessionId,
+  cookielessCSRFToken,
+  cookiesEnabled = true;
+
+jQuery(document).ready(function () {
+  'use strict';
+
+  cookiesEnabled = areCookiesEnabled();
+
+  if(!cookiesEnabled){
+    jQuery.ajax({
+      type: 'GET',
+      url:'/robots.txt',
+      success: function(data, textStatus, request){
+        cookielessSessionId = request.getResponseHeader('phpsessid');
+        cookielessCSRFToken = request.getResponseHeader('xsrf-token');
+      }
+    });
+  }
+});
+
+
 // call API
 function callAPI(endpoint, data, method, callback, err) {
 
   'use strict';
-  var ApiUrl = '/api/v2/' + endpoint + "/";
+  var
+    headers = {},
+    ApiUrl = '/api/v2/' + endpoint + "/";
+
   method = method || 'POST';
   // if data is an array pass as post, otherwise the string is a simple get and needs to append to the end of the uri
   if (data && data.constructor !== Object) {
@@ -48,16 +88,29 @@ function callAPI(endpoint, data, method, callback, err) {
     data = null;
   }
 
-  //https://starlightgroup.atlassian.net/browse/SG-14
-  if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
-    data._csrf = $.cookie('XSRF-TOKEN');
+  if(cookiesEnabled) {
+    //https://starlightgroup.atlassian.net/browse/SG-14
+    if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
+      data._csrf = $.cookie('XSRF-TOKEN');
+    }
+  } else {
+    //https://starlightgroup.atlassian.net/browse/SG-14
+    headers.phpsessid = cookielessSessionId;
+    if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
+      data._csrf = cookielessCSRFToken;
+    }
   }
 
   jQuery.ajax({
     method: method,
     url: ApiUrl,
-    data: data
-  }).done(function (msg) {
+    data: data,
+    headers: headers
+  }).done(function (msg, textStatus, response) {
+    if(cookiesEnabled){
+      cookielessSessionId = request.getResponseHeader('phpsessid');
+      cookielessCSRFToken = request.getResponseHeader('xsrf-token');
+    }
     if (typeof callback === 'function') {
       callback(msg);
     }
