@@ -6,7 +6,9 @@
   "scripts": {
     "build": "gulp build",
     "test": "snyk test && gulp xsslint",
-    "dev": "gulp"
+    "dev": "gulp",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "gulp-eslint": "^3.0.1",
@@ -14,17 +16,15 @@
     "lodash": "^4.17.4",
     "safe-regex": "^1.1.0",
     "validator": "^6.2.0"
-  },
-  "devDependencies": {
     "cssfilter": "0.0.10",
     "del": "^2.2.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
-    "gulp-add-src": "^0.2.0",
     "gulp-cache": "^0.4.5",
     "gulp-clean-css": "^3.0.2",
     "gulp-concat": "^2.6.0",
-    "gulp-connect": "^5.0.0",
+    "connect": "^3.6.0",
+    "serve-static": "^1.11.2",
     "gulp-debug": "^3.1.0",
     "gulp-html-lint": "0.0.1",
     "gulp-jshint": "^2.0.1",
@@ -44,5 +44,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/starlightgroup/flashlightsforever.git"
-  }
+  },
+  "snyk": true
 }

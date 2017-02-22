@@ -16,10 +16,10 @@ var _         = require('lodash'),
   plumber     = require("gulp-plumber"),
   purify      = require("gulp-purifycss"),
   newer       = require("gulp-newer"),
-  connect     = require("gulp-connect"),
+  connect     = require("connect"),
+  serveStatic = require("serve-static"),
   glob        = require("glob"),
   runSequence = require("run-sequence"),
-  addsrc      = require("gulp-add-src"),
   XSSLint     = require("xsslint"),
   CSSfilter   = require("cssfilter"),
   validator   = require('validator'),
@@ -28,6 +28,8 @@ var _         = require('lodash'),
   htmlLint = require('gulp-html-lint'),
   debug = require('gulp-debug'),
   eslint = require('gulp-eslint');
+
+var app = connect();
 
 var config = {
   src: "src", // source directory
@@ -209,10 +211,8 @@ gulp.task("build", ["clean-all"], function(done) {
 });
 
 gulp.task("serve", ["build"], function() {
-  connect.server({
-    root: "tacticalsales",
-    port : 9000
-  });
+  app.use(serveStatic("tacticalsales"));
+  app.listen(9000);
 });
 
 // Default task
