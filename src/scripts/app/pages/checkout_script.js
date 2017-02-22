@@ -240,6 +240,7 @@
                             message: 'Enter a valid card number.',
                             // This will allow to Accept test credit card numbers
                             transformer: function($field, validatorName, validator) {
+                               
                                 var TEST_CARD_NUMBERS = [
                                   '0000 0000 0000 0000',
                                   '3333 2222 3333 2222',
@@ -330,28 +331,28 @@
                 if (data.validator === 'creditCard'){
                     switch(data.result.type){
                         case 'VISA':
-                            $('.payment-icon .cc-icon.cc-visa').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-visa').removeClass('inactive').addClass('active');
+                            $('.payment-icon .cc-icon.cc-visa').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive faded');
+                            $('.payment-icon .cc-icon.cc-visa').removeClass('inactive faded').addClass('active');
                             break;
                         case 'MASTERCARD':
-                            $('.payment-icon .cc-icon.cc-mastercard').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-mastercard').removeClass('inactive').addClass('active');
+                            $('.payment-icon .cc-icon.cc-mastercard').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive faded');
+                            $('.payment-icon .cc-icon.cc-mastercard').removeClass('inactive faded').addClass('active');
                             break;
                         case 'AMERICAN_EXPRESS':
-                            $('.payment-icon .cc-icon.cc-american-express').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-american-express').removeClass('inactive').addClass('active');
+                            $('.payment-icon .cc-icon.cc-american-express').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive faded');
+                            $('.payment-icon .cc-icon.cc-american-express').removeClass('inactive faded').addClass('active');
                             break;
                         case 'DISCOVER':
-                            $('.payment-icon .cc-icon.cc-discover').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
-                            $('.payment-icon .cc-icon.cc-discover').removeClass('inactive').addClass('active');
+                            $('.payment-icon .cc-icon.cc-discover').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive faded');
+                            $('.payment-icon .cc-icon.cc-discover').removeClass('inactive faded').addClass('active');
                             break;
                         default:
-                            $('.payment-icon .cc-icon').removeClass('inactive active');
+                            $('.payment-icon .cc-icon').removeClass('inactive active faded');
                             break;
                     }
                 }else{
                     if (data.validator !== 'stringLength')
-                        $('.payment-icon .cc-icon').removeClass('inactive active');
+                        $('.payment-icon .cc-icon').removeClass('inactive');
                 }
             }
         }).on('err.field.fv', function(e, data) {
