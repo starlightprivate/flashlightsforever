@@ -25,8 +25,6 @@ var _         = require('lodash'),
   validator   = require('validator'),
   stripCssComments = require("gulp-strip-css-comments"),
   safe        = require('safe-regex'),
-  htmlLint = require('gulp-html-lint'),
-  debug = require('gulp-debug'),
   eslint = require('gulp-eslint');
 
 var app = connect();
@@ -37,7 +35,7 @@ var config = {
   port: 3000
 };
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
     return gulp.src(['src/scripts/**/*.js','!node_modules/**'])
         .pipe(eslint({
         rules: {
@@ -51,16 +49,16 @@ gulp.task('lint', function() {
 });
 
 // Stylish reporter for JSHint
-gulp.task('jshint', function() {
-  return gulp.src([
-    "src/scripts/app/pages/*.js",
-    "src/scripts/app/config.js",
-    "src/scripts/app/utils.js",
-    "src/scripts/vendor/addclear.js",
-  ])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-});
+gulp.task('jshint', () =>
+    gulp.src([
+          "src/scripts/app/pages/*.js", 
+           "src/scripts/app/config.js" , 
+           "src/scripts/app/utils.js" , 
+           "src/scripts/vendor/addclear.js",
+        ])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+);
 
 // Fonts
 gulp.task("fonts", function() {
@@ -117,10 +115,10 @@ gulp.task("csscopy", function() {
 
 
 // Clean-all
-gulp.task("clean-all", function(cb) {
-  return del([
+gulp.task("clean-all", function() {
+  del.sync([
     config.dist
-  ],cb);
+  ]);
 });
  
 // Strip comments from CSS using strip-css-comments
@@ -147,19 +145,9 @@ gulp.task("csspurify", function() {
     .pipe(size());
 });
 
-gulp.task('lint-html', function() {
-  return gulp
-    .src(['src/html/*.html'])
-    .pipe(debug({title: 'HTML linting this file:'}))
-    .pipe(htmlLint()) //TODO - implement options - https://www.npmjs.com/package/gulp-html-lint#options
-    .pipe(htmlLint.format());
-    // .pipe(htmlLint.failOnError()); //TODO - it have to be like this
-});
-
-
 // Clean Temp Dir
-gulp.task("cleantemp" , function (cb) {
-  return del([config.dist + "/assets/temp"],cb);
+gulp.task("cleantemp" , function () {
+  del.sync([config.dist + "/assets/temp"]);
 });
 
 // XSSLint - Find potential XSS vulnerabilities
@@ -202,7 +190,6 @@ gulp.task("build", ["clean-all"], function(done) {
     "stripcss",
     "csspurify",
     "cleantemp",
-    'lint-html',
     function() {
       console.log("Build successful!");
       done();
