@@ -57,7 +57,7 @@ function callAPI(endpoint, data, method, callback, err) {
 
   //https://starlightgroup.atlassian.net/browse/SG-14
   if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
-    data._csrf = $.cookie('XSRF-TOKEN');
+    data._csrf = "Ks2zaZKD-Z5apD2OPF4LXP-56aNPba-xUEi0";//$.cookie('XSRF-TOKEN');
   }
 
     console.log("data._csrf : " + data._csrf);
