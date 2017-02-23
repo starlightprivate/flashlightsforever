@@ -23,7 +23,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
-       console.log("1");
       }else if (stcase >= 40 && stcase <= 49){
         if (event.target.value.length == 19) return;
         $('.payment-icon .cc-visa').removeClass('faded');
@@ -31,15 +30,13 @@ function validate() {
         $('.payment-icon .cc-american-express').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
-        console.log("2");
       }else if((stcase > 21 && stcase < 28) || (stcase > 50 && stcase < 56)){
         if (event.target.value.length == 19) return;
         $('.payment-icon .cc-mastercard').removeClass('faded');
         $('.payment-icon .cc-mastercard').addClass('active');
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
-        $('.payment-icon .cc-american-express').addClass('faded');   
-        console.log("3");   
+        $('.payment-icon .cc-american-express').addClass('faded');  
       }else if((stcase > 56 && stcase <= 59) || (stcase > 66 && stcase < 69) || stcase == 50){
         if (event.target.value.length == 19) return;
         $('#last').addClass('cc-maestro').removeClass('cc-discover');
@@ -48,7 +45,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');   
-        console.log("4");   
       }
     }
     if(event.target.value.length >= 7){
@@ -62,7 +58,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');
-        console.log("5");
       }else if((ndcase >= 300000 && ndcase <= 305999) || (ndcase >= 309500 && ndcase <= 309599) || (ndcase >= 360000 && ndcase <= 369999) || (ndcase >= 380000 && ndcase <= 399999)){
         $('#last').addClass('cc-diners-club').removeClass('cc-discover');
         $('.payment-icon .cc-diners-club').addClass('active');
@@ -70,7 +65,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');
-        console.log("6");
       }else if((ndcase > 599999 && ndcase <=643999)){
         //$('#last').addClass('cc-maestro').removeClass('cc-discover');
         $('.payment-icon .cc-discover').addClass('active');
@@ -78,7 +72,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');
-        console.log("7");
       }
     }
     if(event.target.value.length >= 4){
@@ -92,7 +85,6 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');
-        console.log("8");
       }else if(rdcase >= 3528 && rdcase <= 3589){
         $('#last').addClass('cc-jcb').removeClass('cc-discover');
         $('.payment-icon .cc-jcb').addClass('active');
@@ -100,13 +92,11 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');
-        console.log("9");
       }
     }
       if($( this ).val() === ''){
           $('.payment-icon .cc-icon').removeClass('inactive active faded');
           $('#last').addClass('cc-discover').removeClass('cc-diners-club cc-enroute cc-jcb cc-maestro');
-        console.log("10");
       }
   });
 

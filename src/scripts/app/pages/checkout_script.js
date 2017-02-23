@@ -334,34 +334,29 @@
                             $('.payment-icon .cc-icon.cc-visa').removeClass('inactive').addClass('active');
                             $('.payment-icon .cc-icon.cc-visa').removeClass('faded');
                             $("input[name=cardNumber]").attr("maxlength", "19");
-                            console.log("13");
                             break;
                         case 'MASTERCARD':
                             $('.payment-icon .cc-icon.cc-mastercard').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
                             $('.payment-icon .cc-icon.cc-mastercard').removeClass('inactive').addClass('active');
                             $('.payment-icon .cc-icon.cc-mastercard').removeClass('faded');
                             $("input[name=cardNumber]").attr("maxlength", "19");
-                            console.log("14");
                             break;
                         case 'AMERICAN_EXPRESS':
                             $('.payment-icon .cc-icon.cc-american-express').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
                             $('.payment-icon .cc-icon.cc-american-express').removeClass('inactive').addClass('active');
                             $('.payment-icon .cc-icon.cc-american-express').removeClass('faded');
                             $("input[name=cardNumber]").attr("maxlength", "18");
-                            console.log("15");
                             break;
                         case 'DISCOVER':
                             $('.payment-icon .cc-icon.cc-discover').parents('a').siblings().find('.cc-icon').removeClass('active').addClass('inactive');
                             $('.payment-icon .cc-icon.cc-discover').removeClass('inactive').addClass('active');
                             $('.payment-icon .cc-icon.cc-discover').removeClass('faded');
                             $("input[name=cardNumber]").attr("maxlength", "19");
-                            console.log("16");
                             break;
                         default:
                             $('.payment-icon .cc-icon').removeClass('inactive active');
                             $('.payment-icon .cc-icon').addClass('faded');
                             $("input[name=cardNumber]").attr("maxlength", "19");
-                            console.log("11");
                             break;
                     }
                 }else{
@@ -370,7 +365,6 @@
                         $('.payment-icon .cc-icon').removeClass('inactive active');
                         $('.payment-icon .cc-icon').addClass('faded');
                         $("input[name=cardNumber]").attr("maxlength", "19");
-                        console.log("12");
                     }
                 }
             }
