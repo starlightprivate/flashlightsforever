@@ -112,14 +112,21 @@ function wistiaVideo(){
     }
 
     if (customWrapperForIsMobileDevice()) {
+      $('div#js-div-loading-bar').show();
+
       callAPI('add-contact', data, 'POST', function (response) {
         if (response.success) {
           createLead(data, function (success) {
-            $('.btn-address-modal').click();
-          }, function (textStatus) {});
+            window.location = 'checkout.html';
+          }, function (textStatus) {
+            $('div#js-div-loading-bar').hide();
+          });
+        } else {
+          $('div#js-div-loading-bar').hide();
         }
-      }, function (textStatus) {});
-      $('#modal-contact .close-modal').click();
+      }, function (textStatus) {
+        $('div#js-div-loading-bar').hide();
+      });
     } else {
       $('div#js-div-loading-bar').show();
 
