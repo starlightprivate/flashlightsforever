@@ -111,6 +111,7 @@ function wistiaVideo(){
       console.log("Your browser does not support local storage.");
     }
 
+    /*
     if (customWrapperForIsMobileDevice()) {
       $('div#js-div-loading-bar').show();
 
@@ -144,7 +145,25 @@ function wistiaVideo(){
       }, function (textStatus) {
         $('div#js-div-loading-bar').hide();
       });
-    }
+    }*/
+
+
+    $('div#js-div-loading-bar').show();
+    callAPI('add-contact', data, 'POST', function (response) {
+      if (response.success) {
+        createLead(data, function (success) {
+          // In case of Mobile devices, show address modal and go to checkout page.
+          window.location = 'checkout.html';
+        }, function (textStatus) {
+          $('div#js-div-loading-bar').hide();
+        });
+      } else {
+        $('div#js-div-loading-bar').hide();
+      }
+    }, function (textStatus) {
+      $('div#js-div-loading-bar').hide();
+    });
+    
   }
   // submit address form
   function submitAddressForm() {
