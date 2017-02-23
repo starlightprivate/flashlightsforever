@@ -84,9 +84,14 @@ function loadStateFromZip() {
       if (resp.success) {
         if (jData.city !== undefined && jData.city !== '' && jData.city !== null) {
           $('#city').val(jData.city);
+        }else{
+          $('#city').val("");
         }
+
         if (jData.state !== undefined && jData.state !== '' && jData.state !== null) {
           $('#state').val(jData.state).trigger('change');
+        }else{
+          $('#state').val("");
         }
         $('input[name=address1]').focus();
       }
