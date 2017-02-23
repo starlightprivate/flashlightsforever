@@ -23,6 +23,9 @@ function err_field_fv(e, data) {
     $field = data.element;
   $field.next('.validMessage[data-field=\'' + field + '\']').hide();
 }
+function wistiaVideo(){
+  $('.btn-buy-modal').click();
+}
 (function () {
   'use strict';
   $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
@@ -294,3 +297,4 @@ function err_field_fv(e, data) {
     }
   });
 }());
+

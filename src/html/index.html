@@ -345,6 +345,16 @@
         <script type="text/javascript" src="assets/js/xss.js"></script>
         <script type="text/javascript">
             window.wistiaDisableMux = true;
+            window._wq = window._ws || [];
+            _wq.push({id: "sg6u0amacm", onReady: function(video){
+                video.bind('secondchange', function(s){
+                    $('.has-url span').html("Click Here");
+                    $('.has-url').attr("href", "javascript:wistiaVideo();");        
+                });
+                video.bind('end', function(){
+                    wistiaVideo();
+                });
+            }});
         </script>
     </body>
 </html>
