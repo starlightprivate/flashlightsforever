@@ -298,9 +298,3 @@ function wistiaVideo(){
   });
 }());
 
-window._wq = window._ws || [];
-_wq.push({id: "sg6u0amacm", onReady: function(video){
-    video.bind('secondchange', function(s){
-        $('.has-url').attr("href", "javascript:wistiaVideo();");        
-    })
-}});
