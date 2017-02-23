@@ -79,9 +79,6 @@ function loadStateFromZip() {
     fZip.addClass('processed');
     $('#state, #city').prop('disabled', true);
     $('#state + small + i, #city + small + i').show();
-    if (!$('#state + small + i').hasClass('fa-spin')) {
-      $('#state + small + i, #city + small + i').addClass('fa fa-spin fa-refresh');
-    }
     callAPI('state/' + fZipVal, params, 'GET', function (resp) {
       var jData = resp.data;
       if (resp.success) {
@@ -94,7 +91,6 @@ function loadStateFromZip() {
         $('input[name=address1]').focus();
       }
       //remove fa spin icons and do formvalidation
-      $('#state + small + i, #city + small + i').hide().removeClass('fa').removeClass('fa-spin').removeClass('fa-refresh');
       $('#state, #city').prop('disabled', false);
       var frm;
       if ($('#form-address').length > 0) {
