@@ -47,19 +47,11 @@ function callAPI(endpoint, data, method, callback, err) {
     ApiUrl += data;
     data = null;
   }
-  console.log("data : "+data);
-  console.log("data.Email : "+data.Email);
-  console.log("data.FirstName : "+data.FirstName);
-  console.log("data.MobilePhone : "+data.MobilePhone);
-  console.log("data.LastName : "+data.LastName);
-  console.log("ApiUrl : " +ApiUrl);
 
   //https://starlightgroup.atlassian.net/browse/SG-14
   if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
     data._csrf = $.cookie('XSRF-TOKEN');
   }
-
-  console.log("data._csrf : " + data._csrf);
 
   jQuery.ajax({
     method: method,
