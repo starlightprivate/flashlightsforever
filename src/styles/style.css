@@ -988,7 +988,7 @@ input#creditcard::-webkit-outer-spin-button {
 }
 
 .pg-checkout .payment .cc-sm.cc-american {
-    background-image:url(../images/cc-amex.svg);
+    background-image:url(../images/cc-amex.png);
     background-size:120%;
 }
 
