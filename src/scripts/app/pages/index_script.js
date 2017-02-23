@@ -115,16 +115,11 @@ function wistiaVideo(){
       callAPI('add-contact', data, 'POST', function (response) {
         if (response.success) {
           createLead(data, function (success) {
-          }, function (textStatus) {
-
-          });
+            $('.btn-address-modal').click();
+          }, function (textStatus) {});
         }
-      }, function (textStatus) {
-        
-      });
-
+      }, function (textStatus) {});
       $('#modal-contact .close-modal').click();
-      $('.btn-address-modal').click();
     } else {
       $('div#js-div-loading-bar').show();
 
@@ -273,6 +268,7 @@ function wistiaVideo(){
     }).on('success.validator.fv', function (e, data) {
     }).on('err.form.fv', function (e, data) {
     }).on('success.form.fv', function (e, data) {
+      console.log("submit!!!!!!");
       submitAddressForm();
       e.preventDefault();
     }).on('success.field.fv', success_field_fv).on('err.field.fv', err_field_fv);
