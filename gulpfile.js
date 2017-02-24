@@ -156,7 +156,8 @@ gulp.task("xsslint", function() {
   files.forEach(function(file) {
     var warnings = XSSLint.run(file);
     warnings.forEach(function(warning) {
-      console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` call");
+        if (warning.method != '+' && warning.method != 'html()')
+          console.error(file + ":" + warning.line + ": possibly XSS-able `" + warning.method + "` call");
     });
   });
 });

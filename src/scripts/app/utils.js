@@ -217,3 +217,21 @@ function clearStorageItem(k) {
   'use strict';
   localStorage.removeItem(k);
 }
+function escapeHTML(str) {
+     str = str + "";
+     var out = "";
+     for(var i=0; i<str.length; i++) {
+         if(str[i] === '<') {
+             out += '&lt;';
+         } else if(str[i] === '>') {
+             out += '&gt;';
+         } else if(str[i] === "'") {
+             out += '&#39;'; 
+         } else if(str[i] === '"') {
+             out += '&quot;';                        
+         } else {
+             out += str[i];
+         }
+     }
+     return out;                    
+}
