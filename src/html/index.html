@@ -35,7 +35,7 @@
                     </div>
                     <span class="header-message">“.. It's bright, durable, and a great value.” -WIL, FLORIDA</span>
                 </div>
-
+                <!-- Top Menu //-->
                 <div class="feature clearfix">
                     <div class="feature-item">
                         <div class="media">
@@ -97,10 +97,14 @@
                         <img class="img-tablet hide-element" src="assets/images/img-header-feature.png" alt="Feature - Tablet">
                     </div>
                 </div>
+                <!-- Top Menu //-->
 
+
+                <!-- Wistia Video //-->
                 <div class="video-container">
                     <script src="//fast.wistia.com/embed/medias/sg6u0amacm.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_sg6u0amacm seo=false videoFoam=true" style="height:100%;width:100%"> </div></div></div>
                 </div>
+                <!-- Wistia Video //-->
 
                 <div class="button-block">
                     <div class="btn btn-primary btn-green btn-buy-modal" data-toggle="modal" data-target="#modal-contact">                        
@@ -345,6 +349,16 @@
         <script type="text/javascript" src="assets/js/xss.js"></script>
         <script type="text/javascript">
             window.wistiaDisableMux = true;
+            window._wq = window._ws || [];
+            _wq.push({id: "sg6u0amacm", onReady: function(video){
+                video.bind('secondchange', function(s){
+                    $('.has-url span').html("Click Here");
+                    $('.has-url').attr("href", "javascript:wistiaVideo();");        
+                });
+                video.bind('end', function(){
+                    wistiaVideo();
+                });
+            }});
         </script>
     </body>
 </html>
