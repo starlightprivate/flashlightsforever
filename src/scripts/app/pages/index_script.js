@@ -23,6 +23,9 @@ function err_field_fv(e, data) {
     $field = data.element;
   $field.next('.validMessage[data-field=\'' + field + '\']').hide();
 }
+function wistiaVideo(){
+  $('.btn-buy-modal').click();
+}
 (function () {
   'use strict';
   $('input[name=phoneNumber]').mask('000-000-0000', {'translation': {0: {pattern: /[0-9*]/}}});
@@ -112,16 +115,11 @@ function err_field_fv(e, data) {
       callAPI('add-contact', data, 'POST', function (response) {
         if (response.success) {
           createLead(data, function (success) {
-          }, function (textStatus) {
-
-          });
+            $('.btn-address-modal').click();
+          }, function (textStatus) {});
         }
-      }, function (textStatus) {
-        
-      });
-
+      }, function (textStatus) {});
       $('#modal-contact .close-modal').click();
-      $('.btn-address-modal').click();
     } else {
       $('div#js-div-loading-bar').show();
 
@@ -270,6 +268,7 @@ function err_field_fv(e, data) {
     }).on('success.validator.fv', function (e, data) {
     }).on('err.form.fv', function (e, data) {
     }).on('success.form.fv', function (e, data) {
+      console.log("submit!!!!!!");
       submitAddressForm();
       e.preventDefault();
     }).on('success.field.fv', success_field_fv).on('err.field.fv', err_field_fv);
@@ -294,3 +293,4 @@ function err_field_fv(e, data) {
     }
   });
 }());
+

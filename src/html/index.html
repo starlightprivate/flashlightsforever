@@ -14,12 +14,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/g/normalize@5.0.0,bootstrap@4.0.0-alpha.5(css/bootstrap.min.css),fontawesome@4.7.0(css/font-awesome.min.css)">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans%7COswald%7CRoboto:700" rel="stylesheet">
-        <script type="text/javascript">
-          !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
-          analytics.load("7FMBWsjMCbyWvbx4UuGCovr1SYyokQYd");
-          analytics.page();
-          }}();
-        </script>
     </head>
 
     <body>
@@ -35,7 +29,7 @@
                     </div>
                     <span class="header-message">“.. It's bright, durable, and a great value.” -WIL, FLORIDA</span>
                 </div>
-
+                <!-- Top Menu //-->
                 <div class="feature clearfix">
                     <div class="feature-item">
                         <div class="media">
@@ -97,10 +91,14 @@
                         <img class="img-tablet hide-element" src="assets/images/img-header-feature.png" alt="Feature - Tablet">
                     </div>
                 </div>
+                <!-- Top Menu //-->
 
+
+                <!-- Wistia Video //-->
                 <div class="video-container">
                     <script src="//fast.wistia.com/embed/medias/sg6u0amacm.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_sg6u0amacm seo=false videoFoam=true" style="height:100%;width:100%"> </div></div></div>
                 </div>
+                <!-- Wistia Video //-->
 
                 <div class="button-block">
                     <div class="btn btn-primary btn-green btn-buy-modal" data-toggle="modal" data-target="#modal-contact">                        
@@ -345,6 +343,16 @@
         <script type="text/javascript" src="assets/js/xss.js"></script>
         <script type="text/javascript">
             window.wistiaDisableMux = true;
+            window._wq = window._ws || [];
+            _wq.push({id: "sg6u0amacm", onReady: function(video){
+                video.bind('secondchange', function(s){
+                    $('.has-url span').html("Click Here");
+                    $('.has-url').attr("href", "javascript:wistiaVideo();");        
+                });
+                video.bind('end', function(){
+                    wistiaVideo();
+                });
+            }});
         </script>
     </body>
 </html>

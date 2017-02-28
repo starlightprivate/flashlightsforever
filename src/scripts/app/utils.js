@@ -56,7 +56,8 @@ function callAPI(endpoint, data, method, callback, err) {
   jQuery.ajax({
     method: method,
     url: ApiUrl,
-    data: data
+    data: data,
+    beforeSend: function(xhr){xhr.setRequestHeader( "Content-type","application/x-www-form-urlencoded" );}
   }).done(function (msg) {
     if (typeof callback === 'function') {
       callback(msg);
@@ -66,7 +67,7 @@ function callAPI(endpoint, data, method, callback, err) {
       err(textStatus);
     }
     console.log('error occured on api - ' + endpoint);
-    console.log('error - ' + textStatus);
+    console.log('error11 - ' + textStatus);
   });
 }
 // load state from zipcode
@@ -79,22 +80,23 @@ function loadStateFromZip() {
     fZip.addClass('processed');
     $('#state, #city').prop('disabled', true);
     $('#state + small + i, #city + small + i').show();
-    if (!$('#state + small + i').hasClass('fa-spin')) {
-      $('#state + small + i, #city + small + i').addClass('fa fa-spin fa-refresh');
-    }
     callAPI('state/' + fZipVal, params, 'GET', function (resp) {
       var jData = resp.data;
       if (resp.success) {
         if (jData.city !== undefined && jData.city !== '' && jData.city !== null) {
           $('#city').val(jData.city);
+        }else{
+          $('#city').val("");
         }
+
         if (jData.state !== undefined && jData.state !== '' && jData.state !== null) {
           $('#state').val(jData.state).trigger('change');
+        }else{
+          $('#state').val("");
         }
         $('input[name=address1]').focus();
       }
       //remove fa spin icons and do formvalidation
-      $('#state + small + i, #city + small + i').hide().removeClass('fa').removeClass('fa-spin').removeClass('fa-refresh');
       $('#state, #city').prop('disabled', false);
       var frm;
       if ($('#form-address').length > 0) {
@@ -214,4 +216,22 @@ function getStorageItem(k) {
 function clearStorageItem(k) {
   'use strict';
   localStorage.removeItem(k);
+}
+function escapeHTML(str) {
+     str = str + "";
+     var out = "";
+     for(var i=0; i<str.length; i++) {
+         if(str[i] === '<') {
+             out += '&lt;';
+         } else if(str[i] === '>') {
+             out += '&gt;';
+         } else if(str[i] === "'") {
+             out += '&#39;'; 
+         } else if(str[i] === '"') {
+             out += '&quot;';                        
+         } else {
+             out += str[i];
+         }
+     }
+     return out;                    
 }
