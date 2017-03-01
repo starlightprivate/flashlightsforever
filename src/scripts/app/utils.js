@@ -51,9 +51,10 @@ function callAPI(endpoint, data, method, callback, err) {
   //https://starlightgroup.atlassian.net/browse/SG-14
   if (['PUT', 'POST', 'PATCH', 'DELETE'].indexOf(method) !== -1) {
     data._csrf = $.cookie('XSRF-TOKEN');
+    console.log ("COOKIE(token): " + data._csrf);
+  }else{
+    console.log ("COOKIE(token): " + "-");
   }
-
-  console.log ("COOKIE(token): " + data._csrf);
 
   jQuery.ajax({
     method: method,
