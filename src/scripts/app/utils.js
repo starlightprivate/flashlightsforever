@@ -53,6 +53,8 @@ function callAPI(endpoint, data, method, callback, err) {
     data._csrf = $.cookie('XSRF-TOKEN');
   }
 
+  console.log ("COOKIE(token): " + data._csrf);
+
   jQuery.ajax({
     method: method,
     url: ApiUrl,
