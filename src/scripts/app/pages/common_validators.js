@@ -23,6 +23,7 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
+        $('input[name=cardNumber]').mask('0000 000000 00000', { 'translation': { 0: { pattern: /[0-9]/ } } });
       }else if (stcase >= 40 && stcase <= 49){
         if (event.target.value.length == 19) return;
         $('.payment-icon .cc-visa').removeClass('faded');
@@ -30,6 +31,7 @@ function validate() {
         $('.payment-icon .cc-american-express').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
+        $('input[name=cardNumber]').mask('0000 0000 0000 0000', { 'translation': { 0: { pattern: /[0-9]/ } } });
       }else if((stcase > 21 && stcase < 28) || (stcase > 50 && stcase < 56)){
         if (event.target.value.length == 19) return;
         $('.payment-icon .cc-mastercard').removeClass('faded');
@@ -37,6 +39,7 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-discover').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');  
+        $('input[name=cardNumber]').mask('0000 0000 0000 0000', { 'translation': { 0: { pattern: /[0-9]/ } } });
       }else if((stcase > 56 && stcase <= 59) || (stcase > 66 && stcase < 69) || stcase == 50){
         if (event.target.value.length == 19) return;
         $('#last').addClass('cc-maestro').removeClass('cc-discover');
@@ -45,6 +48,7 @@ function validate() {
         $('.payment-icon .cc-visa').addClass('faded');
         $('.payment-icon .cc-mastercard').addClass('faded');
         $('.payment-icon .cc-american-express').addClass('faded');   
+        $('input[name=cardNumber]').mask('0000 0000 0000 0000', { 'translation': { 0: { pattern: /[0-9]/ } } });
       }
     }
     if(event.target.value.length >= 7){
